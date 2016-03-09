@@ -1,0 +1,144 @@
+section.content{
+	width: 100%;
+	text-align: center;
+	p{
+		text-align:center;
+		font-size: 1.5em;
+		color: $blanco;
+		margin-top: 1em;
+		margin-bottom: 0em;
+		@include desde (tablet){
+			font-size: 2em;
+		}
+	}
+	p.T-exibicion{
+		margin:0 !important;
+	}
+
+
+.tabs {
+  width: 100%;  
+  float: none;
+  list-style: none;
+  position: relative;
+  margin: 0px;
+  padding: 0;
+  text-align: left;
+  background: $blanco;
+  min-height: 450px;
+  @include desde (web){
+  	width: 60%;
+  	margin:1.3em auto 0 auto;
+  	min-height: 570px;
+  }
+  li {
+    float: left;
+    display: block;
+    width: 50%;
+    background: $blanco;
+    border-right:1px solid $rojo;
+    border-bottom: 1px solid $rojo;
+    text-align: center;
+    &:last-child{
+    	border-right: none;
+    }
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  label {
+    display: block;
+    padding: 14px 21px;
+    border-radius: 2px 2px 0 0;
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    //background: $tabs-base-color;
+    cursor: pointer;
+    position: relative;
+    top: 4px; 
+    transition: all .3s ;
+    /*&:hover {
+      background: darken($tabs-base-color, 10);
+    }*/
+  }
+
+    .tab-content{
+	    z-index: 2;
+	    display: none; 
+	    overflow: hidden;
+	    width: 100%;
+	    font-size: 17px;
+	    line-height: 25px;
+	    padding: 25px;  
+	    position: absolute;
+	    top: 53px;
+	    left: 0; 
+	    background: $blanco;
+	    p{
+	    	color: $gris;
+	    	font-family: 'League Gothic';
+	    	font-weight: normal;
+	    	font-size: 0.9em;
+	    	text-align: left;
+	    }
+	    .ima-B-M{
+	    	margin-top: 1em;
+	    	width: 100%;
+	    }
+  	}
+
+		  	  //The Magic
+		  [id^="tab"]:checked + label { 
+		    top: 0;
+		    padding-top: 8px; //17
+		    //background: darken($tabs-base-color, 15); 
+		  }
+		  [id^="tab"]:checked ~ [id^="tab-content"] {
+		    display: block;
+		  }
+
+
+  	}//final
+
+}//final content
+
+section.go{
+	width: 100%;
+	
+	a.aceptar{
+	color: #fff;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border: none;
+    -webkit-appearance: none;
+    text-align: center;
+    border: 3px solid #89030D;
+    background: #fff;
+    padding: 10px;
+    font-size: 1.3em;
+    font-family: 'League Gothic';
+    color: #89030D;
+    text-transform: uppercase;
+    margin: 1.3em auto 1.3em auto;
+	    @include desde (web){
+	    	width: 15%;
+	    }
+	}
+
+}//fin go
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="css/styles.css")
+    link(rel='shortcut icon', type='image/png', href='favicon.png')
+    //- link(rel='shortcut icon', type='image/png', href='http://eg.com/favicon.png')
+    title Registro Visual Easy
+  body
+    header
+      .ed-container
+        .ed-item.base-100
+          .logo__interiores
+            img(src="img/logo.png", alt="")
+    section.content
+      p Seleccionar campaña
+      form#campana
+        select.select
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
+
+      p.T-exibicion Seleccionar exhibición
+      form#exhibicion
+        select.select
+          option 1
+          option 2
+          option 3
+          option 4
+          option 5
+        #boton-cont
+          input.cont(type="submit",value="siguiente")
+
+        
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script(src="js/classie.js")
+    script(src="js/scripts.js")

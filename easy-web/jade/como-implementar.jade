@@ -1,0 +1,47 @@
+doctype html
+html(lang="es")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="css/styles.css")
+		link(rel='shortcut icon', type='image/png', href='favicon.png')
+		//- link(rel='shortcut icon', type='image/png', href='http://eg.com/favicon.png')
+		title Registro Visual Easy
+	body
+		header
+			.ed-container
+				.ed-item.base-100
+					.logo__interiores
+						img(src="img/logo.png", alt="")
+		section.content
+			p Cómo implementar en sala
+			.ed-container
+				.ed-item.base-100.no-padding
+					ul.tabs
+						li
+							input#tab1(type='radio', name='tabs', checked='')
+							label(for='tab1') Buenas Prácticas
+							#tab-content1.tab-content
+								p
+									| "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									.ima-B-M
+										img(src="img/foto.jpg", alt="")
+						li
+							input#tab2(type='radio', name='tabs')
+							label(for='tab2') Malas Prácticas
+							#tab-content2.tab-content
+								p
+									| "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+									.ima-B-M
+										img(src="img/foto.jpg", alt="")
+		section.go
+			a.aceptar(href="take.html") Aceptar
+
+
+
+
+				
+
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+		script(src="js/classie.js")
+		script(src="js/scripts.js")

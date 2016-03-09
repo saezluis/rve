@@ -1,0 +1,77 @@
+doctype html
+html(lang="es")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="css/styles.css")
+		title Admin
+	body
+		.ed-container
+			.ed-item.base-20
+				aside
+					.logo
+						img(src="img/logo.png", alt="")
+					.aqui-les-va
+						h1 Campañas 2016
+						form#choose
+							.campana
+								h2 Seleccionar sala
+								select
+									option 1
+									option 2
+									option 3
+									option 4
+									option 5
+									option 6
+									option 7
+									option 8
+									option 9
+									option 10
+							.tienda
+								h2 Seleccionar proveedor
+								select
+									option 1
+									option 2
+									option 3
+									option 4
+									option 5
+									option 6
+									option 7
+									option 8
+									option 9
+									option 10
+			.ed-item.base-80
+				header.int
+					h1 Supervisor (Proveedores)
+					.items-header
+						.custion
+							.profile
+								img.circulo(src="img/carita.jpg", alt="")
+							p.nombre ¡Hola! Elisa Correa S.
+							a.rejected(href="#") Cerrar sesión
+				.content
+					#slides
+						img(src='http://placehold.it/940x400')
+						img(src='http://placehold.it/940x400')
+						img(src='http://placehold.it/940x400')
+						img(src='http://placehold.it/940x400')
+						img(src='http://placehold.it/940x400')
+					p.bottom-text Imágen tomada por 
+						span Luis Sáez en 
+						span Easy Puente Alto 
+						|- Teléfono:  
+						span 09-234-8321
+				.content-caja-mensajes
+					form#message
+						h3 Comentarios
+						textarea()
+						input.enviar(type="submit", value="Enviar")
+
+					
+
+
+
+
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+		script(src="js/scripts.js")
+		script(src='js/jquery.slides.js')

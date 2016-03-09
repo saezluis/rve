@@ -1,0 +1,159 @@
+section.forms{
+	width: 100%;
+	height: auto;
+
+	form#formLogin{
+		width: 100%;
+		height: auto;
+		padding: 15px;
+		text-align: center;
+
+		@include desde (web){
+			width: 70%;
+			margin: 0 auto;
+		}
+
+		@include desde (web){
+			width: 40%;
+		}
+
+
+		input[type="submit"], .cont{
+			width: 90%;
+			margin-top: 1em;
+			text-align: center;
+			border: 3px solid $rojo_darks;
+			background: $blanco;
+			padding: 10px;
+			font-size: 1.3em;
+			font-family: 'League Gothic';
+			color: $rojo_darks;
+			text-transform: uppercase;
+			-webkit-appearance: none; /* for box shadows to show on iOS */
+
+			@include desde (tablet){
+				width: 48%;
+			}
+
+		}
+		a.recuperar{
+			width: 100%;
+			color: $blanco;
+			text-align: right;
+			font-size: 0.8em;
+			font-family: 'Open Sans';
+			text-decoration: underline;
+			margin-top: 1em;
+			display: block;
+			padding-right: 20px;
+			@include desde (tablet){
+				width: 75%;
+			}
+		}
+	}
+
+}
+
+section.content{
+	form#main,#campana,#exhibicion{
+		width: 100%;
+		text-align: center;
+		padding: 15px;
+
+		select{
+			width: 70%;
+			-webkit-appearance: none;
+			-webkit-transition: all 0.4s;
+			-moz-transition: all 0.4s;
+			transition: all 0.4s;
+			border-radius: 5px;
+			border: 3px solid $rojo-darks;
+			padding: 10px;
+			appearance: none;
+			font-size: 0.9em;
+			background: $blanco url(../img/arrows.png) no-repeat;
+			background-position: 95% center; 
+
+			@include desde (tablet){
+				width: 30%;
+			}
+
+			@include desde (web){
+				width: 15%;
+			}
+
+		}
+
+
+		#boton-cont{
+			width: 100%;
+			text-align: center;
+			margin-top: 3em;
+			input.cont{
+				color: $blanco;
+
+				font-family: 'Open Sans';
+
+				display: block;
+				width: 70%;
+				text-align: center;
+				border: none;
+				-webkit-appearance: none; /* for box shadows to show on iOS */
+
+
+				text-align: center;
+				border: 3px solid $rojo_darks;
+				background: $blanco;
+				padding: 10px;
+				font-size: 1.3em;
+				font-family: 'League Gothic';
+				color: $rojo_darks;
+				text-transform: uppercase;
+				margin: 0 auto;
+
+				@include desde (tablet){
+					width: 30%;
+				}
+				@include desde (hd){
+					width: 15%;
+				}
+
+			}
+		}
+		div.upload {
+		position: relative;
+		width: 124px;//80
+		height: 124px;//24
+		overflow:hidden;
+		background:url(../img/mini-upload.svg) left top no-repeat;
+		clip:rect(0px, 80px, 24px, 0px );
+		margin:0 auto;
+		}
+
+
+		div.check {
+		position: relative;
+		width: 124px;//80
+		height: 124px;//24
+		overflow:hidden;
+		background:url(../img/checksvg) left top no-repeat;
+		clip:rect(0px, 80px, 24px, 0px );
+		margin:0 auto;
+		}
+
+
+		div.upload input {
+		position: absolute;
+		left: auto;
+		right: 0px;
+		top: 0px;
+		margin:0;
+		padding:0;
+		filter: Alpha(Opacity=0);
+		-moz-opacity: 0;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		}
+	}//#main
+}

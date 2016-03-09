@@ -1,0 +1,35 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="css/styles.css")
+    link(rel="stylesheet", href="css/set2.css")
+    link(rel='shortcut icon', type='image/png', href='favicon.png')
+    //- link(rel='shortcut icon', type='image/png', href='http://eg.com/favicon.png')
+    title Registro Visual Easy
+  body
+    header
+      .ed-container
+        .ed-item.base-100
+          .logo
+            img(src="img/logo.png", alt="")
+    section.forms
+      form#formLogin
+
+        span.input.input--nariko
+          input#input-20.input__field.input__field--nariko(type='text', placeholder="Ingresa tu usuario")
+          label.input__label.input__label--nariko(for='input-20')
+            span.input__label-content.input__label-content--nariko Nombre de Usuario
+
+        span.input.input--nariko
+          input#input-20.input__field.input__field--nariko(type='password',  placeholder="Ingresa tu password")
+          label.input__label.input__label--nariko(for='input-20')
+            span.input__label-content.input__label-content--nariko Contraseña
+
+        input.ingresar(type="submit",value="Ingresar")
+        a.recuperar(href="#") recuperar contraseña
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script(src="js/classie.js")
+    script(src="js/scripts.js")
