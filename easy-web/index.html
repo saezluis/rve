@@ -17,16 +17,24 @@
       </div>
     </header>
     <section class="forms">
-      <form id="formLogin"><span class="input input--nariko">
-          <input id="input-20" type="text" placeholder="Ingresa tu usuario" class="input__field input__field--nariko">
-          <label for="input-20" class="input__label input__label--nariko"><span class="input__label-content input__label-content--nariko">Nombre de Usuario</span></label></span><span class="input input--nariko">
-          <input id="input-20" type="password" placeholder="Ingresa tu password" class="input__field input__field--nariko">
-          <label for="input-20" class="input__label input__label--nariko"><span class="input__label-content input__label-content--nariko">Contraseña</span></label></span>
-        <input type="submit" value="Ingresar" class="ingresar"><a href="#" class="recuperar">recuperar contraseña</a>
-      </form>
+		<form id="formLogin" method="post" action="checklogin.php">
+			<span class="input input--nariko">
+				<input id="input-20" type="text" name="myusername" placeholder="Ingresa tu usuario" class="input__field input__field--nariko">
+				<label for="input-20" class="input__label input__label--nariko">
+					<span class="input__label-content input__label-content--nariko">Nombre de Usuario</span>
+				</label>
+			</span>
+			<span class="input input--nariko">
+				<input id="input-20" type="password" name="mypassword" placeholder="Ingresa tu password" class="input__field input__field--nariko">
+				<label for="input-20" class="input__label input__label--nariko">
+					<span class="input__label-content input__label-content--nariko">Contraseña</span>
+				</label>
+			</span>
+			<input type="submit" value="Ingresar" class="ingresar"><a href="#" class="recuperar">recuperar contraseña</a>
+		</form>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="js/scripts.js"></script>	
   </body>
 </html>
