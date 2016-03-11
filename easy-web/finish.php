@@ -32,10 +32,10 @@ session_start();
   </head>
   <body>
 	<?php
-	
+	$nombreFoto = "";
 	//uniqid();
 	
-	$xd = basename($_FILES["upload"]["name"]);
+	$xd = basename(@$_FILES["upload"]["name"]);
 	
 		if($xd!=''){
 			
@@ -94,26 +94,26 @@ session_start();
 
 		//$nombreFoto = uniqid().basename($_FILES["upload"]["name"]);
 		
-		echo "nombre foto: ".$nombreFoto;
+		//echo "nombre foto: ".$nombreFoto;
 		echo "<br>";
 		echo "<br>";
 		
 		$id = $_SESSION['id_usuario'];
-		echo "id usuario: ".$id;
-		echo "<br>"."<br>";
+		//echo "id usuario: ".$id;
+		//echo "<br>"."<br>";
 		
 		//$_SESSION['id_sala'] = $id_sala;
 		$sala_store = $_SESSION['id_sala'];
-		echo "id sala: ".$sala_store;
-		echo "<br>"."<br>";
+		//echo "id sala: ".$sala_store;
+		//echo "<br>"."<br>";
 		
 		$campana_store = @$_SESSION['c_store'];
-		echo "camapana: ".$campana_store;
-		echo "<br>"."<br>";
+		//echo "camapana: ".$campana_store;
+		//echo "<br>"."<br>";
 		
 		$exhibicion_store = @$_SESSION['e_store'];
-		echo "exhibicion: ".$exhibicion_store;
-		echo "<br>"."<br>";
+		//echo "exhibicion: ".$exhibicion_store;
+		//echo "<br>"."<br>";
 		
 		date_default_timezone_set("America/Santiago");
 		$date =  date("Y-m-d h:i:sa");
@@ -143,12 +143,28 @@ session_start();
       </div>
     </header>
     <section class="content">
-      <p>Tu foto se subió exitosamente</p>
-      <form id="main">
-        <div class="check"><img src="img/check.svg" alt=""></div>
-      </form>
+	  <?php		  
+		$siguiente = @$_REQUEST['siguiente_send'];
+		
+		if($siguiente=='si'){
+			echo "<p>Tu foto se subió exitosamente</p>";
+			echo "<form id=\"main\">";
+				echo "<div class=\"check\"><img src=\"img/check.svg\" alt=\"\"></div>";
+			echo "</form>";
+		}
+		
+		if($siguiente!=''){
+			echo "";
+		}
+	  ?>
+      
     </section>
-    <section class="go"><a href="take.php" class="aceptar">Tomar otra foto</a></section>
+	<!-- 
+		//colocarlo en un Form y enviar datos necesarios
+	-->
+	<form method="post" action="take.php">
+		<section class="go"><a href="#" class="aceptar"><input type="submit" value="Tomar otra foto" class="cont"></a></section>		
+	</form>
 	
     <section class="go"><a href="seleccionar.php" class="aceptar">Seleccionar otra campaña / exhibición</a></section>
 	<section class="go"><a href="logout.php" class="aceptar">Finalizar sesión</a></section>

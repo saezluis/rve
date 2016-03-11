@@ -45,9 +45,22 @@ session_start();
           <input type="file" accept="image/*" capture="camera" name="upload" id="upload" required>
         </div>
         <div id="boton-cont">
-          <input type="submit" value="siguiente" class="cont">
+			<input type="submit" value="siguiente" class="cont">
+			<input type="text" value="si" name="siguiente_send" hidden=hidden>
+	  </form>
+			<br>			
+			<form method="post" action="finish.php">
+				<?php
+					$desde_implementar = @$_REQUEST['aceptar_implementar'];
+					if($desde_implementar=='si'){
+						$nothing = "";
+					}else{
+						echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
+					}				
+				?>
+			</form>						
         </div>
-      </form>
+      
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

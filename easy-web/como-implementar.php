@@ -81,7 +81,15 @@ session_start();
         </div>
       </div>
     </section>
-    <section class="go"><a href="take.php" class="aceptar">Aceptar</a></section>
+    <section class="go">
+		<form method="post" action="take.php">
+			<input type="submit" value="Aceptar" class="cont">
+			<input type="text" value="si" name="aceptar_implementar" hidden=hidden>
+		</form>
+		<!--
+		<a href="take.php" class="aceptar">Aceptar</a>
+		-->
+	</section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/scripts.js"></script>
