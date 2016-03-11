@@ -39,10 +39,6 @@ session_start();
 	<link rel="stylesheet" href="css2/global.css">
 	
 	
-	
-	
-	
-	
   </head>
   <body>
 	<?php
@@ -53,14 +49,14 @@ session_start();
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
 		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-		$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
+		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 		
 		@$id_campana_get = @$_REQUEST['campana'];
 		echo "id_campana: ".$id_campana_get;
 		echo "<br>";
 		
-		@$id_exhibicion_get = @$_REQUEST['exhibicion'];
-		echo "id_exhibicion: ".$id_exhibicion_get;
+		@$id_tienda_get = @$_REQUEST['tienda'];
+		echo "id_tienda: ".$id_tienda_get;
 		echo "<br>";
 		
 	?>
@@ -86,13 +82,13 @@ session_start();
               </div>
               <div class="tienda">
                 <h2>Seleccionar tienda</h2>
-                <select class="select" name="exhibicion" onchange="this.form.submit()">
+                <select class="select" name="tienda" onchange="this.form.submit()">
 					<?php
 						echo "<option value=\"\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosExhibicion)){
-							$nombre = $reg['nombre'];
-							$id_exhibicion = $reg['id_exhibicion'];
-							echo "<option value=\"$id_exhibicion\">$nombre</option>";
+						while($reg=mysqli_fetch_array($registrosSala)){
+							$nombre_sala = $reg['nombre_sala'];
+							$id_sala = $reg['id_sala'];
+							echo "<option value=\"$id_sala\">$nombre_sala</option>";
 						}
 					?>
 				</select>
@@ -113,10 +109,68 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="example">
-				
+			<div id="example">				
 				<div id="slides">
-					<div class="slides_container">
+					<div class="slides_container">						
+						<?php
+							//Registro imagenes
+							if($id_campana_get!=''){
+								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+							}
+							
+							if($id_tienda_get!=''){
+								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
+							}
+							
+							while($reg=mysqli_fetch_array($registroFotos)){
+								$nombre_foto = $reg['nombre_foto'];
+								$id_member = $reg['id_member'];
+								$id_sala = $reg['id_sala'];
+								//$celular = $reg['celular'];
+								
+								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select de registro: ".mysqli_error($conexion));
+								
+								if($reg2=mysqli_fetch_array($registroMember)){
+									$nombre = $reg2['nombre'];
+									$celular = $reg2['celular'];
+								}
+								
+								$registrosSala = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_sala'") or die("Problemas en el select de sala: ".mysqli_error($conexion));
+								
+								if($reg3=mysqli_fetch_array($registrosSala)){
+									$nombre_sala = $reg3['nombre_sala'];
+								}
+								
+								echo "<div class=\"slide\">";
+								//echo "<img src=\"../easy-web/images/$nombre_foto\" title=\"Imágen tomada por: $nombre\">";
+									echo "<img src=\"../easy-web/images/$nombre_foto\">";
+								
+								echo "<div class=\"caption\">";
+									echo "<p>Imágen tomada por $nombre en $nombre_sala - Teléfono: $celular</p>";
+								echo "</div>";
+								echo "<div class=\"content-caja-mensajes\">";
+									echo "<form id=\"message\">";
+										echo "<h3>Comentarios</h3>";
+										echo "<textarea></textarea>";
+										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\">";
+									echo "</form>";
+								echo "</div>";
+								
+								echo "</div>";
+							}
+							
+							//echo "<div class=\"caption\" style=\"bottom:0\">";
+									//echo "<p>Happy Bokeh Thursday!</p>";
+							//echo "</div>";
+						?>
+						
+						
+
+								
+
+							
+						
+						<!--
 						<div class="slide">
 
 								<img src="http://placehold.it/940x400">
@@ -148,23 +202,7 @@ session_start();
 					          </form>
 					        </div>
 						</div>
-
-						<div class="slide">
-
-								<img src="http://placehold.it/940x400">
-
-							<div class="caption">
-								<p>Imágen tomada por Luis Sáez en Easy Puente Alto - Teléfono: 09-234-8321</p>
-							</div>
-					        <div class="content-caja-mensajes">
-					          <form id="message">
-					            <h3>Comentarios</h3>
-					            <textarea></textarea>
-					            <input type="submit" value="Enviar" class="enviar">
-					          </form>
-					        </div>
-						</div>
-
+						-->
 					</div>
 					<a href="#" class="prev"><img src="img2/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
 					<a href="#" class="next"><img src="img2/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
