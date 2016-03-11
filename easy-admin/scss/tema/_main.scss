@@ -76,6 +76,8 @@ article{
 	}
 }
 
+
+
 .content-caja-mensajes{
 	form#message{
 		width: 100%;
@@ -104,3 +106,67 @@ article{
 		}
 	}
 }
+
+.content{
+	h2{
+		color:#ccc;
+		text-align: left;
+		font-size: 1.3em;
+		color: #222;
+		border-bottom: 1px solid #ccc;
+		padding-left: 15px;
+		padding-bottom: 15px;
+	}
+	table.table{
+		width: 100%;
+		table-layout: auto;
+			th, td{
+				padding:10px;
+				border-bottom: 1px solid #ddd;
+				font-size: 0.8em;
+			}
+		tr{
+			text-align: center;
+			font-size: 1.1em;
+		}
+	}
+}
+
+section.paginacion{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+}
+
+	section.paginacion {
+		margin:20px 0;
+	}
+
+	section.paginacion ul {
+		list-style:none;
+		text-align: center;
+	}
+
+	section.paginacion ul li {
+		display:inline-block;
+		margin-right:10px;
+	}
+
+	section.paginacion ul li a {
+		display:block;
+		padding:5px 10px;
+		color:$rojo;
+		background:#f9f9f9;
+		text-decoration: none;
+	}
+
+	section.paginacion ul li a:hover {
+		background:$rojo;
+		color: $blanco;
+	}
+
+	section.paginacion ul li .activate {
+		background:$rojo;
+		color: $blanco;
+		font-weight:bold;
+	}
