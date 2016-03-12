@@ -3166,6 +3166,31 @@ section.go {
       section.go a.aceptar {
         width: 15%; } }
 
+section.go {
+  width: 1024px;
+  height: auto;
+  margin: 0 auto; }
+  section.go .vayale input.aceptar-button {
+    color: #fff;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border: none;
+    -webkit-appearance: none;
+    text-align: center;
+    border: 3px solid #89030D;
+    background: #fff;
+    padding: 10px;
+    font-size: 1.3em;
+    font-family: 'League Gothic';
+    color: #89030D;
+    text-transform: uppercase;
+    margin: 1.3em auto 1.3em auto;
+    cursor: pointer; }
+    @media screen and (min-width: 1024px) {
+      section.go .vayale input.aceptar-button {
+        width: 15%; } }
+
 section.forms {
   width: 100%;
   height: auto; }

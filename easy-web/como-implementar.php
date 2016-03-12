@@ -82,10 +82,10 @@ session_start();
       </div>
     </section>
     <section class="go">
-		<form method="post" action="take.php">
-			<input type="submit" value="Aceptar" class="cont">
-			<input type="text" value="si" name="aceptar_implementar" hidden=hidden>
-		</form>
+  		<form method="post" action="take.php" class="vayale">
+  			<input type="submit" value="Aceptar" class="aceptar-button">
+  			<input type="text" value="si" name="aceptar_implementar" hidden=hidden>
+  		</form>
 		<!--
 		<a href="take.php" class="aceptar">Aceptar</a>
 		-->
