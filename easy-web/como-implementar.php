@@ -55,7 +55,7 @@ session_start();
       </div>
     </header>
     <section class="content">
-      <p>Cómo implementar en sala</p>
+      <p>Cómo implementar esta: campaña / exhibición</p>
       <div class="ed-container">
         <div class="ed-item base-100 no-padding">
           <ul class="tabs">
@@ -63,8 +63,13 @@ session_start();
               <input id="tab1" type="radio" name="tabs" checked="">
               <label for="tab1">Buenas Prácticas</label>
               <div id="tab-content1" class="tab-content">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  <div class="ima-B-M"><img src="img/foto.jpg" alt=""></div>
+                <div class="ima-B-M">
+                  <div class="corchete-l"><img src="img/corchete_mobile_left.png" alt=""></div>
+                  <img src="img/foto.jpg" alt="">
+                  <div class="corchete-r"><img src="img/corchete_mobile_right.png" alt=""></div>
+                </div>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
               </div>
             </li>
@@ -72,8 +77,8 @@ session_start();
               <input id="tab2" type="radio" name="tabs">
               <label for="tab2">Malas Prácticas</label>
               <div id="tab-content2" class="tab-content">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                   <div class="ima-B-M"><img src="img/foto.jpg" alt=""></div>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 </p>
               </div>
             </li>
@@ -85,6 +90,7 @@ session_start();
   		<form method="post" action="take.php" class="vayale">
   			<input type="submit" value="Aceptar" class="aceptar-button">
   			<input type="text" value="si" name="aceptar_implementar" hidden=hidden>
+        <input type="submit" value="atrás" class="aceptar-button">
   		</form>
 		<!--
 		<a href="take.php" class="aceptar">Aceptar</a>

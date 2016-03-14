@@ -54,7 +54,7 @@ session_start();
       </div>
     </header>
     <section class="content">
-      <p>Seleccionar campaña</p>
+      <p>Seleccionar campaña Easy</p>
       <form id="campana" method="post" action="como-implementar.php">
         <select class="select" name="campana" onchange="this.form.submit()">
 			<?php
@@ -67,7 +67,7 @@ session_start();
 			?>
         </select>
       </form>
-      <p class="T-exibicion">Seleccionar exhibición</p>
+      <p class="T-exibicion">Seleccionar exhibición proveedores</p>
       <form id="exhibicion" method="post" action="como-implementar.php">
         <select class="select" name="exhibicion" onchange="this.form.submit()">
 			<?php
@@ -80,9 +80,10 @@ session_start();
 			?>
         </select>
         <div id="boton-cont">
-			<!--
-			<input type="submit" value="siguiente" class="cont">
-			-->
+			
+			<!-- <input type="submit" value="siguiente" class="cont"> -->
+			<input type="submit" value="cancelar" class="cont">
+			
         </div>
       </form>
     </section>

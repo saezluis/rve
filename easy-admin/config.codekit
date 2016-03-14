@@ -183,6 +183,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/landing_error.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 23610,
+		"inputAbbreviatedPath": "\/img\/landing_error.jpg",
+		"outputAbbreviatedPath": "\/img\/landing_error.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/logo-easy.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -389,6 +400,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/jade\/estadisticas-por-campana-2.jade": {
+		"compileDebug": 1,
+		"fileType": 512,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/jade\/estadisticas-por-campana-2.jade",
+		"outputAbbreviatedPath": "\/estadisticas-por-campana-2.html",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0
 		},
 	"\/jade\/estadisticas-por-campana.jade": {
 		"compileDebug": 1,

@@ -58,6 +58,7 @@ session_start();
 						echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
 					}				
 				?>
+				
 			</form>						
         </div>
       

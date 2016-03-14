@@ -22,15 +22,15 @@ section.forms{
 			width: 90%;
 			margin-top: 1em;
 			text-align: center;
-			border: 3px solid $rojo_darks;
-			background: $blanco;
+			border: 3px solid $blanco;
+			background: transparent;
 			padding: 10px;
 			font-size: 1.3em;
 			font-family: 'League Gothic';
-			color: $rojo_darks;
+			color: #fff;
 			text-transform: uppercase;
 			-webkit-appearance: none; /* for box shadows to show on iOS */
-
+			cursor: pointer;
 			@include desde (tablet){
 				width: 48%;
 			}
