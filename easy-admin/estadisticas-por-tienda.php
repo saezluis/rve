@@ -70,61 +70,12 @@ session_start();
 				</div>
 			</form>  
 			  
-			<div>
+			<div class="btns_selectores">
 				<form method="post" action="visual.php">
 					<input type="submit" value="Volver">
 					<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 				</form>
 			</div>
-			<!--
-            <form id="choose">
-              <div class="campana">
-                <h2>Seleccionar sala</h2>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
-              <div class="tienda">
-                <h2>Seleccionar proveedor</h2>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
-              <div class="tienda">
-                <h2>Estadísticas</h2>
-                <select>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                  <option>9</option>
-                  <option>10</option>
-                </select>
-              </div>
-            </form>
-			-->
           </div>
         </aside>
       </div>

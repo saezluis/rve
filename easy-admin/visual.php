@@ -106,10 +106,10 @@ session_start();
           <div class="logo"><img src="img/logo.png" alt=""></div>
           <div class="aqui-les-va">
             <h1>Campañas 2016</h1>
-			<div>
+			<div class="init_inicio">
 					<form method="post" action="visual.php">
 						<input type="submit" value="Inicio">
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
 			</div>			
             <form id="choose" method="post" action="visual.php">				
@@ -152,7 +152,7 @@ session_start();
             </form>
 			<br>
 			<div>
-					<form method="post" action="estadisticas-por-tienda.php">
+					<form class="btns_selectores" method="post" action="estadisticas-por-tienda.php">
 						<input type="submit" value="Estadísticas por tienda">
 						<!--
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
@@ -161,7 +161,7 @@ session_start();
 			</div>
 			<br>
 			<div>
-					<form method="post" action="estadisticas-por-campana.php">
+					<form class="btns_selectores" method="post" action="estadisticas-por-campana.php">
 						<input type="submit" value="Estadísticas por campaña">
 						<!--
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
@@ -196,7 +196,7 @@ session_start();
 								echo "<div class=\"slide\">";								
 									echo "<img src=\"img/landing.jpg\">";
 										echo "<div class=\"caption\">";
-											echo "<p align=\"center\">Bienvenido al sistema de Registro Visual Easy</p>";
+											//echo "<p align=\"center\">Bienvenido al sistema de Registro Visual Easy</p>";
 										echo "</div>";
 								echo "</div>";
 							}
@@ -265,7 +265,7 @@ session_start();
 								$m = 'message'.$c;
 								
 								echo "<div class=\"content-caja-mensajes\">";
-									echo "<form id=\"$m\">"; //method=\"post\" action=\"visual.php\"
+									echo "<form id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
 										echo "<h3>Comentarios</h3>";
 										echo "<textarea name=\"mensaje_supervisor\">$comentario</textarea>";										
 										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
@@ -285,9 +285,9 @@ session_start();
 							
 							if($rows==0){
 								echo "<div class=\"slide\">";								
-									echo "<img src=\"img/landing.jpg\">";
+									echo "<img src=\"img/landing_error.jpg\">";
 										echo "<div class=\"caption\">";
-											echo "<p align=\"center\">Información: No hay fotos que cumplan el criterio de búsqueda.</p>";
+											//echo "<p align=\"center\">Información: No hay fotos que cumplan el criterio de búsqueda.</p>";
 										echo "</div>";								
 								echo "</div>";
 							}

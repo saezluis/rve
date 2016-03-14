@@ -79,12 +79,14 @@ article{
 
 
 .content-caja-mensajes{
-	form#message{
+	form.message{
 		width: 100%;
 		background: #f9f9f9;
 		padding: 10px;
+		text-align: left;
 		h3{
 			margin-top: 0;
+			text-align: left;
 		}
 		textarea{
 			width: 100%;

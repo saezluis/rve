@@ -71,7 +71,7 @@ session_start();
               </div>
 			</form>  
 			  
-			<div>
+			<div class="btns_selectores">
 				<form method="post" action="exhibicion.php">
 					<input type="submit" value="Volver">
 					<input type="text" value="resetear" name="reset_inicio" hidden=hidden>

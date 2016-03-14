@@ -8,7 +8,8 @@
 
 #example {
 	width:940px;
-	height:700px;
+	height:800px;
+	min-height: 800px;
 	position:relative;
 }
 
@@ -64,8 +65,10 @@
 
 .slides_container div.slide {
 	width:940px;
-	height:700px;
+	height:800px;
+	min-height:800px;
 	display:block;
+	text-align: center;
 }
 
 
