@@ -238,12 +238,19 @@ session_start();
 									$id_mem = $reg2['id'];
 									$nombre = $reg2['nombre'];
 									$celular = $reg2['celular'];
+									$email = $reg2['username'];
 								}
 								
 								$registrosSala = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_sala'") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 								
 								if($reg3=mysqli_fetch_array($registrosSala)){
 									$nombre_sala = $reg3['nombre_sala'];
+								}
+								
+								$registroCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select campana: ".mysqli_error($conexion));
+								
+								if($rowC = mysqli_fetch_array($registroCampana)){
+									$nombre_C = $rowC['nombre'];
 								}
 								
 								echo "<div class=\"slide\">";
@@ -265,6 +272,8 @@ session_start();
 										echo "<input type=\"text\" value=\"1\" name=\"comentario_activo\" hidden=hidden>";
 										//echo "<input type=\"text\" value=\"$id_mem\" name=\"member_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$id_foto\" name=\"foto_activo\" hidden=hidden>";
+										echo "<input type=\"text\" value=\"$email\" name=\"email_activo\" hidden=hidden>";
+										echo "<input type=\"text\" value=\"$nombre_C\" name=\"campana_activa\" hidden=hidden>";
 										//$id_foto
 									echo "</form>";
 								echo "</div>";
