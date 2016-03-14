@@ -38,9 +38,9 @@ session_start();
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+		$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 		
-		@$id_campana_get = @$_REQUEST['campana'];
+		@$id_exhibicion_get = @$_REQUEST['exhibicion'];
 		
 	?>
     <div class="ed-container">
@@ -48,21 +48,21 @@ session_start();
         <aside>
           <div class="logo"><img src="img/logo.png" alt=""></div>
           <div class="aqui-les-va">
-            <h1>Campañas 2016</h1>
+            <h1>Exhibiciones 2016</h1>
 			
-			<form id="choose" method="post" action="estadisticas-por-campana.php">
+			<form id="choose" method="post" action="estadisticas-por-exhibicion.php">
 				<div class="campana">
-                <h2>Seleccionar campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
+                <h2>Seleccionar exhibición</h2>                
+				<select class="select" name="exhibicion" onchange="this.form.submit()">
 					<?php
 						echo "<option value=\"\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
+						while($reg=mysqli_fetch_array($registrosExhibicion)){
 							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
+							$id_exhibicion = $reg['id_exhibicion'];
+							if(@$id_exhibicion_get==$id_exhibicion){
+								echo "<option value=\"$id_exhibicion\" selected=selected>$nombre</option>";
 							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
+								echo "<option value=\"$id_exhibicion\">$nombre</option>";
 							}
 							
 						}
@@ -72,7 +72,7 @@ session_start();
 			</form>  
 			  
 			<div>
-				<form method="post" action="visual.php">
+				<form method="post" action="exhibicion.php">
 					<input type="submit" value="Volver">
 					<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 				</form>
@@ -131,7 +131,7 @@ session_start();
       </div>
       <div class="ed-item base-80">
         <header class="int">
-          <h1>Estadísticas por campaña</h1>
+          <h1>Estadísticas por exhibición</h1>
           <div class="items-header">
             <div class="custion">
               <?php				
@@ -144,13 +144,13 @@ session_start();
         <div class="content">
 			<?php
 				
-				if(@$id_campana_get!=''){
+				if(@$id_exhibicion_get!=''){
 					
-					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_exhibicion = '$id_exhibicion_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
-					$registroCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registroExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_exhibicion_get'") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
 					
-					if($reg=mysqli_fetch_array($registroCampana)){
+					if($reg=mysqli_fetch_array($registroExhibicion)){
 						$nombre = $reg['nombre'];
 					}
 					
@@ -161,7 +161,7 @@ session_start();
 								echo "<th>Nº registro</th>";
 								echo "<th>Foto</th>";
 								echo "<th>Usuario</th>";
-								echo "<th>Sala</th>";
+								echo "<th>Tienda</th>";
 								echo "<th>Fecha</th>";
 								echo "<th>Comentario</th>";
 							echo "</tr>";
@@ -172,10 +172,9 @@ session_start();
 								$id_registro = $reg2['id_registro'];
 								$nombre_foto = $reg2['nombre_foto']; 
 								$id_member = $reg2['id_member'];
-								$id_campana = $reg2['id_campana'];
+								$id_sala = $reg2['id_sala'];
 								$fecha = $reg2['fecha'];
 								$comentario = $reg2['comentario'];
-								$id_sala = $reg2['id_sala'];
 								
 								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select members: ".mysqli_error($conexion));
 								
@@ -198,7 +197,6 @@ session_start();
 									echo "<td>$comentario</td>";
 								echo "</tr>";
 							}
-							
 							
 						echo "</tbody>";
 					echo "</table>";

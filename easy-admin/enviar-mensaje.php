@@ -1,6 +1,5 @@
 <?php
 
-
 	$mensaje_sup = $_REQUEST['mensaje_supervisor'];
 	$id_foto_coment = $_REQUEST['foto_activo'];
 	

@@ -30,6 +30,8 @@
 		if($row=(mysqli_fetch_array($result))){
 			//$id = $row['id'];
 			$area = $row['area'];
+			$nombre = $row['nombre'];
+			$foto_perfil = $row['foto_perfil'];
 			//$id_sala = $row['id_sala'];			
 		}
 		
@@ -41,6 +43,9 @@
 		
 		//$_SESSION['id_sala'] = $id_sala;
 		//$_SESSION['id_usuario'] = $id;
+		$_SESSION['nombre_user'] = $nombre;
+		$_SESSION['foto_perfil'] = $foto_perfil;
+		
 		$_SESSION['loggedin'] = true;
 		$_SESSION['username'] = $username;
 		$_SESSION['start'] = time();
@@ -54,10 +59,10 @@
 				
 			}
 			
-			if($area=='proveedores'){
+			if($area=='exhibicion'){
 			
 				echo '<script type="text/javascript">';
-				echo 'window.location.href="proveedores.php";';
+				echo 'window.location.href="exhibicion.php";';
 				echo '</script>';	
 				
 			}
@@ -101,7 +106,7 @@
 		}
 		else{
 			  echo "<h1>Algo ocurrió mal :(</h1>";
-			  echo "<p class=\"alarm\">Tu correo o contraseña está incorrecta, haz click <a href=\"login-admin.php\">aquí  </a>para volver a intentarlo.</p>";
+			  echo "<p class=\"alarm\">Tu correo o contraseña está incorrecta, haz click <a href=\"login.html\">aquí  </a>para volver a intentarlo.</p>";
 			
 		}
 	

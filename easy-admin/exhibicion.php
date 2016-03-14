@@ -76,10 +76,10 @@ session_start();
 		
 		$reset_index = @$_REQUEST['reset_inicio'];
 		
-		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+		$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
 		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 		
-		@$id_campana_get = @$_REQUEST['campana'];
+		@$id_exhibicion_get = @$_REQUEST['tipo_ex'];
 		//echo "id_campana: ".$id_campana_get;
 		//echo "<br>";
 		
@@ -105,26 +105,26 @@ session_start();
         <aside>
           <div class="logo"><img src="img/logo.png" alt=""></div>
           <div class="aqui-les-va">
-            <h1>Campañas 2016</h1>
+            <h1>Exhibiciones 2016</h1>
 			<div>
-					<form method="post" action="visual.php">
+					<form method="post" action="exhibicion.php">
 						<input type="submit" value="Inicio">
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
 			</div>			
-            <form id="choose" method="post" action="visual.php">				
+            <form id="choose" method="post" action="exhibicion.php">				
               <div class="campana">
-                <h2>Seleccionar campaña</h2>                
-				<select class="select" name="campana">
+                <h2>Seleccionar exhibición</h2>                
+				<select class="select" name="tipo_ex">
 					<?php
 						echo "<option value=\"\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
+						while($reg=mysqli_fetch_array($registrosExhibicion)){
 							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
+							$id_exhibicion = $reg['id_exhibicion'];
+							if(@$id_exhibicion_get==$id_exhibicion){
+								echo "<option value=\"$id_exhibicion\" selected=selected>$nombre</option>";
 							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
+								echo "<option value=\"$id_exhibicion\">$nombre</option>";
 							}
 							
 						}
@@ -152,7 +152,7 @@ session_start();
             </form>
 			<br>
 			<div>
-					<form method="post" action="estadisticas-por-tienda.php">
+					<form method="post" action="estadisticas-exhibicion-por-tienda.php">
 						<input type="submit" value="Estadísticas por tienda">
 						<!--
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
@@ -161,8 +161,8 @@ session_start();
 			</div>
 			<br>
 			<div>
-					<form method="post" action="estadisticas-por-campana.php">
-						<input type="submit" value="Estadísticas por campaña">
+					<form method="post" action="estadisticas-por-exhibicion.php">
+						<input type="submit" value="Estadísticas por exhibición">
 						<!--
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 						-->
@@ -173,7 +173,7 @@ session_start();
       </div>
       <div class="ed-item base-80">
         <header class="int">
-          <h1>Supervisor (visual)</h1>
+          <h1>Supervisor (exhibición)</h1>
           <div class="items-header">
             <div class="custion">
 			<?php
@@ -220,8 +220,8 @@ session_start();
 								
 							}
 							*/
-							if($id_campana_get!='' AND $id_tienda_get!=''){
-								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_sala = '$id_tienda_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+							if($id_exhibicion_get!='' AND $id_tienda_get!=''){
+								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_exhibicion = '$id_exhibicion_get' AND id_sala = '$id_tienda_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 							}
 							
 							while($reg=mysqli_fetch_array($registroFotos)){
@@ -320,7 +320,7 @@ session_start();
 						-->
 					</div>
 					<?php
-					if($id_campana_get!='' AND $id_tienda_get!=''){
+					if($id_exhibicion_get!='' AND $id_tienda_get!=''){
 						echo "<a href=\"#\" class=\"prev\"><img src=\"img2/arrow-prev.png\" width=\"24\" height=\"43\" alt=\"Arrow Prev\"></a>";
 						echo "<a href=\"#\" class=\"next\"><img src=\"img2/arrow-next.png\" width=\"24\" height=\"43\" alt=\"Arrow Next\"></a>";
 					}
@@ -336,15 +336,12 @@ session_start();
 	
 	<script>
 		$(function(){
-		
-			var total = $("#slides img").length - 2; // Subtract Two arrows
-			
 			$('#slides').slides({
 				preload: true,
 				preloadImage: 'img2/loading.gif',
 				play: 0,
 				pause: 2500,
-				hoverPause: true,				
+				hoverPause: true,
 				animationStart: function(current){
 					// $('.caption').animate({
 					// 	bottom:-35
@@ -352,12 +349,6 @@ session_start();
 					if (window.console && console.log) {
 						// example return of current slide number
 						console.log('animationStart on slide: ', current);
-					};
-					
-					if (current == 1) {
-						$(".prev").hide();
-					}else{
-						$(".prev").show();
 					};
 				},
 				animationComplete: function(current){
@@ -368,35 +359,12 @@ session_start();
 						// example return of current slide number
 						console.log('animationComplete on slide: ', current);
 					};
-					/*
-					if ($('.pagination li:last').hasClass('current')) {
-						pause();
-					}
-					*/
-					if (current >= total) {
-						clearInterval($('#slides').data('interval'));
-						//$(".pagination").remove();
-						//$(".prev").remove();
-						$(".next").hide();
-						//pause();
-                    }else{
-						$(".next").show();
-					};
-					
-					if (current == 1) {
-						$(".prev").hide();
-					}else{
-						$(".prev").show();
-					};
-					//$(".prev").click(play());
-					
 				},
 				slidesLoaded: function() {
 					// $('.caption').animate({
 					// 	bottom:0
 					// },200);
 				}
-				
 			});
 		});
 	</script>

@@ -1,3 +1,25 @@
+<?php
+session_start();
+
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+
+	}
+	else{
+	
+		header('Content-Type: text/html; charset=UTF-8'); 	
+		echo "<br/>" . "Esta pagina es solo para usuarios registrados." . "<br/>";
+		echo "<br/>" . "<a href='login.html'>Hacer Login</a>";
+		exit;
+	}
+	
+	$now = time(); // checking the time now when home page starts
+
+	if($now > $_SESSION['expire']){
+		session_destroy();
+		echo "<br/><br />" . "Su sesion a terminado, <a href='login.html'> Necesita Hacer Login</a>";
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -8,6 +30,8 @@
   </head>
   <body>
 	<?php
+		$nombre_user = $_SESSION['nombre_user'];
+		$foto_perfil = $_SESSION['foto_perfil'];
 		
 		include_once 'config.php';
 	
@@ -109,8 +133,10 @@
           <h1>Estadísticas por tienda</h1>
           <div class="items-header">
             <div class="custion">
-              <div class="profile"><img src="img/carita.jpg" alt="" class="circulo"></div>
-              <p class="nombre">¡Hola! Elisa Correa S.</p><a href="#" class="rejected">Cerrar sesión</a>
+				<?php				
+					echo "<div class=\"profile\"><img src=\"img/$foto_perfil\" alt=\"\" class=\"circulo\"></div>";
+					echo "<p class=\"nombre\">¡Hola! $nombre_user.</p><a href=\"logout.php\" class=\"rejected\">Cerrar sesión</a>";
+				?> 
             </div>
           </div>
         </header>
@@ -119,7 +145,7 @@
 				
 				if(@$id_tienda_get!=''){
 					
-					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get' AND id_exhibicion = 0") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
 					$registroTienda = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
@@ -149,11 +175,24 @@
 								$fecha = $reg2['fecha'];
 								$comentario = $reg2['comentario'];
 								
+								//Buscar el usuario que corresponde
+								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select members: ".mysqli_error($conexion));
+								
+								if($rowM = mysqli_fetch_array($registroMember)){
+									$nombre_M = $rowM['nombre'];
+								}
+								
+								$registroCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana'") or die("Problemas en el select campana: ".mysqli_error($conexion));
+								
+								if($rowC = mysqli_fetch_array($registroCampana)){
+									$nombre_C = $rowC['nombre'];
+								}
+								
 								echo "<tr class=\"tr-center\">";																
 									echo "<td style=\"width:10px;\">$id_registro</td>";
 									echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
-									echo "<td>Luiz Sáez</td>";
-									echo "<td>Autos</td>";
+									echo "<td>$nombre_M</td>";
+									echo "<td>$nombre_C</td>";
 									echo "<td>$fecha</td>";
 									echo "<td>$comentario</td>";
 								echo "</tr>";

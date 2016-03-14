@@ -38,9 +38,9 @@ session_start();
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 		
-		@$id_campana_get = @$_REQUEST['campana'];
+		@$id_tienda_get = @$_REQUEST['tienda'];
 		
 	?>
     <div class="ed-container">
@@ -48,31 +48,30 @@ session_start();
         <aside>
           <div class="logo"><img src="img/logo.png" alt=""></div>
           <div class="aqui-les-va">
-            <h1>Campañas 2016</h1>
+            <h1>Exhibiciones 2016</h1>
 			
-			<form id="choose" method="post" action="estadisticas-por-campana.php">
-				<div class="campana">
-                <h2>Seleccionar campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
-							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
-							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
+			<form id="choose" method="post" action="estadisticas-exhibicion-por-tienda.php">
+				<div class="tienda">
+					<h2>Seleccionar tienda</h2>
+					<select class="select" name="tienda" onchange="this.form.submit()">
+						<?php
+							echo "<option value=\"\">Seleccione</option>";
+							while($reg=mysqli_fetch_array($registrosSala)){
+								$nombre_sala = $reg['nombre_sala'];
+								$id_sala = $reg['id_sala'];
+								if(@$id_tienda_get==$id_sala){
+									echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
+								}else{
+									echo "<option value=\"$id_sala\">$nombre_sala</option>";
+								}
 							}
-							
-						}
-					?>
-				</select>				
-              </div>
+						?>
+					</select>
+				</div>
 			</form>  
 			  
 			<div>
-				<form method="post" action="visual.php">
+				<form method="post" action="exhibicion.php">
 					<input type="submit" value="Volver">
 					<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 				</form>
@@ -131,10 +130,10 @@ session_start();
       </div>
       <div class="ed-item base-80">
         <header class="int">
-          <h1>Estadísticas por campaña</h1>
+          <h1>Estadísticas por tienda</h1>
           <div class="items-header">
             <div class="custion">
-              <?php				
+				<?php				
 					echo "<div class=\"profile\"><img src=\"img/$foto_perfil\" alt=\"\" class=\"circulo\"></div>";
 					echo "<p class=\"nombre\">¡Hola! $nombre_user.</p><a href=\"logout.php\" class=\"rejected\">Cerrar sesión</a>";
 				?> 
@@ -144,24 +143,24 @@ session_start();
         <div class="content">
 			<?php
 				
-				if(@$id_campana_get!=''){
+				if(@$id_tienda_get!=''){
 					
-					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get' AND id_campana = 0") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
-					$registroCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registroTienda = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
-					if($reg=mysqli_fetch_array($registroCampana)){
-						$nombre = $reg['nombre'];
+					if($reg=mysqli_fetch_array($registroTienda)){
+						$nombre_sala = $reg['nombre_sala'];
 					}
 					
-					echo "<h2>$nombre</h2>";
+					echo "<h2>Easy: $nombre_sala</h2>";
 					echo "<table class=\"table\">";
 						echo "<thead>";
 							echo "<tr>";
 								echo "<th>Nº registro</th>";
 								echo "<th>Foto</th>";
 								echo "<th>Usuario</th>";
-								echo "<th>Sala</th>";
+								echo "<th>Exhibición</th>";
 								echo "<th>Fecha</th>";
 								echo "<th>Comentario</th>";
 							echo "</tr>";
@@ -175,7 +174,7 @@ session_start();
 								$id_campana = $reg2['id_campana'];
 								$fecha = $reg2['fecha'];
 								$comentario = $reg2['comentario'];
-								$id_sala = $reg2['id_sala'];
+								$id_exhibicion = $reg2['id_exhibicion'];
 								
 								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select members: ".mysqli_error($conexion));
 								
@@ -183,17 +182,17 @@ session_start();
 									$nombre_M = $rowM['nombre'];
 								}
 								
-								$registroTienda = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_sala'") or die("Problemas en el select members: ".mysqli_error($conexion));
+								$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_exhibicion'") or die("Problemas en el select exhibicion: ".mysqli_error($conexion));
 								
-								if($rowT = mysqli_fetch_array($registroTienda)){
-									$nombre_S = $rowT['nombre_sala'];
+								if($rowE = mysqli_fetch_array($registrosExhibicion)){
+									$nombre_E = $rowE['nombre'];
 								}
 								
 								echo "<tr class=\"tr-center\">";																
 									echo "<td style=\"width:10px;\">$id_registro</td>";
 									echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
 									echo "<td>$nombre_M</td>";
-									echo "<td>$nombre_S</td>";
+									echo "<td>$nombre_E</td>";
 									echo "<td>$fecha</td>";
 									echo "<td>$comentario</td>";
 								echo "</tr>";
