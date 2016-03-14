@@ -39,25 +39,62 @@ session_start();
 	<link rel="stylesheet" href="css2/global.css">
 	
 	
+
   </head>
   <body>
 	<?php
-		
+	
 		include_once 'config.php';
 	
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
+		/*
+		@$comentario_sup = @$_REQUEST['comentario_activo'];
+		
+		if(@$comentario_sup==1){
+			//Esta llegando un comentario
+			$mensaje_sup = $_REQUEST['mensaje_supervisor'];			
+			$id_foto_coment = $_REQUEST['foto_activo'];
+			/*
+			echo "mensaje: ".$mensaje_sup;
+			echo "<br>";
+			echo "id member a quien va el coment: ".$id_member_para;
+			echo "<br>";
+			echo "id de la foto: ".$id_foto_coment;
+			*/
+			//mysqli_query($conexion, "UPDATE registro SET comentario = '$mensaje_sup' WHERE id_registro = $id_foto_coment") 
+			//or die("Problemas con el insert del registro");
+		//}
+		
+		$cualquiera = 1;
+		if(@$_REQUEST['reset_cualquiera']!=''){
+			$cualquiera = 2;
+		}
+		
+		$reset_index = @$_REQUEST['reset_inicio'];
 		
 		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 		
 		@$id_campana_get = @$_REQUEST['campana'];
-		echo "id_campana: ".$id_campana_get;
-		echo "<br>";
+		//echo "id_campana: ".$id_campana_get;
+		//echo "<br>";
+		
+		/*
+		if(@$id_campana_get!=''){
+			$_SESSION['campana_set'] = @$id_campana_get;
+		}
+		*/
 		
 		@$id_tienda_get = @$_REQUEST['tienda'];
-		echo "id_tienda: ".$id_tienda_get;
-		echo "<br>";
+		//echo "id_tienda: ".$id_tienda_get;
+		//echo "<br>";
+		
+		/*
+		if(@$id_tienda_get!=''){
+			$_SESSION['tienda_set'] = @$id_tienda_get;
+		}
+		*/
 		
 	?>
     <div class="ed-container">
@@ -66,20 +103,31 @@ session_start();
           <div class="logo"><img src="img/logo.png" alt=""></div>
           <div class="aqui-les-va">
             <h1>Campañas 2016</h1>
-            <form id="choose" method="post" action="visual.php">
+			<div>
+					<form method="post" action="visual.php">
+						<input type="submit" value="Inicio">
+						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+					</form>
+			</div>			
+            <form id="choose" method="post" action="visual.php">				
               <div class="campana">
                 <h2>Seleccionar campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
+				<select class="select" name="campana">
 					<?php
 						echo "<option value=\"\">Seleccione</option>";
 						while($reg=mysqli_fetch_array($registrosCampana)){
 							$nombre = $reg['nombre'];
 							$id_campana = $reg['id_campana'];
-							echo "<option value=\"$id_campana\">$nombre</option>";
+							if(@$id_campana_get==$id_campana){
+								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
+							}else{
+								echo "<option value=\"$id_campana\">$nombre</option>";
+							}
+							
 						}
 					?>
 				</select>				
-              </div>
+              </div>			
               <div class="tienda">
                 <h2>Seleccionar tienda</h2>
                 <select class="select" name="tienda" onchange="this.form.submit()">
@@ -88,12 +136,35 @@ session_start();
 						while($reg=mysqli_fetch_array($registrosSala)){
 							$nombre_sala = $reg['nombre_sala'];
 							$id_sala = $reg['id_sala'];
-							echo "<option value=\"$id_sala\">$nombre_sala</option>";
+							if(@$id_tienda_get==$id_sala){
+								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
+							}else{
+								echo "<option value=\"$id_sala\">$nombre_sala</option>";
+							}
 						}
 					?>
 				</select>
               </div>
+			  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
             </form>
+			<br>
+			<div>
+					<form method="post" action="estadisticas-por-tienda.php">
+						<input type="submit" value="Estadísticas por tienda">
+						<!--
+						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+						-->
+					</form>
+			</div>
+			<br>
+			<div>
+					<form method="post" action="estadisticas-por-campana.php">
+						<input type="submit" value="Estadísticas por campaña">
+						<!--
+						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+						-->
+					</form>
+			</div>
           </div>
         </aside>
       </div>
@@ -102,8 +173,11 @@ session_start();
           <h1>Supervisor (visual)</h1>
           <div class="items-header">
             <div class="custion">
-              <div class="profile"><img src="img/carita.jpg" alt="" class="circulo"></div>
-              <p class="nombre">¡Hola! Elisa Correa S.</p><a href="logout.php" class="rejected">Cerrar sesión</a>
+			<?php
+				
+				echo "<div class=\"profile\"><img src=\"img/carita.jpg\" alt=\"\" class=\"circulo\"></div>";
+				echo "<p class=\"nombre\">¡Hola! Elisa Correa S.</p><a href=\"logout.php\" class=\"rejected\">Cerrar sesión</a>";
+			?>  
             </div>
           </div>
         </header>
@@ -113,7 +187,19 @@ session_start();
 				<div id="slides">
 					<div class="slides_container">						
 						<?php
-							//Registro imagenes
+							
+							$c = 0;
+							if($reset_index=='resetear' || $cualquiera==1){
+								echo "<div class=\"slide\">";								
+									echo "<img src=\"img/landing.jpg\">";
+										echo "<div class=\"caption\">";
+											echo "<p align=\"center\">Bienvenido al sistema de Registro Visual Easy</p>";
+										echo "</div>";
+								echo "</div>";
+							}
+							
+							//Registro imagenes, la campana viene de la variable de sesion y la tienda del request
+							/*
 							if($id_campana_get!=''){
 								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 							}
@@ -121,16 +207,32 @@ session_start();
 							if($id_tienda_get!=''){
 								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
 							}
+							*/
+							
+							//@$id_campana_new = @$_SESSION['campana_set'];
+							//@$id_tienda_get = @$_SESSION['tienda_set'];
+							
+							/*
+							if(@$id_campana_new!='' AND @$id_tienda_get!=''){
+								
+							}
+							*/
+							if($id_campana_get!='' AND $id_tienda_get!=''){
+								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_sala = '$id_tienda_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+							}
 							
 							while($reg=mysqli_fetch_array($registroFotos)){
+								$id_foto = $reg['id_registro'];
 								$nombre_foto = $reg['nombre_foto'];
 								$id_member = $reg['id_member'];
 								$id_sala = $reg['id_sala'];
+								$comentario = $reg['comentario'];
 								//$celular = $reg['celular'];
 								
 								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select de registro: ".mysqli_error($conexion));
 								
 								if($reg2=mysqli_fetch_array($registroMember)){
+									$id_mem = $reg2['id'];
 									$nombre = $reg2['nombre'];
 									$celular = $reg2['celular'];
 								}
@@ -148,27 +250,37 @@ session_start();
 								echo "<div class=\"caption\">";
 									echo "<p>Imágen tomada por $nombre en $nombre_sala - Teléfono: $celular</p>";
 								echo "</div>";
+								
+								$c = $c + 1;
+								$m = 'message'.$c;
+								
 								echo "<div class=\"content-caja-mensajes\">";
-									echo "<form id=\"message\">";
+									echo "<form id=\"$m\">"; //method=\"post\" action=\"visual.php\"
 										echo "<h3>Comentarios</h3>";
-										echo "<textarea></textarea>";
-										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\">";
+										echo "<textarea name=\"mensaje_supervisor\">$comentario</textarea>";										
+										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
+										echo "<input type=\"text\" value=\"1\" name=\"comentario_activo\" hidden=hidden>";
+										//echo "<input type=\"text\" value=\"$id_mem\" name=\"member_activo\" hidden=hidden>";
+										echo "<input type=\"text\" value=\"$id_foto\" name=\"foto_activo\" hidden=hidden>";
+										//$id_foto
 									echo "</form>";
 								echo "</div>";
 								
+								echo "</div>";								
+							}
+							
+							$rows = mysqli_num_rows($registroFotos);
+							
+							if($rows==0){
+								echo "<div class=\"slide\">";								
+									echo "<img src=\"img/landing.jpg\">";
+										echo "<div class=\"caption\">";
+											echo "<p align=\"center\">Información: No hay fotos que cumplan el criterio de búsqueda.</p>";
+										echo "</div>";								
 								echo "</div>";
 							}
 							
-							//echo "<div class=\"caption\" style=\"bottom:0\">";
-									//echo "<p>Happy Bokeh Thursday!</p>";
-							//echo "</div>";
 						?>
-						
-						
-
-								
-
-							
 						
 						<!--
 						<div class="slide">
@@ -204,13 +316,16 @@ session_start();
 						</div>
 						-->
 					</div>
-					<a href="#" class="prev"><img src="img2/arrow-prev.png" width="24" height="43" alt="Arrow Prev"></a>
-					<a href="#" class="next"><img src="img2/arrow-next.png" width="24" height="43" alt="Arrow Next"></a>
+					<?php
+					if($id_campana_get!='' AND $id_tienda_get!=''){
+						echo "<a href=\"#\" class=\"prev\"><img src=\"img2/arrow-prev.png\" width=\"24\" height=\"43\" alt=\"Arrow Prev\"></a>";
+						echo "<a href=\"#\" class=\"next\"><img src=\"img2/arrow-next.png\" width=\"24\" height=\"43\" alt=\"Arrow Next\"></a>";
+					}
+					?>
 				</div>
 				<img src="img2/example-frame.png" width="739" height="341" alt="Example Frame" id="frame">
-			</div>
-			
-		</div>
+			</div>			
+		</div>		
      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -250,5 +365,46 @@ session_start();
 			});
 		});
 	</script>
+	
+	<script type="text/javascript">
+	
+			$('#message1').submit(function(e) {
+
+				var url = "enviar-mensaje.php"; // the script where you handle the form input.
+
+				$.ajax({
+					   type: "POST",
+					   url: url,
+					   data: $('#message1').serialize(), // serializes the form's elements.
+					   success: function(data)
+					   {
+						   alert(data); // show response from the php script.
+					   }
+					 });
+
+				e.preventDefault(); // avoid to execute the actual submit of the form.
+			
+			});
+			
+			$('#message2').submit(function(e) {
+
+				var url = "enviar-mensaje.php"; // the script where you handle the form input.
+
+				$.ajax({
+					   type: "POST",
+					   url: url,
+					   data: $('#message2').serialize(), // serializes the form's elements.
+					   success: function(data)
+					   {
+						   alert(data); // show response from the php script.
+					   }
+					 });
+
+				e.preventDefault(); // avoid to execute the actual submit of the form.
+			
+			});
+			
+	</script>
+	
   </body>
 </html>
