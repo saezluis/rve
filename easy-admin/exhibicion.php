@@ -336,6 +336,8 @@ session_start();
 	
 	<script>
 		$(function(){
+			var total = $("#slides img").length - 2; // Subtract Two arrows
+			
 			$('#slides').slides({
 				preload: true,
 				preloadImage: 'img2/loading.gif',
@@ -350,6 +352,13 @@ session_start();
 						// example return of current slide number
 						console.log('animationStart on slide: ', current);
 					};
+					
+					if (current == 1) {
+						$(".prev").hide();
+					}else{
+						$(".prev").show();
+					};
+				
 				},
 				animationComplete: function(current){
 					// $('.caption').animate({
@@ -359,6 +368,23 @@ session_start();
 						// example return of current slide number
 						console.log('animationComplete on slide: ', current);
 					};
+				
+					if (current >= total) {
+						clearInterval($('#slides').data('interval'));
+						//$(".pagination").remove();
+						//$(".prev").remove();
+						$(".next").hide();
+						//pause();
+                    }else{
+						$(".next").show();
+					};
+					
+					if (current == 1) {
+						$(".prev").hide();
+					}else{
+						$(".prev").show();
+					};
+				
 				},
 				slidesLoaded: function() {
 					// $('.caption').animate({
