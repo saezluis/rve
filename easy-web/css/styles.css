@@ -2963,7 +2963,7 @@ class="no-padding" a la caja le da padding cero solo a ella
 
 body {
   background: #EC1C24;
-  font-family: "League Gothic", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333; }
 
 a {
@@ -2980,7 +2980,7 @@ p {
     margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "League Gothic", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 700;
   text-transform: normal;
   color: #222; }
@@ -3064,13 +3064,14 @@ section.content {
   text-align: center; }
   section.content p {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #fff;
     margin-top: 1em;
-    margin-bottom: 0em; }
+    margin-bottom: 1em;
+    padding: 0 10px; }
     @media screen and (min-width: 768px) {
       section.content p {
-        font-size: 2em; } }
+        font-size: 1.25em; } }
   section.content p.T-exibicion {
     margin: 0 !important; }
   section.content .tabs {
@@ -3122,6 +3123,9 @@ section.content {
       /*&:hover {
         background: darken($tabs-base-color, 10);
       }*/ }
+      @media screen and (min-width: 1024px) {
+        section.content .tabs label {
+          width: 60%; } }
     section.content .tabs .tab-content {
       z-index: 2;
       display: none;
@@ -3135,10 +3139,13 @@ section.content {
       left: 0; }
       section.content .tabs .tab-content p {
         color: #fff;
-        font-family: 'League Gothic';
+        font-family: 'Open Sans';
         font-weight: normal;
         font-size: 0.9em;
         text-align: left; }
+        @media screen and (min-width: 1024px) {
+          section.content .tabs .tab-content p {
+            padding: 0px 95px; } }
       section.content .tabs .tab-content .ima-B-M {
         position: relative;
         width: 100%;
@@ -3189,40 +3196,63 @@ section.go {
     background: #fff;
     padding: 10px;
     font-size: 1.3em;
-    font-family: 'League Gothic';
+    font-family: 'Open Sans';
     color: #89030D;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto; }
     @media screen and (min-width: 1024px) {
       section.go a.aceptar {
         width: 15%; } }
-
-section.go {
-  height: auto;
-  margin: 0 auto; }
-  section.go .vayale input.aceptar-button {
+  section.go .aceptar-nu {
     color: #fff;
     display: block;
     width: 70%;
-    border-radius: 62px 62px 62px 62px;
-    -moz-border-radius: 62px 62px 62px 62px;
-    -webkit-border-radius: 62px 62px 62px 62px;
     text-align: center;
     border: none;
     -webkit-appearance: none;
     text-align: center;
     border: 2px solid #fff;
     background: transparent;
-    padding: 6px 10px;
-    font-size: 1.3em;
-    font-family: 'League Gothic';
+    padding: 10px;
+    font-size: 1.1em;
+    font-family: 'Open Sans';
     color: #fff;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto;
+    border-radius: 60px;
     cursor: pointer; }
     @media screen and (min-width: 1024px) {
-      section.go .vayale input.aceptar-button {
-        width: 15%; } }
+      section.go .aceptar-nu {
+        width: 24%; } }
+
+section.go {
+  height: auto;
+  margin: 0 auto; }
+  section.go .vayale {
+    margin-top: 70px; }
+    section.go .vayale input.aceptar-button {
+      color: #fff;
+      display: block;
+      width: 70%;
+      border-radius: 62px 62px 62px 62px;
+      -moz-border-radius: 62px 62px 62px 62px;
+      -webkit-border-radius: 62px 62px 62px 62px;
+      text-align: center;
+      border: none;
+      -webkit-appearance: none;
+      text-align: center;
+      border: 2px solid #fff;
+      background: transparent;
+      padding: 6px 10px;
+      font-size: 1.1em;
+      font-family: 'Open Sans';
+      color: #fff;
+      text-transform: uppercase;
+      margin: 1.3em auto 1.3em auto;
+      cursor: pointer; }
+      @media screen and (min-width: 1024px) {
+        section.go .vayale input.aceptar-button {
+          width: 15%; } }
 
 section.forms {
   width: 100%;
@@ -3243,16 +3273,17 @@ section.forms {
       width: 90%;
       margin-top: 1em;
       text-align: center;
-      border: 3px solid #fff;
+      border: 2px solid #fff;
       background: transparent;
       padding: 10px;
-      font-size: 1.3em;
-      font-family: 'League Gothic';
+      font-size: 1em;
+      border-radius: 60px;
       color: #fff;
       text-transform: uppercase;
       -webkit-appearance: none;
       /* for box shadows to show on iOS */
-      cursor: pointer; }
+      cursor: pointer;
+      font-weight: 300; }
       @media screen and (min-width: 768px) {
         section.forms form#formLogin input[type="submit"], section.forms form#formLogin .cont {
           width: 48%; } }
@@ -3276,15 +3307,16 @@ section.content form#main, section.content #campana, section.content #exhibicion
   padding: 15px; }
   section.content form#main select, section.content #campana select, section.content #exhibicion select {
     width: 70%;
+    color: #fff;
     -webkit-appearance: none;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
-    border-radius: 5px;
-    border: 3px solid #89030D;
+    border-radius: 60px;
+    border: 2px solid #fff;
     padding: 10px;
     appearance: none;
     font-size: 0.9em;
-    background: #fff url(../img/arrows.png) no-repeat;
+    background: transparent url(../img/arrows.png) no-repeat;
     background-position: 95% center; }
     @media screen and (min-width: 768px) {
       section.content form#main select, section.content #campana select, section.content #exhibicion select {
@@ -3305,13 +3337,13 @@ section.content form#main, section.content #campana, section.content #exhibicion
       border: none;
       -webkit-appearance: none;
       /* for box shadows to show on iOS */
+      border-radius: 60px;
       text-align: center;
-      border: 3px solid #89030D;
-      background: #fff;
+      border: 2px solid #fff;
+      background: transparent;
       padding: 10px;
-      font-size: 1.3em;
-      font-family: 'League Gothic';
-      color: #89030D;
+      font-size: 1.1em;
+      color: #fff;
       text-transform: uppercase;
       margin: 0 auto; }
       @media screen and (min-width: 768px) {

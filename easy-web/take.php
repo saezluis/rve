@@ -47,6 +47,7 @@ session_start();
         <div id="boton-cont">
 			<input type="submit" value="siguiente" class="cont">
 			<input type="text" value="si" name="siguiente_send" hidden=hidden>
+			<input type="submit" value="volver" class="cont" style="margin-top:15px;">
 	  </form>
 			<br>			
 			<form method="post" action="finish.php">

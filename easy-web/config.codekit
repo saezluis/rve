@@ -820,17 +820,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/images\/56e5e6f107fe0aviÃ³n-HÃ©rcules.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 49115,
-		"inputAbbreviatedPath": "\/images\/56e5e6f107fe0aviÃ³n-HÃ©rcules.jpg",
-		"outputAbbreviatedPath": "\/images\/56e5e6f107fe0aviÃ³n-HÃ©rcules.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/images\/56e5e6f8b0636tipos-de-aviones-9.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -871,17 +860,6 @@
 		"initialSize": 19334,
 		"inputAbbreviatedPath": "\/images\/56e5e7242b48fla-bicicleta-bmx-de-tp_4736667728953961949f.jpg",
 		"outputAbbreviatedPath": "\/images\/56e5e7242b48fla-bicicleta-bmx-de-tp_4736667728953961949f.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/images\/56e5e72b5ab47bicicletas-chevrolet-montaÃ±a.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 19337,
-		"inputAbbreviatedPath": "\/images\/56e5e72b5ab47bicicletas-chevrolet-montaÃ±a.jpg",
-		"outputAbbreviatedPath": "\/images\/56e5e72b5ab47bicicletas-chevrolet-montaÃ±a.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1106,6 +1084,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/56e712789b4265mil-down.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 96586,
+		"inputAbbreviatedPath": "\/images\/56e712789b4265mil-down.jpg",
+		"outputAbbreviatedPath": "\/images\/56e712789b4265mil-down.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/56e7452d06722Captura de pantalla 2016-02-16 a la(s) 9.41.12.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4038,
+		"inputAbbreviatedPath": "\/images\/56e7452d06722Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputAbbreviatedPath": "\/images\/56e7452d06722Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/5mil-down.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1249,6 +1249,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/arrows 2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 205,
+		"inputAbbreviatedPath": "\/img\/arrows 2.png",
+		"outputAbbreviatedPath": "\/img\/arrows 2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/arrows.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1260,6 +1271,50 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/corchete_mobile_l.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 566,
+		"inputAbbreviatedPath": "\/img\/corchete_mobile_l.png",
+		"outputAbbreviatedPath": "\/img\/corchete_mobile_l.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/corchete_mobile_left.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 662,
+		"inputAbbreviatedPath": "\/img\/corchete_mobile_left.png",
+		"outputAbbreviatedPath": "\/img\/corchete_mobile_left.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/corchete_mobile_r.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 609,
+		"inputAbbreviatedPath": "\/img\/corchete_mobile_r.png",
+		"outputAbbreviatedPath": "\/img\/corchete_mobile_r.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/corchete_mobile_right.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 672,
+		"inputAbbreviatedPath": "\/img\/corchete_mobile_right.png",
+		"outputAbbreviatedPath": "\/img\/corchete_mobile_right.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/foto.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1267,6 +1322,17 @@
 		"initialSize": 243169,
 		"inputAbbreviatedPath": "\/img\/foto.jpg",
 		"outputAbbreviatedPath": "\/img\/foto.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/l.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 638,
+		"inputAbbreviatedPath": "\/img\/l.png",
+		"outputAbbreviatedPath": "\/img\/l.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1289,6 +1355,17 @@
 		"initialSize": 17459,
 		"inputAbbreviatedPath": "\/img\/logo.png",
 		"outputAbbreviatedPath": "\/img\/logo.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/r.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 649,
+		"inputAbbreviatedPath": "\/img\/r.png",
+		"outputAbbreviatedPath": "\/img\/r.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

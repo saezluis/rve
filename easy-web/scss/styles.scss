@@ -25,11 +25,11 @@
 
 // ESTILOS BASE
   $body--background  : $rojo ;                      // fondo para el body
-  $body--font-family : 'League Gothic', sans-serif;   // fuente predeterminada
+  $body--font-family : 'Open Sans', sans-serif;   // fuente predeterminadafont-family: 'Open Sans', sans-serif League Gothic;
   $body--color       : #333;                      // color de texto predeterminado
 
 // ESTILOS DE ENCABEZADOS
-  $header--font-family    : 'League Gothic', sans-serif;  // fuente para los headers (h1,h2,h3...)
+  $header--font-family    : 'Open Sans', sans-serif;  // fuente para los headers (h1,h2,h3...)
   $header--font-weight    : $bold;                    // grosor de fuente para los headers
   $header--text-transform : normal;                   // normal, uppercase, lowercase, capitalize
   $header--color          : #222;                     // color predeterminado de los header

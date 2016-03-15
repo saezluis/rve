@@ -3,12 +3,13 @@ section.content{
 	text-align: center;
 	p{
 		text-align:center;
-		font-size: 1.5em;
+		font-size: 1em;
 		color: $blanco;
 		margin-top: 1em;
-		margin-bottom: 0em;
+		margin-bottom: 1em;
+    padding: 0 10px;
 		@include desde (tablet){
-			font-size: 2em;
+			font-size: 1.25em;
 		}
 	}
 	p.T-exibicion{
@@ -71,6 +72,9 @@ section.content{
     //transition: all .3s ;
     cursor:pointer;
     margin: 0 auto;
+    @include desde (web){
+      width: 60%;
+    }
     /*&:hover {
       background: darken($tabs-base-color, 10);
     }*/
@@ -90,10 +94,13 @@ section.content{
 	    //background: $blanco;
 	    p{
 	    	color: $blanco;
-	    	font-family: 'League Gothic';
+	    	font-family: 'Open Sans';
 	    	font-weight: normal;
 	    	font-size: 0.9em;
 	    	text-align: left;
+        @include desde (web){
+          padding: 0px 95px; 
+        }
 	    }
 	    .ima-B-M{
 	    	//margin-top: 1em;
@@ -165,7 +172,7 @@ section.go{
     background: #fff;
     padding: 10px;
     font-size: 1.3em;
-    font-family: 'League Gothic';
+   font-family: 'Open Sans';
     color: #89030D;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto;
@@ -174,6 +181,29 @@ section.go{
 	    }
 
 	}
+  .aceptar-nu{
+    color: #fff;
+    display: block;
+    width: 70%;
+    text-align: center;
+    border: none;
+    -webkit-appearance: none;
+    text-align: center;
+    border: 2px solid $blanco;
+    background: transparent;
+    padding: 10px;
+    font-size: 1.1em;
+   font-family: 'Open Sans';
+    color: $blanco;
+    text-transform: uppercase;
+    margin: 1.3em auto 1.3em auto;
+    border-radius: 60px;
+    cursor: pointer;
+      @include desde (web){
+        width: 24%;//15
+      }
+
+  }
 
 }//fin go
 
@@ -184,7 +214,7 @@ section.go{
   margin: 0 auto;
 
   .vayale{
-
+      margin-top: 70px;
     input.aceptar-button{
       color: #fff;
       display: block;
@@ -199,8 +229,8 @@ section.go{
       border: 2px solid #fff;
       background: transparent;
       padding: 6px 10px;
-      font-size: 1.3em;
-      font-family: 'League Gothic';
+      font-size: 1.1em;
+      font-family: 'Open Sans';
       color: #fff;
       text-transform: uppercase;
       margin: 1.3em auto 1.3em auto;

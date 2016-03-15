@@ -103,7 +103,7 @@
 	top: 100%;
 	left: 0;
 	background: #fff;
-	border-top: 4px solid #89030D;
+	border-top: 3px solid #fff;/*#89030D;*/
 	-webkit-transform: translate3d(0, -3px, 0);
 	transform: translate3d(0, -3px, 0);
 	-webkit-transition: -webkit-transform 0.4s;

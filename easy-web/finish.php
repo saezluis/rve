@@ -162,12 +162,19 @@ session_start();
 	<!-- 
 		//colocarlo en un Form y enviar datos necesarios
 	-->
-	<form method="post" action="take.php">
-		<section class="go"><a href="#" class="aceptar"><input type="submit" value="Tomar otra foto" class="cont"></a></section>		
-	</form>
-	
-    <section class="go"><a href="seleccionar.php" class="aceptar">Seleccionar otra campaña / exhibición</a></section>
-	<section class="go"><a href="logout.php" class="aceptar">Finalizar sesión</a></section>
+<!-- 	<section class="go">
+		<form method="post" action="take.php">
+
+			<a href="#" class="aceptar"></a>
+			<input type="submit" value="Tomar otra foto" class="cont aceptar">
+				
+		</form>
+	</section>	 -->
+	<section class="go">
+		<input type="submit" value="Tomar otra foto" class="aceptar-nu">
+	</section>
+    <section class="go"><a href="seleccionar.php" class="aceptar-nu">Seleccionar otra campaña / exhibición</a></section>
+	<section class="go"><a href="logout.php" class="aceptar-nu">Finalizar sesión</a></section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/scripts.js"></script>
