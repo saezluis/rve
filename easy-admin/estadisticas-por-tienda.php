@@ -98,27 +98,29 @@ session_start();
 					
 					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get' AND id_exhibicion = 0") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
+					$count_fotos = mysqli_num_rows($registrosRegistro);
+					
 					$registroTienda = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_tienda_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
 					if($reg=mysqli_fetch_array($registroTienda)){
 						$nombre_sala = $reg['nombre_sala'];
 					}
 					
-					echo "<h2>Easy: $nombre_sala</h2>";
+					echo "<h2>Sucursal Easy: $nombre_sala</h2>";
 					echo "<table class=\"table\">";
 						echo "<thead>";
 							echo "<tr>";
-								echo "<th>Nº registro</th>";
-								echo "<th>Foto</th>";
-								echo "<th>Usuario</th>";
+								//echo "<th>Nº registro</th>";
+								//echo "<th>Foto</th>";
+								//echo "<th>Usuario</th>";
 								echo "<th>Campaña</th>";
-								echo "<th>Fecha</th>";
-								echo "<th>Comentario</th>";
+								echo "<th>Cantidad de fotos</th>";
+								echo "<th>Estatus</th>";
 							echo "</tr>";
 						echo "</thead>";
 						echo "<tbody>";
 							
-							while($reg2=mysqli_fetch_array($registrosRegistro)){
+							if($reg2=mysqli_fetch_array($registrosRegistro)){
 								$id_registro = $reg2['id_registro'];
 								$nombre_foto = $reg2['nombre_foto']; 
 								$id_member = $reg2['id_member'];
@@ -140,12 +142,12 @@ session_start();
 								}
 								
 								echo "<tr class=\"tr-center\">";																
-									echo "<td style=\"width:10px;\">$id_registro</td>";
-									echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
-									echo "<td>$nombre_M</td>";
+									//echo "<td style=\"width:10px;\">$id_registro</td>";
+									//echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
+									//echo "<td>$nombre_M</td>";
 									echo "<td>$nombre_C</td>";
-									echo "<td>$fecha</td>";
-									echo "<td>$comentario</td>";
+									echo "<td>$count_fotos</td>";
+									echo "<td>Activa</td>";
 								echo "</tr>";
 							}
 							
