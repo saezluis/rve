@@ -46,9 +46,9 @@ session_start();
         </div>
         <div id="boton-cont">
 			<input type="submit" value="siguiente" class="cont">
-			<input type="text" value="si" name="siguiente_send" hidden=hidden>
-			<input type="submit" value="volver" class="cont" style="margin-top:15px;">
+			<input type="text" value="si" name="siguiente_send" hidden=hidden>			
 	  </form>
+		<input type="button" onclick="location.href='como-implementar.php';" value="volver" class="cont" style="margin-top:15px;">
 			<br>			
 			<form method="post" action="finish.php">
 				<?php

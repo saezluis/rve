@@ -58,11 +58,11 @@ session_start();
       <form id="campana" method="post" action="como-implementar.php">
         <select class="select" name="campana" onchange="this.form.submit()">
 			<?php
-			echo "<option value=\"\">Seleccione</option>";
+			echo "<option value=\"\" style=\"color:#000;\">Seleccione</option>";
 				while($reg=mysqli_fetch_array($registrosCampana)){
 					$nombre = $reg['nombre'];
 					$id_campana = $reg['id_campana'];
-					echo "<option value=\"$id_campana\">$nombre</option>";
+					echo "<option value=\"$id_campana\" style=\"color:#000;\">$nombre</option>";
 				}
 			?>
         </select>
@@ -71,21 +71,20 @@ session_start();
       <form id="exhibicion" method="post" action="como-implementar.php">
         <select class="select" name="exhibicion" onchange="this.form.submit()">
 			<?php
-			echo "<option value=\"\">Seleccione</option>";
+			echo "<option value=\"\" style=\"color:#000;\">Seleccione</option>";
 				while($reg=mysqli_fetch_array($registrosExhibicion)){
 					$nombre = $reg['nombre'];
 					$id_exhibicion = $reg['id_exhibicion'];
-					echo "<option value=\"$id_exhibicion\">$nombre</option>";
+					echo "<option value=\"$id_exhibicion\" style=\"color:#000;\">$nombre</option>";
 				}
 			?>
         </select>
-        <div id="boton-cont">
-			
-			<!-- <input type="submit" value="siguiente" class="cont"> -->
-			<input type="submit" value="cancelar" class="cont">
-			
-        </div>
-      </form>
+	  </form>
+	  <form id="exhibicion" method="post" action="logout.php">
+        <div id="boton-cont">			
+				<input type="submit" value="cancelar" class="cont">		
+        </div>      
+	   </form>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

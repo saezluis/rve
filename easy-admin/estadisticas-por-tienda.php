@@ -116,6 +116,8 @@ session_start();
 								echo "<th>Campaña</th>";
 								echo "<th>Cantidad de fotos</th>";
 								echo "<th>Estatus</th>";
+								//echo "<th>Cantidad de usuarios que subieron fotos</th>";
+								//echo "<th>Cantidad de usuarios que NO subieron fotos</th>";
 							echo "</tr>";
 						echo "</thead>";
 						echo "<tbody>";
@@ -148,6 +150,8 @@ session_start();
 									echo "<td>$nombre_C</td>";
 									echo "<td>$count_fotos</td>";
 									echo "<td>Activa</td>";
+									//echo "<td>3</td>";
+									//echo "<td>27</td>";
 								echo "</tr>";
 							}
 							

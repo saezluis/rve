@@ -146,24 +146,28 @@ session_start();
 				
 				if(@$id_exhibicion_get!=''){
 					
-					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_exhibicion = '$id_exhibicion_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_exhibicion = '$id_exhibicion_get' GROUP BY id_member ") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
 					$registroExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_exhibicion_get'") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
+					
+					$count_subieron = mysqli_num_rows($registrosRegistro);
 					
 					if($reg=mysqli_fetch_array($registroExhibicion)){
 						$nombre = $reg['nombre'];
 					}
 					
 					echo "<h2>$nombre</h2>";
+					echo "<h6>Cantidad de usuarios que han subido fotos: $count_subieron</h6>";
+					echo "<h6>Cantidad de usuarios que NO han subido fotos: X</h6>";
 					echo "<table class=\"table\">";
 						echo "<thead>";
 							echo "<tr>";
-								echo "<th>Nº registro</th>";
-								echo "<th>Foto</th>";
-								echo "<th>Usuario</th>";
-								echo "<th>Tienda</th>";
-								echo "<th>Fecha</th>";
-								echo "<th>Comentario</th>";
+								//echo "<th>Nº registro</th>";
+								//echo "<th>Foto</th>";
+								//echo "<th>Usuario</th>";
+								echo "<th>Sala</th>";
+								echo "<th>Cantidad de fotos</th>";
+								//echo "<th>Comentario</th>";
 							echo "</tr>";
 						echo "</thead>";
 						echo "<tbody>";
@@ -188,13 +192,17 @@ session_start();
 									$nombre_S = $rowT['nombre_sala'];
 								}
 								
+								$registrosRegistroLocos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_exhibicion = '$id_exhibicion_get' AND id_sala = '$id_sala' ") or die("Problemas en el select locos: ".mysqli_error($conexion));
+								
+								$rows_locos = mysqli_num_rows($registrosRegistroLocos);
+								
 								echo "<tr class=\"tr-center\">";																
-									echo "<td style=\"width:10px;\">$id_registro</td>";
-									echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
-									echo "<td>$nombre_M</td>";
+									//echo "<td style=\"width:10px;\">$id_registro</td>";
+									//echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
+									//echo "<td>$nombre_M</td>";
 									echo "<td>$nombre_S</td>";
-									echo "<td>$fecha</td>";
-									echo "<td>$comentario</td>";
+									echo "<td>$rows_locos</td>";
+									//echo "<td>$comentario</td>";
 								echo "</tr>";
 							}
 							

@@ -146,24 +146,28 @@ session_start();
 				
 				if(@$id_campana_get!=''){
 					
-					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					$registrosRegistro = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' GROUP BY id_member") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
 					
 					$registroCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana_get'") or die("Problemas en el select de fotos Tienda: ".mysqli_error($conexion));
+					
+					$count_subieron = mysqli_num_rows($registrosRegistro);
 					
 					if($reg=mysqli_fetch_array($registroCampana)){
 						$nombre = $reg['nombre'];
 					}
 					
 					echo "<h2>$nombre</h2>";
+					echo "<h6>Cantidad de usuarios que han subido fotos: $count_subieron</h6>";
+					echo "<h6>Cantidad de usuarios que NO han subido fotos: X</h6>";
 					echo "<table class=\"table\">";
 						echo "<thead>";
 							echo "<tr>";
-								echo "<th>Nº registro</th>";
-								echo "<th>Foto</th>";
-								echo "<th>Usuario</th>";
+								//echo "<th>Nº registro</th>";
+								//echo "<th>Foto</th>";
+								//echo "<th>Usuario</th>";
 								echo "<th>Sala</th>";
-								echo "<th>Fecha</th>";
-								echo "<th>Comentario</th>";
+								echo "<th>Cantidad de fotos</th>";
+								//echo "<th>Comentario</th>";
 							echo "</tr>";
 						echo "</thead>";
 						echo "<tbody>";
@@ -174,7 +178,7 @@ session_start();
 								$id_member = $reg2['id_member'];
 								$id_campana = $reg2['id_campana'];
 								$fecha = $reg2['fecha'];
-								$comentario = $reg2['comentario'];
+								$comentario = $reg2['comentario'];								
 								$id_sala = $reg2['id_sala'];
 								
 								$registroMember = mysqli_query($conexion,"SELECT * FROM members WHERE id = '$id_member'") or die("Problemas en el select members: ".mysqli_error($conexion));
@@ -189,14 +193,20 @@ session_start();
 									$nombre_S = $rowT['nombre_sala'];
 								}
 								
+								$registrosRegistroLocos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_sala = '$id_sala' ") or die("Problemas en el select locos: ".mysqli_error($conexion));
+								
+								$rows_locos = mysqli_num_rows($registrosRegistroLocos);
+								
 								echo "<tr class=\"tr-center\">";																
-									echo "<td style=\"width:10px;\">$id_registro</td>";
-									echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
-									echo "<td>$nombre_M</td>";
+									//echo "<td style=\"width:10px;\">$id_registro</td>";
+									//echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
+									//echo "<td>$nombre_M</td>";
 									echo "<td>$nombre_S</td>";
-									echo "<td>$fecha</td>";
-									echo "<td>$comentario</td>";
+									echo "<td>$rows_locos</td>";
+									//echo "<td>$comentario</td>";
 								echo "</tr>";
+								
+								
 							}
 							
 							
