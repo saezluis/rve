@@ -2858,7 +2858,6 @@ aside {
     display: block;
     transition: all .3s;
     border-radius: 4px;
-    text-transform: uppercase;
     cursor: pointer; }
     aside .btns_selectores input[type="submit"]:hover {
       background: #89030D; }
