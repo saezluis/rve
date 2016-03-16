@@ -33,6 +33,7 @@ session_start();
 	<?php
 		//$sala_store = $_REQUEST['sala'];
 		//$_SESSION['s_store'] = $sala_store;
+		$nombre_user = $_SESSION['nombre_user'];
 		
 		$_SESSION['c_store'] = "";
 		$_SESSION['e_store'] = "";
@@ -52,8 +53,10 @@ session_start();
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
           <div class="profile">
-            <p>Hola <span>Luis Saéz</span></p>
-            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+			<?php
+				echo "<p>Hola <span>$nombre_user</span></p>";
+			?>
+            <div class="getOut"><a href="logout.php">Cerrar Sesión</a></div>
           </div>
       </div>
     </header>

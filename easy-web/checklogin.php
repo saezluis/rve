@@ -30,7 +30,8 @@
 		if($row=(mysqli_fetch_array($result))){
 			$id = $row['id'];
 			$tipo_user = $row['tipo_user'];
-			$id_sala = $row['id_sala'];			
+			$id_sala = $row['id_sala'];
+			$nombre_user = $row['nombre'];
 		}
 		
 		//echo "Tipo user: ".$tipo_user;
@@ -39,6 +40,7 @@
 		
 		if($count == 1){
 		
+		$_SESSION['nombre_user'] = $nombre_user;
 		$_SESSION['id_sala'] = $id_sala;
 		$_SESSION['id_usuario'] = $id;
 		$_SESSION['loggedin'] = true;

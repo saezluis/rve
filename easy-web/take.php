@@ -31,14 +31,19 @@ session_start();
     <title>Registro Visual Easy</title>
   </head>
   <body>
+	<?php
+		$nombre_user = $_SESSION['nombre_user'];
+	?>
     <header>
       <div class="ed-container">
         <div class="ed-item base-100">
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
           <div class="profile">
-            <p>Hola <span>Luis Saéz</span></p>
-            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+			<?php
+            echo "<p>Hola <span>$nombre_user</span></p>";
+			?>
+            <div class="getOut"><a href="logout.php">Cerrar Sesión</a></div>
           </div>
       </div>
     </header>
@@ -47,24 +52,30 @@ session_start();
       <p class="Des-Web">Subir foto</p>
       <form id="main" method="post" action="finish.php" enctype="multipart/form-data">
         <div class="upload">
-          <input type="file" accept="image/*" capture="camera" name="upload" id="upload" required>
+          <input type="file" accept="image/*" capture="camera" name="upload" id="upload" onchange="this.form.submit()" required>
         </div>
         <div id="boton-cont">
+			<!--
 			<input type="submit" value="siguiente" class="cont">
+			-->
 			<input type="text" value="si" name="siguiente_send" hidden=hidden>			
 	  </form>
-		<input type="button" onclick="location.href='como-implementar.php';" value="volver" class="cont" style="margin-top:15px;">
+		<!--
+		
+		-->
 			<br>			
 			<form method="post" action="finish.php">
 				<?php
 					$desde_implementar = @$_REQUEST['aceptar_implementar'];
 					if($desde_implementar=='si'){
-						$nothing = "";
+						//$nothing = "";
+						//echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
+						echo "<input type=\"button\" onclick=\"location.href='como-implementar.php';\" value=\"volver\" class=\"cont\" style=\"margin-top:15px;\">";
 					}else{
-						echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
+						echo "<input type=\"button\" onclick=\"location.href='finish.php';\" value=\"cancelar\" class=\"cont\" style=\"margin-top:15px;\">";
+						//echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
 					}				
 				?>
-				
 			</form>						
         </div>
       

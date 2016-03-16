@@ -31,20 +31,21 @@ session_start();
   </head>
   <body>
 	<?php
-	
+		$nombre_user = $_SESSION['nombre_user'];
+		
 		$campana_store = @$_REQUEST['campana'];		
 		if($campana_store!=''){
 			$_SESSION['c_store'] = $campana_store;
 		}
-		echo "session c_store lleva: ".$_SESSION['c_store'];
-		echo "<br>";
+		//echo "session c_store lleva: ".$_SESSION['c_store'];
+		//echo "<br>";
 		
 		$exhibicion_store = @$_REQUEST['exhibicion'];
 		if($exhibicion_store!=''){
 			$_SESSION['e_store'] = $exhibicion_store;
 		}
-		echo "session store lleva: ".$_SESSION['e_store'];
-		echo "<br>";
+		//echo "session store lleva: ".$_SESSION['e_store'];
+		//echo "<br>";
 		
 	?>
     <header>
@@ -53,8 +54,10 @@ session_start();
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
           <div class="profile">
-            <p>Hola <span>Luis Saéz</span></p>
-            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+			<?php
+				echo "<p>Hola <span>$nombre_user</span></p>";
+			?>
+            <div class="getOut"><a href="logout.php">Cerrar Sesión</a></div>
           </div>
       </div>
     </header>

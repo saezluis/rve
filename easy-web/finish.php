@@ -32,6 +32,7 @@ session_start();
   </head>
   <body>
 	<?php
+	$nombre_user = $_SESSION['nombre_user'];
 	$nombreFoto = "";
 	//uniqid();
 	
@@ -82,7 +83,7 @@ session_start();
 			// if everything is ok, try to upload file
 			} else {
 				if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {
-					echo "El archivo ". basename( $_FILES["upload"]["name"]). " a sido cargado.";
+					//echo "El archivo ". basename( $_FILES["upload"]["name"]). " a sido cargado.";
 					echo "<br>";
 				} else {
 					echo "Lo sentimos, hubo un error al subir el archivo.";
@@ -141,8 +142,10 @@ session_start();
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
           <div class="profile">
-            <p>Hola <span>Luis Saéz</span></p>
-            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+			<?php
+				echo "<p>Hola <span>$nombre_user</span></p>";
+			?>
+            <div class="getOut"><a href="logout.php">Cerrar Sesión</a></div>
           </div>
       </div>
     </header>
@@ -175,10 +178,14 @@ session_start();
 		</form>
 	</section>	 -->
 	<section class="go">
-		<input type="submit" value="Tomar otra foto" class="aceptar-nu">
+		<form method="post" action="take.php">
+			<input type="submit" value="Tomar otra foto" class="aceptar-nu">
+		</form>
 	</section>
     <section class="go"><a href="seleccionar.php" class="aceptar-nu">Seleccionar otra campaña / exhibición</a></section>
+	<!--
 	<section class="go"><a href="logout.php" class="aceptar-nu">Finalizar sesión</a></section>
+	-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/scripts.js"></script>
