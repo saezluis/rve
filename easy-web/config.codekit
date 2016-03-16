@@ -29,6 +29,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/como-implementar.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/como-implementar.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/config.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -1317,6 +1326,61 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/56e80a7670a90foto15.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 296560,
+		"inputAbbreviatedPath": "\/images\/56e80a7670a90foto15.jpg",
+		"outputAbbreviatedPath": "\/images\/56e80a7670a90foto15.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/56e97a5a552d7Captura de pantalla 2016-02-15 a la(s) 16.10.50.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 13701,
+		"inputAbbreviatedPath": "\/images\/56e97a5a552d7Captura de pantalla 2016-02-15 a la(s) 16.10.50.png",
+		"outputAbbreviatedPath": "\/images\/56e97a5a552d7Captura de pantalla 2016-02-15 a la(s) 16.10.50.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/56e97d04319a4Captura de pantalla 2016-02-16 a la(s) 9.41.12.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4038,
+		"inputAbbreviatedPath": "\/images\/56e97d04319a4Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputAbbreviatedPath": "\/images\/56e97d04319a4Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/56e97d5e289a5Captura de pantalla 2016-02-16 a la(s) 9.41.12.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4038,
+		"inputAbbreviatedPath": "\/images\/56e97d5e289a5Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputAbbreviatedPath": "\/images\/56e97d5e289a5Captura de pantalla 2016-02-16 a la(s) 9.41.12.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/56e97e5409ccdCaptura de pantalla 2016-02-16 a la(s) 9.16.24.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 4246,
+		"inputAbbreviatedPath": "\/images\/56e97e5409ccdCaptura de pantalla 2016-02-16 a la(s) 9.16.24.png",
+		"outputAbbreviatedPath": "\/images\/56e97e5409ccdCaptura de pantalla 2016-02-16 a la(s) 9.16.24.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/5mil-down.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1526,6 +1590,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/img\/foto-no.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 121538,
+		"inputAbbreviatedPath": "\/img\/foto-no.jpg",
+		"outputAbbreviatedPath": "\/img\/foto-no.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/img\/foto.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -1581,6 +1656,15 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/index 2.html": {
+		"fileType": 8192,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index 2.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/jade\/campana.jade": {
 		"compileDebug": 1,
 		"fileType": 512,
@@ -1610,6 +1694,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/jade\/finish.jade",
 		"outputAbbreviatedPath": "\/finish.html",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0
+		},
+	"\/jade\/index 2.jade": {
+		"compileDebug": 1,
+		"fileType": 512,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/jade\/index 2.jade",
+		"outputAbbreviatedPath": "\/index 2.html",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 0
@@ -2100,11 +2195,29 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/seleccionar.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/seleccionar.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/take.html": {
 		"fileType": 8192,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/take.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/take.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/take.php",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0

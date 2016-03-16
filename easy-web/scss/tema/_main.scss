@@ -3,17 +3,81 @@ section.content{
 	text-align: center;
 	p{
 		text-align:center;
-		font-size: 1em;
+		font-size: 1.25em;
 		color: $blanco;
 		margin-top: 1em;
-		margin-bottom: 1em;
     padding: 0 10px;
+    margin-bottom: 0;
 		@include desde (tablet){
 			font-size: 1.25em;
+      text-align: center;
+      margin-bottom: 1em;
 		}
+    @include desde (web){
+      font-size: 1.8em;
+      margin-bottom: 0;
+    }
 	}
+
+  hr{
+    height: 2px;
+    text-align: center;
+    background: $blanco;
+    border: none;
+    width: 90%;
+    margin-bottom: 1em;
+    @include desde (tablet){
+      width: 45%;
+    }
+    @include desde (web){
+      width: 50%;
+    }
+    @include desde (hd){
+      width: 35%;
+    }
+  }
+
+  .Bot-ti{
+    margin-bottom: 12px;
+  }
+
+  p.Des-Movile{
+      display: block;
+      text-align:center;
+      font-size: 1.25em;
+      color: $blanco;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding: 0 10px;
+    @include desde (tablet){
+      font-size: 1.25em;
+    }
+    @include desde (web){
+      display: none;
+    }
+  }
+  p.Des-Web{
+    display: none;
+
+    @include desde (tablet){
+      font-size: 1.25em;
+    }
+    @include desde (web){
+      display: block;
+      text-align:center;
+       font-size: 1.8em;
+      color: $blanco;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding: 0 10px;
+      margin-bottom: 0;
+    }
+  }
 	p.T-exibicion{
 		margin:0 !important;
+    @include desde (web){
+      margin-top: 0em !important;
+    }
 	}
 
 
@@ -44,7 +108,23 @@ section.content{
     &:last-child{
     	border-right: none;
     }
+    @include desde (tablet){
+      width: 30%;
+      float: left;
+    }
+    @include desde (web){
+      margin:0;
+    }
   }
+
+  li.Tm{
+        @include desde (tablet){
+          margin-left:140px;
+        }
+        @include desde (web){
+          margin:0 65px;
+        }
+      }
 
   input[type="radio"] {
     position: absolute;
@@ -72,8 +152,13 @@ section.content{
     //transition: all .3s ;
     cursor:pointer;
     margin: 0 auto;
+    @include desde (tablet){
+      width: auto;
+      left: 0;
+    }
     @include desde (web){
-      width: 60%;
+      width: 120%;
+      font-size: 1.13em;
     }
     /*&:hover {
       background: darken($tabs-base-color, 10);
@@ -89,17 +174,31 @@ section.content{
 	    line-height: 25px;
 	    padding: 25px;  
 	    position: absolute;
-	    top: 112px; //53
-	    left: 0; 
+      top: 72px;
+	    left: 0;
+      @include desde (tablet){
+        //top:32px;
+        top: 112px; //53
+      } 
+      @include desde (hd){
+        top: 42px;
+      }
 	    //background: $blanco;
 	    p{
 	    	color: $blanco;
-	    	font-family: 'Open Sans';
+	    	//font-family: 'Open Sans';
+        font-family: 'hero_lightlight';
 	    	font-weight: normal;
 	    	font-size: 0.9em;
 	    	text-align: left;
+        margin-bottom: 1em;
+        @include desde (tablet){
+          padding: 0 12%;
+        }
         @include desde (web){
-          padding: 0px 95px; 
+          //padding: 0px 95px; 
+          padding: 0px 13px;
+          margin-bottom: 1em;
         }
 	    }
 	    .ima-B-M{
@@ -111,6 +210,10 @@ section.content{
         img{
           display: block;
           border: 2px solid #fff;
+        }
+        @include desde (tablet){
+          width: 76%;
+          margin: 0 auto;
         }
         @include desde (web){
           width: 96%;
@@ -172,7 +275,8 @@ section.go{
     background: #fff;
     padding: 10px;
     font-size: 1.3em;
-   font-family: 'Open Sans';
+   //font-family: 'Open Sans';
+   font-family: 'hero_lightlight';
     color: #89030D;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto;
@@ -193,7 +297,8 @@ section.go{
     background: transparent;
     padding: 10px;
     font-size: 1.1em;
-   font-family: 'Open Sans';
+   //font-family: 'Open Sans';
+   font-family: 'hero_lightlight';
     color: $blanco;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto;
@@ -212,9 +317,17 @@ section.go{
   // width: 1024px;
   height: auto;
   margin: 0 auto;
+  position: relative;
+  z-index: 9000;
 
   .vayale{
       margin-top: 70px;
+      @include desde (tablet){
+        margin-top: 90px;
+      }
+      @include desde (web){
+        margin-top:-50px;
+      }
     input.aceptar-button{
       color: #fff;
       display: block;
@@ -230,11 +343,15 @@ section.go{
       background: transparent;
       padding: 6px 10px;
       font-size: 1.1em;
-      font-family: 'Open Sans';
+      //font-family: 'Open Sans';
+      font-family: 'hero_lightlight';
       color: #fff;
       text-transform: uppercase;
       margin: 1.3em auto 1.3em auto;
       cursor: pointer;
+      @include desde (tablet){
+        width: 20%;
+      }
         @include desde (web){
           width: 15%;
         }

@@ -51,6 +51,10 @@ session_start();
         <div class="ed-item base-100">
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
+          <div class="profile">
+            <p>Hola <span>Luis Saéz</span></p>
+            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+          </div>
       </div>
     </header>
     <section class="content">
@@ -67,6 +71,7 @@ session_start();
 			?>
         </select>
       </form>
+      <hr>
       <p class="T-exibicion">Seleccionar exhibición proveedores</p>
       <form id="exhibicion" method="post" action="como-implementar.php">
         <select class="select" name="exhibicion" onchange="this.form.submit()">
@@ -80,11 +85,6 @@ session_start();
 			?>
         </select>
 	  </form>
-	  <form id="exhibicion" method="post" action="logout.php">
-        <div id="boton-cont">			
-				<input type="submit" value="cancelar" class="cont">		
-        </div>      
-	   </form>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

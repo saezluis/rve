@@ -140,6 +140,10 @@ session_start();
         <div class="ed-item base-100">
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
+          <div class="profile">
+            <p>Hola <span>Luis Saéz</span></p>
+            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+          </div>
       </div>
     </header>
     <section class="content">

@@ -52,14 +52,18 @@ session_start();
         <div class="ed-item base-100">
           <div class="logo__interiores"><img src="img/logo.png" alt=""></div>
         </div>
+          <div class="profile">
+            <p>Hola <span>Luis Saéz</span></p>
+            <div class="getOut"><a href="#">Cerrar Sesión</a></div>
+          </div>
       </div>
     </header>
     <section class="content">
-      <p>Cómo implementar esta: campaña / exhibición</p>
+      <p class="Bot-ti">Cómo implementar esta: campaña / exhibición</p>
       <div class="ed-container">
         <div class="ed-item base-100 no-padding">
           <ul class="tabs">
-            <li>
+            <li class="Tm">
               <input id="tab1" type="radio" name="tabs" checked="">
               <label for="tab1">Buenas Prácticas</label>
               <div id="tab-content1" class="tab-content">

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600,800);
 *,
 *:before,
 *:after {
@@ -2963,7 +2962,7 @@ class="no-padding" a la caja le da padding cero solo a ella
 
 body {
   background: #EC1C24;
-  font-family: "Open Sans", sans-serif;
+  font-family: "hero_lightlight", sans-serif;
   color: #333; }
 
 a {
@@ -2980,7 +2979,7 @@ p {
     margin: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "hero_lightlight", sans-serif;
   font-weight: 700;
   text-transform: normal;
   color: #222; }
@@ -3006,32 +3005,59 @@ h6 {
 
 /* Regular */
 @font-face {
-  font-family: 'League Gothic';
-  src: url("../fonts/leaguegothic-italic-webfont.eot");
-  src: url("../fonts/leaguegothic-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/leaguegothic-italic-webfont.woff") format("woff"), url("../fonts/leaguegothic-italic-webfont.ttf") format("truetype"), url("../fonts/leaguegothic-italic-webfont.svg#league_gothic_italicregular") format("svg");
-  font-weight: normal;
-  font-style: italic; }
-/* Italic */
-@font-face {
-  font-family: 'League Gothic';
-  src: url("../fonts/leaguegothic-regular-webfont.eot");
-  src: url("../fonts/leaguegothic-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/leaguegothic-regular-webfont.woff") format("woff"), url("../fonts/leaguegothic-regular-webfont.ttf") format("truetype"), url("../fonts/leaguegothic-regular-webfont.svg#league_gothicregular") format("svg");
+  font-family: 'hero_lightlight';
+  src: url("../fonts/hero_light-webfont.eot");
+  src: url("../fonts/hero_light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/hero_light-webfont.woff2") format("woff2"), url("../fonts/hero_light-webfont.woff") format("woff"), url("../fonts/hero_light-webfont.ttf") format("truetype"), url("../fonts/hero_light-webfont.svg#hero_lightlight") format("svg");
   font-weight: normal;
   font-style: normal; }
-/* Condensed */
 @font-face {
-  font-family: 'League Gothic Condensed';
-  src: url("../fonts/leaguegothic-condensed-regular-webfont.eot");
-  src: url("../fonts/leaguegothic-condensed-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/leaguegothic-condensed-regular-webfont.woff") format("woff"), url("../fonts/leaguegothic-condensed-regular-webfont.ttf") format("truetype"), url("../fonts/leaguegothic-condensed-regular-webfont.svg#league_gothic_condensed-Rg") format("svg");
+  font-family: 'heroregular';
+  src: url("../fonts/hero-webfont.eot");
+  src: url("../fonts/hero-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/hero-webfont.woff2") format("woff2"), url("../fonts/hero-webfont.woff") format("woff"), url("../fonts/hero-webfont.ttf") format("truetype"), url("../fonts/hero-webfont.svg#heroregular") format("svg");
   font-weight: normal;
   font-style: normal; }
-/* Condensed Italic */
-@font-face {
-  font-family: 'League Gothic Condensed';
-  src: url("../fonts/leaguegothic-condensed-italic-webfont.eot");
-  src: url("../fonts/leaguegothic-condensed-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/leaguegothic-condensed-italic-webfont.woff") format("woff"), url("../fonts/leaguegothic-condensed-italic-webfont.ttf") format("truetype"), url("../fonts/leaguegothic-condensed-italic-webfont.svg#league_gothic_condensed_itaRg") format("svg");
-  font-weight: normal;
-  font-style: italic; }
+header {
+  position: relative;
+  margin-top: 1.2em; }
+  @media screen and (min-width: 1024px) {
+    header {
+      margin-top: 0; } }
+  header .profile {
+    position: absolute;
+    top: -13px;
+    right: 10px; }
+    @media screen and (min-width: 768px) {
+      header .profile {
+        top: 10px;
+        right: 30px; } }
+    @media screen and (min-width: 1400px) {
+      header .profile {
+        right: 150px; } }
+    header .profile p {
+      color: #fff;
+      font-size: 0.8em; }
+      @media screen and (min-width: 768px) {
+        header .profile p {
+          font-size: 0.9em; } }
+    header .profile .getOut {
+      width: 100%; }
+      header .profile .getOut a {
+        padding: 4px 8px;
+        color: #fff;
+        text-align: center;
+        border-radius: 60px;
+        display: block;
+        border: 1px solid #fff;
+        font-size: 0.6em;
+        width: 56%;
+        position: relative;
+        left: 40px; }
+        @media screen and (min-width: 768px) {
+          header .profile .getOut a {
+            width: 100%;
+            left: 0px;
+            font-size: 0.9em; } }
+
 .logo {
   text-align: center;
   margin-top: 1em; }
@@ -3054,7 +3080,8 @@ h6 {
     width: 60%; }
     @media screen and (min-width: 768px) {
       .logo__interiores img {
-        width: 40%; } }
+        width: 40%;
+        text-align: center; } }
     @media screen and (min-width: 1024px) {
       .logo__interiores img {
         width: 25%; } }
@@ -3064,16 +3091,72 @@ section.content {
   text-align: center; }
   section.content p {
     text-align: center;
-    font-size: 1em;
+    font-size: 1.25em;
+    color: #fff;
+    margin-top: 1em;
+    padding: 0 10px;
+    margin-bottom: 0; }
+    @media screen and (min-width: 768px) {
+      section.content p {
+        font-size: 1.25em;
+        text-align: center;
+        margin-bottom: 1em; } }
+    @media screen and (min-width: 1024px) {
+      section.content p {
+        font-size: 1.8em;
+        margin-bottom: 0; } }
+  section.content hr {
+    height: 2px;
+    text-align: center;
+    background: #fff;
+    border: none;
+    width: 90%;
+    margin-bottom: 1em; }
+    @media screen and (min-width: 768px) {
+      section.content hr {
+        width: 45%; } }
+    @media screen and (min-width: 1024px) {
+      section.content hr {
+        width: 50%; } }
+    @media screen and (min-width: 1400px) {
+      section.content hr {
+        width: 35%; } }
+  section.content .Bot-ti {
+    margin-bottom: 12px; }
+  section.content p.Des-Movile {
+    display: block;
+    text-align: center;
+    font-size: 1.25em;
     color: #fff;
     margin-top: 1em;
     margin-bottom: 1em;
     padding: 0 10px; }
     @media screen and (min-width: 768px) {
-      section.content p {
+      section.content p.Des-Movile {
         font-size: 1.25em; } }
+    @media screen and (min-width: 1024px) {
+      section.content p.Des-Movile {
+        display: none; } }
+  section.content p.Des-Web {
+    display: none; }
+    @media screen and (min-width: 768px) {
+      section.content p.Des-Web {
+        font-size: 1.25em; } }
+    @media screen and (min-width: 1024px) {
+      section.content p.Des-Web {
+        display: block;
+        text-align: center;
+        font-size: 1.8em;
+        color: #fff;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        padding: 0 10px;
+        margin-bottom: 0; } }
   section.content p.T-exibicion {
     margin: 0 !important; }
+    @media screen and (min-width: 1024px) {
+      section.content p.T-exibicion {
+        margin-top: 0em !important; } }
   section.content .tabs {
     width: 100%;
     float: none;
@@ -3100,6 +3183,19 @@ section.content {
       margin: 5px; }
       section.content .tabs li:last-child {
         border-right: none; }
+      @media screen and (min-width: 768px) {
+        section.content .tabs li {
+          width: 30%;
+          float: left; } }
+      @media screen and (min-width: 1024px) {
+        section.content .tabs li {
+          margin: 0; } }
+    @media screen and (min-width: 768px) {
+      section.content .tabs li.Tm {
+        margin-left: 140px; } }
+    @media screen and (min-width: 1024px) {
+      section.content .tabs li.Tm {
+        margin: 0 65px; } }
     section.content .tabs input[type="radio"] {
       position: absolute;
       top: -9999px;
@@ -3123,9 +3219,14 @@ section.content {
       /*&:hover {
         background: darken($tabs-base-color, 10);
       }*/ }
+      @media screen and (min-width: 768px) {
+        section.content .tabs label {
+          width: auto;
+          left: 0; } }
       @media screen and (min-width: 1024px) {
         section.content .tabs label {
-          width: 60%; } }
+          width: 120%;
+          font-size: 1.13em; } }
     section.content .tabs .tab-content {
       z-index: 2;
       display: none;
@@ -3135,17 +3236,28 @@ section.content {
       line-height: 25px;
       padding: 25px;
       position: absolute;
-      top: 112px;
+      top: 72px;
       left: 0; }
+      @media screen and (min-width: 768px) {
+        section.content .tabs .tab-content {
+          top: 112px; } }
+      @media screen and (min-width: 1400px) {
+        section.content .tabs .tab-content {
+          top: 42px; } }
       section.content .tabs .tab-content p {
         color: #fff;
-        font-family: 'Open Sans';
+        font-family: 'hero_lightlight';
         font-weight: normal;
         font-size: 0.9em;
-        text-align: left; }
+        text-align: left;
+        margin-bottom: 1em; }
+        @media screen and (min-width: 768px) {
+          section.content .tabs .tab-content p {
+            padding: 0 12%; } }
         @media screen and (min-width: 1024px) {
           section.content .tabs .tab-content p {
-            padding: 0px 95px; } }
+            padding: 0px 13px;
+            margin-bottom: 1em; } }
       section.content .tabs .tab-content .ima-B-M {
         position: relative;
         width: 100%;
@@ -3154,6 +3266,10 @@ section.content {
         section.content .tabs .tab-content .ima-B-M img {
           display: block;
           border: 2px solid #fff; }
+        @media screen and (min-width: 768px) {
+          section.content .tabs .tab-content .ima-B-M {
+            width: 76%;
+            margin: 0 auto; } }
         @media screen and (min-width: 1024px) {
           section.content .tabs .tab-content .ima-B-M {
             width: 96%; } }
@@ -3196,7 +3312,7 @@ section.go {
     background: #fff;
     padding: 10px;
     font-size: 1.3em;
-    font-family: 'Open Sans';
+    font-family: 'hero_lightlight';
     color: #89030D;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto; }
@@ -3215,7 +3331,7 @@ section.go {
     background: transparent;
     padding: 10px;
     font-size: 1.1em;
-    font-family: 'Open Sans';
+    font-family: 'hero_lightlight';
     color: #fff;
     text-transform: uppercase;
     margin: 1.3em auto 1.3em auto;
@@ -3227,9 +3343,17 @@ section.go {
 
 section.go {
   height: auto;
-  margin: 0 auto; }
+  margin: 0 auto;
+  position: relative;
+  z-index: 9000; }
   section.go .vayale {
     margin-top: 70px; }
+    @media screen and (min-width: 768px) {
+      section.go .vayale {
+        margin-top: 90px; } }
+    @media screen and (min-width: 1024px) {
+      section.go .vayale {
+        margin-top: -50px; } }
     section.go .vayale input.aceptar-button {
       color: #fff;
       display: block;
@@ -3245,11 +3369,14 @@ section.go {
       background: transparent;
       padding: 6px 10px;
       font-size: 1.1em;
-      font-family: 'Open Sans';
+      font-family: 'hero_lightlight';
       color: #fff;
       text-transform: uppercase;
       margin: 1.3em auto 1.3em auto;
       cursor: pointer; }
+      @media screen and (min-width: 768px) {
+        section.go .vayale input.aceptar-button {
+          width: 20%; } }
       @media screen and (min-width: 1024px) {
         section.go .vayale input.aceptar-button {
           width: 15%; } }
@@ -3278,6 +3405,7 @@ section.forms {
       padding: 10px;
       font-size: 1em;
       border-radius: 60px;
+      font-family: 'hero_lightlight';
       color: #fff;
       text-transform: uppercase;
       -webkit-appearance: none;
@@ -3292,7 +3420,7 @@ section.forms {
       color: #fff;
       text-align: right;
       font-size: 0.8em;
-      font-family: 'Open Sans';
+      font-family: 'hero_lightlight';
       text-decoration: underline;
       margin-top: 1em;
       display: block;
@@ -3306,13 +3434,14 @@ section.content form#main, section.content #campana, section.content #exhibicion
   text-align: center;
   padding: 15px; }
   section.content form#main select, section.content #campana select, section.content #exhibicion select {
-    width: 70%;
+    width: 100%;
     color: #fff;
     -webkit-appearance: none;
     -webkit-transition: all 0.4s;
     transition: all 0.4s;
     border-radius: 60px;
     border: 2px solid #fff;
+    font-family: 'hero_lightlight';
     padding: 10px;
     appearance: none;
     font-size: 0.9em;
@@ -3334,7 +3463,7 @@ section.content form#main, section.content #campana, section.content #exhibicion
     margin-top: 3em; }
     section.content form#main #boton-cont input.cont, section.content #campana #boton-cont input.cont, section.content #exhibicion #boton-cont input.cont {
       color: #fff;
-      font-family: 'Open Sans';
+      font-family: 'hero_lightlight';
       display: block;
       width: 70%;
       text-align: center;

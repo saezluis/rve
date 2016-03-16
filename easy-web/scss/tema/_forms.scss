@@ -27,6 +27,7 @@ section.forms{
 			padding: 10px;
 			font-size: 1em;
 			border-radius: 60px;
+			font-family: 'hero_lightlight';
 			// font-family: 'League Gothic';
 			color: #fff;
 			text-transform: uppercase;
@@ -43,7 +44,8 @@ section.forms{
 			color: $blanco;
 			text-align: right;
 			font-size: 0.8em;
-			font-family: 'Open Sans';
+			//font-family: 'Open Sans';
+			font-family: 'hero_lightlight';
 			text-decoration: underline;
 			margin-top: 1em;
 			display: block;
@@ -63,7 +65,7 @@ section.content{
 		padding: 15px;
 
 		select{
-			width: 70%;
+			width: 100%;//70
 			color: #fff;
 			-webkit-appearance: none;
 			-webkit-transition: all 0.4s;
@@ -71,6 +73,7 @@ section.content{
 			transition: all 0.4s;
 			border-radius: 60px;//5
 			border: 2px solid $blanco;
+			font-family: 'hero_lightlight';
 			padding: 10px;
 			appearance: none;
 			font-size: 0.9em;
@@ -102,7 +105,8 @@ section.content{
 			input.cont{
 				color: $blanco;
 
-				font-family: 'Open Sans';
+				//font-family: 'Open Sans';
+				font-family: 'hero_lightlight';
 
 				display: block;
 				width: 70%;
