@@ -3317,13 +3317,17 @@ section.content form#main, section.content #campana, section.content #exhibicion
     appearance: none;
     font-size: 0.9em;
     background: transparent url(../img/arrows.png) no-repeat;
-    background-position: 95% center; }
+    background-position: 95% center;
+    -moz-appearance: none;
+    appearance: none; }
     @media screen and (min-width: 768px) {
       section.content form#main select, section.content #campana select, section.content #exhibicion select {
         width: 30%; } }
     @media screen and (min-width: 1024px) {
       section.content form#main select, section.content #campana select, section.content #exhibicion select {
         width: 15%; } }
+  section.content form#main select option, section.content #campana select option, section.content #exhibicion select option {
+    background: #fff; }
   section.content form#main #boton-cont, section.content #campana #boton-cont, section.content #exhibicion #boton-cont {
     width: 100%;
     text-align: center;

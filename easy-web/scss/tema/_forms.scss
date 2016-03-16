@@ -76,6 +76,9 @@ section.content{
 			font-size: 0.9em;
 			background: transparent url(../img/arrows.png) no-repeat;
 			background-position: 95% center; 
+			-moz-appearance: none;
+    		appearance: none;
+
 
 			@include desde (tablet){
 				width: 30%;
@@ -85,6 +88,10 @@ section.content{
 				width: 15%;
 			}
 
+		}
+
+		select option{
+			background: #fff;
 		}
 
 
