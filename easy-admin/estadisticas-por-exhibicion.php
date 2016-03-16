@@ -206,6 +206,27 @@ session_start();
 								echo "</tr>";
 							}
 							
+							if(@$id_sala!=''){
+							
+							
+								$registroTiendaSin = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala != '$id_sala'") or die("Problemas en el select members: ".mysqli_error($conexion));
+								
+								while($rowT_sin = mysqli_fetch_array($registroTiendaSin)){
+									$nombre_SalaSin = $rowT_sin['nombre_sala'];
+									
+									echo "<tr class=\"tr-center\">";																
+									//echo "<td style=\"width:10px;\">$id_registro</td>";
+									//echo "<td> <img src=\"../easy-web/images/$nombre_foto\" width=\"150\" height=\"150\" alt=\"\"></td>";
+									//echo "<td>$nombre_M</td>";
+									echo "<td>$nombre_SalaSin</td>";
+									echo "<td>0</td>";
+									//echo "<td>$comentario</td>";
+									echo "</tr>";
+								
+								}
+								
+							}
+							
 						echo "</tbody>";
 					echo "</table>";
 				
