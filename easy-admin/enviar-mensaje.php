@@ -19,12 +19,9 @@
 
 	$to = $email_user;
 	$subject = "Comentario sobre: $campana";
-	$headers = "De: Supervisión Easy";
+	$headers = "From: Supervisión Easy <supervisor@easyprueba.com>";
 	$message = $mensaje_sup;
 	
-	mail($to, '=?utf-8?B?'.base64_encode($subject).'?=' ,$message, '=?utf-8?B?'.base64_encode($headers).'?=' );
-	
-	
-	
+	//mail($to, '=?utf-8?B?'.base64_encode($subject).'?=' ,$message, $headers );
 	
 ?>

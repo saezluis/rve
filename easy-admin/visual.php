@@ -21,7 +21,7 @@ session_start();
 	}
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html ng-app lang="es">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,16 @@ session_start();
 	
 	<link rel="stylesheet" href="css2/global.css">
 	
-	
+	<style>
+            #dv1{ border:1px solid #DBDCE9;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
+            div {width: 100%;}
+            
+            ul {list-style-type: none;  margin: 0;padding: 0;            }
+            li {font: 200 20px/1.5 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #ccc;            }
+            li:last-child {border: none; }
+            li a { text-decoration: none; color: #000; display: block;        }
+			
+    </style>
 	
 
   </head>
@@ -117,7 +126,7 @@ session_start();
                 <h2>Seleccionar campaña</h2>                
 				<select class="select" name="campana">
 					<?php
-						echo "<option value=\"\">Seleccione</option>";
+						echo "<option value=\"0\">Seleccione</option>";
 						while($reg=mysqli_fetch_array($registrosCampana)){
 							$nombre = $reg['nombre'];
 							$id_campana = $reg['id_campana'];
@@ -135,7 +144,7 @@ session_start();
                 <h2>Seleccionar tienda</h2>
                 <select class="select" name="tienda" onchange="this.form.submit()">
 					<?php
-						echo "<option value=\"\">Seleccione</option>";
+						echo "<option value=\"0\">Seleccione</option>";
 						while($reg=mysqli_fetch_array($registrosSala)){
 							$nombre_sala = $reg['nombre_sala'];
 							$id_sala = $reg['id_sala'];
@@ -259,23 +268,30 @@ session_start();
 								
 								echo "<div class=\"caption\">";
 									echo "<p>Imágen tomada por $nombre en $nombre_sala - Teléfono: $celular</p>";
-								echo "</div>";
+								echo "</div>";								
 								
 								$c = $c + 1;
 								$m = 'message'.$c;
 								
-								echo "<div class=\"content-caja-mensajes\">";
-									echo "<form id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
-										echo "<h3>Comentarios</h3>";
-										echo "<textarea name=\"mensaje_supervisor\">$comentario</textarea>";										
-										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
+								echo "<div id=\"dv1\" class=\"content-caja-mensajes\">";								
+									echo "<form ng-controller=\"FrmController\" id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
+										echo "<h4>Comentario:</h4>";										
+										echo "<textarea ng-model=\"txtcomment\" name=\"mensaje_supervisor\"></textarea>";										
+										echo "<input ng-click=\"btn_add();\" type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
 										echo "<input type=\"text\" value=\"1\" name=\"comentario_activo\" hidden=hidden>";
 										//echo "<input type=\"text\" value=\"$id_mem\" name=\"member_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$id_foto\" name=\"foto_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$email\" name=\"email_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$nombre_C\" name=\"campana_activa\" hidden=hidden>";
 										//$id_foto
+										echo "<h4>Comments</h4>";
+											echo "<ul>";
+												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} <a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a></li>";
+											echo "</ul>";
 									echo "</form>";
+									//echo "<p align=\"left\">Comentarios anteriores: </p>";
+									//echo "<p align=\"left\">$comentario</p>";
+									echo "<br>";
 								echo "</div>";
 								
 								echo "</div>";								
@@ -416,5 +432,23 @@ session_start();
 		
 	</script>
 	-->
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+	
+	<script type="text/javascript">
+            function FrmController($scope) {
+                $scope.comment = [];
+                $scope.btn_add = function() {
+                    if($scope.txtcomment !=''){
+                    $scope.comment.push($scope.txtcomment);
+                    $scope.txtcomment = "";
+                    }
+                }
+
+                $scope.remItem = function($index) {
+                    $scope.comment.splice($index, 1);
+                }
+            }
+    </script>
   </body>
 </html>

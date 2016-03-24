@@ -29,9 +29,13 @@ session_start();
     <link rel="stylesheet" href="css/set2.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
     <title>Registro Visual Easy</title>
+	
   </head>
   <body>
 	<?php
+	
+	include 'wideimage/lib/WideImage.php';
+	
 	$nombre_user = $_SESSION['nombre_user'];
 	$nombreFoto = "";
 	//uniqid();
@@ -41,7 +45,33 @@ session_start();
 		if($xd!=''){
 			
 			$target_dir = "./images/";
-			$nombreFoto = uniqid().basename($_FILES["upload"]["name"]);
+			$nombreFoto = basename($_FILES["upload"]["name"]); //$nombreFoto = uniqid().basename($_FILES["upload"]["name"]);
+			
+			//echo "nombre foto antes del fix: ".$nombreFoto;
+			//echo "<br>";
+			//aqui colocaria la wea pa acomodar la foto
+			
+			function image_fix_orientation($filename) {
+				$exif = exif_read_data($filename);
+					if (!empty($exif['Orientation'])) {
+						$image = imagecreatefromjpeg($filename);
+							switch ($exif['Orientation']) {
+								case 3:
+									$image = imagerotate($image, 180, 0);
+									break;
+
+								case 6:
+									$image = imagerotate($image, -90, 0);
+									break;
+
+								case 8:
+									$image = imagerotate($image, 90, 0);
+									break;
+							}
+						imagejpeg($image, $filename, 90);
+					}					
+			}
+			
 			$target_file = $target_dir.$nombreFoto;
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -93,6 +123,16 @@ session_start();
 		
 		}	
 
+		image_fix_orientation($target_file);
+		
+		$newName = rand(0000000,1111111);
+	
+		$newNameFinal = $newName.'.jpg';
+		
+		WideImage::load($target_file)->resize(null, 529)->saveToFile('nombreFinal.jpg');
+		
+		rename("nombreFinal.jpg",$target_dir . $newNameFinal);
+		
 		//$nombreFoto = uniqid().basename($_FILES["upload"]["name"]);
 		
 		//echo "nombre foto: ".$nombreFoto;
@@ -130,7 +170,7 @@ session_start();
 									'$sala_store',
 									'$campana_store',
 									'$exhibicion_store',
-									'$nombreFoto',
+									'$newNameFinal',
 									'$timestamp'
 									)")
 		or die("Problemas con el insert del registro");
