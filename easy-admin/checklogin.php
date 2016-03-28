@@ -66,6 +66,14 @@
 				echo '</script>';	
 				
 			}
+			
+			if($area=='admin'){
+			
+				echo '<script type="text/javascript">';
+				echo 'window.location.href="admin.php";';
+				echo '</script>';	
+				
+			}
 			/*
 			if($tipo_user=='user'){
 				

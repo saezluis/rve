@@ -121,10 +121,27 @@ session_start();
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
 			</div>			
-            <form id="choose" method="post" action="visual.php">				
-              <div class="campana">
+            <form id="choose" method="post" action="visual.php">             
+              <div class="tienda">
+                <h2>Seleccionar tienda</h2>
+                <select class="select" name="tienda">
+					<?php
+						echo "<option value=\"0\">Seleccione</option>";
+						while($reg=mysqli_fetch_array($registrosSala)){
+							$nombre_sala = $reg['nombre_sala'];
+							$id_sala = $reg['id_sala'];
+							if(@$id_tienda_get==$id_sala){
+								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
+							}else{
+								echo "<option value=\"$id_sala\">$nombre_sala</option>";
+							}
+						}
+					?>
+				</select>
+              </div>
+			  <div class="campana">
                 <h2>Seleccionar campaña</h2>                
-				<select class="select" name="campana">
+				<select class="select" name="campana" onchange="this.form.submit()">
 					<?php
 						echo "<option value=\"0\">Seleccione</option>";
 						while($reg=mysqli_fetch_array($registrosCampana)){
@@ -139,23 +156,6 @@ session_start();
 						}
 					?>
 				</select>				
-              </div>			
-              <div class="tienda">
-                <h2>Seleccionar tienda</h2>
-                <select class="select" name="tienda" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosSala)){
-							$nombre_sala = $reg['nombre_sala'];
-							$id_sala = $reg['id_sala'];
-							if(@$id_tienda_get==$id_sala){
-								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
-							}else{
-								echo "<option value=\"$id_sala\">$nombre_sala</option>";
-							}
-						}
-					?>
-				</select>
               </div>
 			  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
             </form>
@@ -285,7 +285,7 @@ session_start();
 										echo "<input type=\"text\" value=\"$nombre_C\" name=\"campana_activa\" hidden=hidden>";
 										//$id_foto
 										echo "<h4>Comments</h4>";
-											echo "<ul>";
+											echo "<ul>";												
 												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} <a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a></li>";
 											echo "</ul>";
 									echo "</form>";

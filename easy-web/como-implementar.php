@@ -27,7 +27,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" href="css/sss.css" type="text/css" media="all">
     <title>Registro Visual Easy</title>
+	
   </head>
   <body>
 	<?php
@@ -74,9 +76,13 @@ session_start();
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
 				<div class="ima-B-M">
-                  <div class="corchete-l"><img src="img/corchete_mobile_left.png" alt=""></div>
-                  <img src="img/foto.jpg" alt="">
-                  <div class="corchete-r"><img src="img/corchete_mobile_right.png" alt=""></div>
+                  <div class="corchete-l"><img src="img/corchete_mobile_left.png" alt=""></div>                  
+					<div class="slider">
+						<img src="img/foto1.jpg" alt="">
+						<img src="img/foto2.jpg" alt="">
+						<img src="img/foto3.jpg" alt="">
+					</div>				                    
+				  <div class="corchete-r"><img src="img/corchete_mobile_right.png" alt=""></div>
                 </div>
                 
               </div>
@@ -89,7 +95,11 @@ session_start();
                 </p>
                 <div class="ima-B-M">
                   <div class="corchete-l"><img src="img/corchete_mobile_left.png" alt=""></div>
-                  <img src="img/foto-no.jpg" alt="">
+                  <div class="slider">
+						<img src="img/foto1-no.jpg" alt="">
+						<img src="img/foto2-no.jpg" alt="">
+						<img src="img/foto3-no.jpg" alt="">
+					</div>
                   <div class="corchete-r"><img src="img/corchete_mobile_right.png" alt=""></div>
                 </div>
                
@@ -115,5 +125,14 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/scripts.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script src="js/sss.min.js"></script>
+	<script>
+		jQuery(function($) {
+		$('.slider').sss({
+			slideShow : true	});
+		});
+	</script>
+	
   </body>
 </html>
