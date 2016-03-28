@@ -43,7 +43,7 @@ session_start();
             div {width: 100%;}
             
             ul {list-style-type: none;  margin: 0;padding: 0;            }
-            li {font: 200 20px/1.5 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #ccc;            }
+            li {font: 1px Helvetica, Verdana, sans-serif; padding:1em 0; font-size:0.9em;               border-bottom: 1px solid #ccc;            }
             li:last-child {border: none; }
             li a { text-decoration: none; color: #000; display: block;        }
 			
