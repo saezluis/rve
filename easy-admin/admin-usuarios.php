@@ -44,17 +44,6 @@ session_start();
 	
 	<link rel="stylesheet" href="css2/global.css">
 	
-	<style>
-            #dv1{ border:1px solid #DBDCE9;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
-            div {width: 100%;}
-            
-            ul {list-style-type: none;  margin: 0;padding: 0;            }
-            li {font: 200 20px/1.5 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #ccc;            }
-            li:last-child {border: none; }
-            li a { text-decoration: none; color: #000; display: block;        }
-			
-    </style>
-	
 
   </head>
   <body>
@@ -145,16 +134,11 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="example">
+			<div id="list-users">
 				<?php			
-					echo "<br>";
-					echo "<br>";
 					echo "<a href=\"consultar-usuarios.php\">Consultar usuarios</a>";
-					echo "<br>";echo "<br>";
 					echo "<a href=\"#\">Agregar usuarios</a>";
-					echo "<br>";echo "<br>";
 					echo "<a href=\"#\">Modificar usuarios</a>";
-					echo "<br>";echo "<br>";
 					echo "<a href=\"#\">Eliminar usuarios</a>";
 				?>
 			</div>			

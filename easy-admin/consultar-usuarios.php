@@ -44,16 +44,6 @@ session_start();
 	
 	<link rel="stylesheet" href="css2/global.css">
 	
-	<style>
-            #dv1{ border:1px solid #DBDCE9;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
-            div {width: 100%;}
-            
-            ul {list-style-type: none;  margin: 0;padding: 0;            }
-            li {font: 200 20px/1.5 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #ccc;            }
-            li:last-child {border: none; }
-            li a { text-decoration: none; color: #000; display: block;        }
-			
-    </style>
 	
 
   </head>
@@ -152,6 +142,119 @@ session_start();
 					
 					
 				?>
+				<table class="pure-table">
+				    <thead>
+				        <tr>
+				            <th>Usuario</th>
+				            <th>Password</th>
+				            <th>Nombre</th>
+				            <th>Tipo de usuario</th>
+				            <th>Tienda</th>
+				            <th>Teléfono</th>
+				            <th>Anexo</th>
+				            <th>Cargo</th>
+				            <th>Foto perfil</th>
+				        </tr>
+				    </thead>
+
+				    <tbody>
+				        <tr class="pure-table-odd">
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr>
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr class="pure-table-odd">
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr>
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr class="pure-table-odd">
+					        <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr>
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr class="pure-table-odd">
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+
+				        <tr>
+				            <td>iCharls</td>
+				            <td>123456</td>
+				            <td>Carlos Flores</td>
+				            <td>Administrador</td>
+				            <td>Easy Costanera Center</td>
+				            <td>+56 9 85632148</td>
+				            <td>654123</td>
+				            <td>Jefe de visual</td>
+				            <td>Jefe de visual</td>
+				        </tr>
+				    </tbody>
+				</table>
 			</div>			
 		</div>		
      </div>

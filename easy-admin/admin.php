@@ -32,7 +32,7 @@ session_start();
 	
 	<link rel="stylesheet" href="css/styles.css">
 	
-	<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+	<link href="css/featherlight.css" type="text/css" rel="stylesheet" />
 	
     <title>Administrador General del Sistema RVE</title>
 	
@@ -43,17 +43,6 @@ session_start();
 	-->
 	
 	<link rel="stylesheet" href="css2/global.css">
-	
-	<style>
-            #dv1{ border:1px solid #DBDCE9;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
-            div {width: 100%;}
-            
-            ul {list-style-type: none;  margin: 0;padding: 0;            }
-            li {font: 200 20px/1.5 Helvetica, Verdana, sans-serif;                border-bottom: 1px solid #ccc;            }
-            li:last-child {border: none; }
-            li a { text-decoration: none; color: #000; display: block;        }
-			
-    </style>
 	
 
   </head>
@@ -175,7 +164,7 @@ session_start();
 					</form>
 			</div>
 			<br>
-			<div>
+			<div class="cualquiera">
 					<form class="btns_selectores" method="post" action="admin-practicas.php">
 						<input type="submit" value="Buenas / Malas prácticas">
 						<!--
@@ -201,7 +190,7 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="example">
+			<div id="list-image">
 				<?php
 				
 					if(@$id_tienda_get!=''){
