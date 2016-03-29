@@ -123,64 +123,8 @@ session_start();
             <h1>Administrador</h1>
 			<div class="init_inicio">
 					<form method="post" action="admin.php">
-						<input type="submit" value="Inicio">
+						<input type="submit" value="Volver">
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
-					</form>
-			</div>			
-            <form id="choose" method="post" action="admin.php" >             
-              <div class="tienda">
-                <h2>Historial de fotos:</h2>				
-				<h2 style="margin-top: 14px;">Por tienda</h2>
-                <select class="select" name="tienda" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosSala)){
-							$nombre_sala = $reg['nombre_sala'];
-							$id_sala = $reg['id_sala'];
-							if(@$id_tienda_get==$id_sala){
-								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
-							}else{
-								echo "<option value=\"$id_sala\">$nombre_sala</option>";
-							}
-						}
-					?>
-				</select>
-              </div>
-			  <div class="campana">
-                <h2>Por campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
-							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
-							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
-							}							
-						}
-					?>
-				</select>				
-              </div>
-			  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
-            </form>
-			<br>
-			<div>
-					<form class="btns_selectores" method="post" action="admin-usuarios.php">
-						<input type="submit" value="Usuarios">
-						<!--
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
-						-->
-					</form>
-			</div>
-			<br>
-			<div>
-					<form class="btns_selectores" method="post" action="admin-practicas.php">
-						<input type="submit" value="Buenas / Malas prácticas">
-						<!--
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
-						-->
 					</form>
 			</div>
           </div>
@@ -202,48 +146,16 @@ session_start();
 		
 		<div id="container">
 			<div id="example">
-				<?php
-				
-					if(@$id_tienda_get!=''){
-						//echo "tienda trae informacion";
-						//echo "<br>";
-						
-						//echo "id tienda: ".$id_tienda_get;
-						//echo "<br>";
-						
-						$fotosTienda = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get' AND id_exhibicion = 0 ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						$num_rows = mysqli_num_rows($fotosTienda);
-						
-						//echo "numero rows: ".$num_rows;
-						
-						while($reg=mysqli_fetch_array($fotosTienda)){
-							$nombre_foto = $reg['nombre_foto'];
-							
-							//echo "nombre foto: ".$nombre_foto;
-							//echo "<br>";
-							
-							echo "<ul>";
-								echo "<li><a href=\"#\" data-featherlight=\"../easy-web/images/$nombre_foto\" > <img src=\"../easy-web/images/$nombre_foto\" width=\"200px\" height=\"200px\" > </a></li>";
-							echo "</ul>";
-						}
-					}
-					
-					if(@$id_campana_get!=''){
-						
-						$fotosCampana = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_exhibicion = 0 ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						while($reg=mysqli_fetch_array($fotosCampana)){
-							$nombre_foto = $reg['nombre_foto'];
-							
-							//echo "nombre foto: ".$nombre_foto;
-							//echo "<br>";
-							
-							echo "<ul>";
-								echo "<li><a href=\"#\" data-featherlight=\"../easy-web/images/$nombre_foto\" > <img src=\"../easy-web/images/$nombre_foto\" width=\"200px\" height=\"200px\" > </a></li>";
-							echo "</ul>";
-						}
-					}
+				<?php			
+					echo "<br>";
+					echo "<br>";
+					echo "<a href=\"consultar-usuarios.php\">Consultar usuarios</a>";
+					echo "<br>";echo "<br>";
+					echo "<a href=\"#\">Agregar usuarios</a>";
+					echo "<br>";echo "<br>";
+					echo "<a href=\"#\">Modificar usuarios</a>";
+					echo "<br>";echo "<br>";
+					echo "<a href=\"#\">Eliminar usuarios</a>";
 				?>
 			</div>			
 		</div>		

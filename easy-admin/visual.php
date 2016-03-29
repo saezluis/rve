@@ -53,6 +53,8 @@ session_start();
   </head>
   <body>
 	<?php
+		error_reporting(0);
+		
 		$nombre_user = $_SESSION['nombre_user'];
 		$foto_perfil = $_SESSION['foto_perfil'];
 		
@@ -284,7 +286,7 @@ session_start();
 										echo "<input type=\"text\" value=\"$email\" name=\"email_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$nombre_C\" name=\"campana_activa\" hidden=hidden>";
 										//$id_foto
-										echo "<h4>Comments</h4>";
+										echo "<h4>Comentarios anteriores:</h4>";
 											echo "<ul>";												
 												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} <a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a></li>";
 											echo "</ul>";
