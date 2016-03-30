@@ -43,6 +43,49 @@ session_start();
 	-->
 	
 	<link rel="stylesheet" href="css2/global.css">
+	<style>
+		#container #list-image{
+			margin-top: 1em;
+		}
+
+		#container #list-image ul{
+			margin: 0;
+			padding:0;
+			list-style: none;
+		}
+
+		#container #list-image ul li{
+			float: left;
+			margin-right: 1em;
+			margin-bottom: 0.5em;
+			height: 150px;
+			overflow: hidden;
+		}
+
+
+		#list-users{
+			   margin-top: 38px;
+		}
+		#list-users a{
+		    padding: 6px 8px;
+		    color: #fff;
+		    background: #ed1c24;
+		    width: 200px;
+		    display: inline-block;
+		    text-align: center;
+		    margin-right: 1em;
+		    border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    -moz-border-radius: 5px;
+		    transition: .3s all;
+		}
+
+		#list-users a:hover{
+			background: #89030D;
+		}
+
+
+	</style>
 	
 
   </head>

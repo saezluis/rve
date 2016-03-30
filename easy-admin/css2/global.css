@@ -1,15 +1,16 @@
 #container {
 	width:940px;
-	/*padding:10px;*/
+	padding:10px;
 	margin:0 auto;
 	position:relative;
 	z-index:0;
+	height: auto;
 }
 
 #example {
 	width:940px;
-/*	height:800px;
-	min-height: 800px;*/
+	/*height:800px;*/
+	/*min-height: 800px;*/
 	position:relative;
 }
 
@@ -30,15 +31,16 @@
 	display: none;
 }
 
-/*
+
 	Slideshow
-*/
+
 
 #slides {
 	position:absolute;
 	top:15px;
 	left:4px;
 	z-index:100;
+	height: auto;
 }
 
 /*
@@ -50,10 +52,14 @@
 
 .slides_container {
 	width:940px;
-	overflow:hidden;
+/*	overflow:hidden;
+	overflow: visible !important;
+	overflow-x:none !important;*/
 	position:relative;
-	display:none;
+	display:block;
 	margin-bottom: 1em;
+	overflow-x: hidden !important;
+    overflow-y: visible !important;
 }
 
 /*
@@ -66,13 +72,15 @@
 
 .slides_container div.slide {
 	width:940px;
-/*	height:800px;
-	min-height:800px;*/
+	height:800px;
+	min-height:auto;
 	display:block;
 	text-align: center;
 }
 
-
+.slides_container .slides_control{
+	width: 100% !important;
+}
 /*
 	Next/prev buttons
 */
@@ -98,6 +106,7 @@
 .pagination {
 	margin:26px auto 0;
 	width:100px;
+	display: none;
 }
 
 .pagination li {
@@ -132,7 +141,7 @@
 	padding:5px;
 	font-size: 0.8em;
 	text-align: left;
-	/*padding: 8px;*/
+	padding: 8px;
 	width:100%;
 	line-height:30;
 	color:#000;
@@ -171,7 +180,7 @@ a:hover,a:active {
 
 
 
-#container #list-image{
+/*#container #list-image{
 	margin-top: 1em;
 }
 

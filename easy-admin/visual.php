@@ -39,8 +39,8 @@ session_start();
 	<link rel="stylesheet" href="css2/global.css">
 	
 	<style>
-            #dv1{ border:1px solid #DBDCE9;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
-            div {width: 100%;}
+            #dv1{ border:1px solid #DBDCE9; height: auto;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
+            /*div {width: 100%;}*/
             
             ul {list-style-type: none;  margin: 0;padding: 0;            }
             li {font: 1px Helvetica, Verdana, sans-serif; padding:1em 0; font-size:0.9em;               border-bottom: 1px solid #ccc;            }
@@ -312,39 +312,6 @@ session_start();
 							
 						?>
 						
-						<!--
-						<div class="slide">
-
-								<img src="http://placehold.it/940x400">
-
-							<div class="caption">
-								<p>Imágen tomada por Luis Sáez en Easy Puente Alto - Teléfono: 09-234-8321</p>
-							</div>
-					        <div class="content-caja-mensajes">
-					          <form id="message">
-					            <h3>Comentarios</h3>
-					            <textarea></textarea>
-					            <input type="submit" value="Enviar" class="enviar">
-					          </form>
-					        </div>
-						</div>
-
-						<div class="slide">
-
-								<img src="http://placehold.it/940x400">
-
-							<div class="caption">
-								<p>Imágen tomada por Luis Sáez en Easy Puente Alto - Teléfono: 09-234-8321</p>
-							</div>
-					        <div class="content-caja-mensajes">
-					          <form id="message">
-					            <h3>Comentarios</h3>
-					            <textarea></textarea>
-					            <input type="submit" value="Enviar" class="enviar">
-					          </form>
-					        </div>
-						</div>
-						-->
 					</div>
 					<?php
 					if($id_campana_get!='' AND $id_tienda_get!=''){
