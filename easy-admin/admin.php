@@ -247,7 +247,7 @@ session_start();
 						
 						$num_rows = mysqli_num_rows($fotosTienda);
 						
-						//echo "numero rows: ".$num_rows;
+						echo "numero rows tienda: ".$num_rows;
 						
 						while($reg=mysqli_fetch_array($fotosTienda)){
 							$nombre_foto = $reg['nombre_foto'];
@@ -264,6 +264,10 @@ session_start();
 					if(@$id_campana_get!=''){
 						
 						$fotosCampana = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_exhibicion = 0 ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+						
+						$num_rows2 = mysqli_num_rows($fotosCampana);
+						
+						echo "numero rows campaña: ".$num_rows2;
 						
 						while($reg=mysqli_fetch_array($fotosCampana)){
 							$nombre_foto = $reg['nombre_foto'];
