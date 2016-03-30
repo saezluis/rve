@@ -159,7 +159,7 @@ session_start();
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
 			</div>			
-            <form id="choose" method="post" action="admin.php" >             
+            <form id="choose" method="post" action="admin.php">             
               <div class="tienda">
                 <h2>Historial de fotos:</h2>				
 				<h2 style="margin-top: 14px;">Por tienda</h2>

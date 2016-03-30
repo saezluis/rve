@@ -14,8 +14,7 @@
 	$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 	$acentos = $conexion->query("SET NAMES 'utf8'");
 
-	mysqli_query($conexion, "UPDATE registro SET comentario = '$mensaje_sup' WHERE id_registro = $id_foto_coment") 
-	or die("Problemas con el insert del registro");
+	mysqli_query($conexion,"INSERT INTO comentarios (comentario,id_foto) VALUES ('$mensaje_sup','$id_foto_coment') ") or die("Problemas con el insert del comentarios");
 
 	$to = $email_user;
 	$subject = "Comentario sobre: $campana";

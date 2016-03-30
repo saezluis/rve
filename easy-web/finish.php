@@ -90,8 +90,9 @@ session_start();
 			}
 			// Check if file already exists
 			if (file_exists($target_file)) {
-				echo "Lo sentimos, el archivo ya existe.";
+				//echo "Lo sentimos, el archivo ya existe.";
 				//echo "<br>";
+				$edfbs = '';
 				$uploadOk = 0;
 			}
 			// Check file size
@@ -110,8 +111,8 @@ session_start();
 			
 			// Check if $uploadOk is set to 0 by an error
 			if ($uploadOk == 0) {
-				echo "Lo sentimos, su archivo no fue cargado.";
-				//$wap = '';
+				//echo "Lo sentimos, su archivo no fue cargado.";
+				$wap = '';
 			// if everything is ok, try to upload file
 			} else {
 				if (move_uploaded_file($_FILES["upload"]["tmp_name"], $target_file)) {

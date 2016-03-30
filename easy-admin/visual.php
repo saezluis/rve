@@ -53,6 +53,7 @@ session_start();
   </head>
   <body>
 	<?php
+		
 		error_reporting(0);
 		
 		$nombre_user = $_SESSION['nombre_user'];
@@ -202,6 +203,9 @@ session_start();
 					<div class="slides_container">						
 						<?php
 							
+							$x = 0;
+							$y = 1;
+							
 							$c = 0;
 							if($reset_index=='resetear' || $cualquiera==1){
 								echo "<div class=\"slide\">";								
@@ -233,7 +237,11 @@ session_start();
 							*/
 							if($id_campana_get!='' AND $id_tienda_get!=''){
 								$registroFotos = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_sala = '$id_tienda_get'") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+									
 							}
+							
+							//$nro_fotos = mysqli_num_rows($registroFotos);
+							//echo "nro de fotos: ".$nro_fotos;
 							
 							while($reg=mysqli_fetch_array($registroFotos)){
 								$id_foto = $reg['id_registro'];
@@ -275,10 +283,45 @@ session_start();
 								$c = $c + 1;
 								$m = 'message'.$c;
 								
+								/*
+								if($x%2 == 0){
+									//$class = 'even';
+									$nn = 'n'.$x;
+									echo $nn;
+								}
+								*/
+								$nn = 'n'.$x;
+								//echo $nn;
+								$x = $x + 2;
+								//echo "x: ".$x;
+								//echo "<br>";
+								//$class = 'odd';								
+								
+								$nm = 'n'.$y;
+								//echo $nm;
+								$y = $y + 2;
+								//echo "y: ".$y;
+								//echo "<br>";
+								
+								//con esto lleno el array con los nombres de las fotos
+								
+								$result = mysqli_query($conexion,"SELECT * FROM comentarios WHERE id_foto = '$id_foto' ORDER BY id_comentario DESC") or die("Problemas en el select comentario: ".mysqli_error($conexion));
+								$results = array();
+								while($row = mysqli_fetch_assoc($result))
+								{
+									$comentariofoto = $row['comentario'];
+									$results[] = $comentariofoto;
+								}
+								
+								$cantidad_comentarios = mysqli_num_rows($result);
+								//echo "comentario 1: ".$results[2];
+								//echo "cantidad de comentarios: ".$cantidad_comentarios;
+								
 								echo "<div id=\"dv1\" class=\"content-caja-mensajes\">";								
 									echo "<form ng-controller=\"FrmController\" id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
 										echo "<h4>Comentario:</h4>";										
-										echo "<textarea ng-model=\"txtcomment\" name=\"mensaje_supervisor\"></textarea>";										
+										echo "<textarea ng-model=\"txtcomment\" id=\"$nn\" onkeyup=\"sync()\"></textarea>";
+										echo "<textarea name=\"mensaje_supervisor\" id=\"$nm\" hidden=hidden></textarea>";
 										echo "<input ng-click=\"btn_add();\" type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
 										echo "<input type=\"text\" value=\"1\" name=\"comentario_activo\" hidden=hidden>";
 										//echo "<input type=\"text\" value=\"$id_mem\" name=\"member_activo\" hidden=hidden>";
@@ -288,7 +331,12 @@ session_start();
 										//$id_foto
 										echo "<h4>Comentarios anteriores:</h4>";
 											echo "<ul>";												
-												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} <a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a></li>";
+												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} </li>"; //<a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a>												
+												//con esto recorro los comentarios anteriores	
+												for ($xx = 0; $xx < $cantidad_comentarios; $xx++) {
+													//echo "The number is: $x <br>";
+													echo "<li>".$results[$xx]."</li>";
+												} 												
 											echo "</ul>";
 									echo "</form>";
 									//echo "<p align=\"left\">Comentarios anteriores: </p>";
@@ -296,7 +344,9 @@ session_start();
 									echo "<br>";
 								echo "</div>";
 								
-								echo "</div>";								
+								echo "</div>";	
+								
+								
 							}
 							
 							$rows = mysqli_num_rows($registroFotos);
@@ -419,5 +469,8 @@ session_start();
                 }
             }
     </script>
+	
+	<script src="js/sync.js"></script>
+	
   </body>
 </html>
