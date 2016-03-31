@@ -47,7 +47,9 @@ session_start();
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
+		$id_usuario = $_GET['id_send'];
 		
+		//echo "id usuario: ".$id_usuario;
 		
 	?>
     <div class="ed-container">
@@ -83,9 +85,12 @@ session_start();
 			<div id="example">
 				<?php			
 					echo "<br>";					
-					echo "<h4>Agregar usuario</h4>";
+					echo "<h4>Modificar usuario</h4>";
+					
+					$registrosUsuario = mysqli_query($conexion," SELECT * from members WHERE id = '$id_usuario'") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
 					
 					$registrosTienda = mysqli_query($conexion," SELECT * from sala ") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
+					
 					/*
 					echo "<th>Usuario</th>";
 					echo "<th>Password</th>";
@@ -96,24 +101,40 @@ session_start();
 					echo "<th>Anexo</th>";
 					echo "<th>Cargo</th>";
 					echo "<!-- <th>Foto perfil</th> -->";
-					*/			
-					echo "<form method=\"POST\" action=\"procesar-agregar-usuario.php\">";
-					echo "Usuario: <input type=\"text\" name=\"username\" required>"."<br>";
-					echo "Contraseña: <input type=\"password\" name=\"password\" required>"."<br>";
-					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" required>"."<br>";
+					*/	
+					
+					if($regU=mysqli_fetch_array($registrosUsuario)){
+						$username = $regU['username'];
+						$password = $regU['password'];
+						$nombre_real = $regU['nombre'];
+						$id_tienda = $regU['id_sala'];
+						$telefono = $regU['celular'];
+						$anexo = $regU['anexo'];
+						$cargo = $regU['cargo'];
+					}
+					
+					echo "<form method=\"POST\" action=\"procesar-modificar-usuario.php\">";
+					echo "<input type=\"text\" name=\"id_send\" value=\"$id_usuario\" hidden=hidden>";
+					echo "Usuario: <input type=\"text\" name=\"username\" value=\"$username\" >"."<br>";
+					echo "Contraseña: <input type=\"text\" name=\"password\" value=\"$password\" >"."<br>";
+					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" value=\"$nombre_real\" >"."<br>";
 					echo "Tienda: <select name=\"id_tienda\">";			
 						echo "<option value=\"-1\">Seleccione</option>";
 						while($regT=mysqli_fetch_array($registrosTienda)){
 							$id_sala = $regT['id_sala'];
-							$nombre_sala = $regT['nombre_sala'];							
-							echo "<option value=\"$id_sala\">$nombre_sala</option>";
+							$nombre_sala = $regT['nombre_sala'];
+							if($id_sala==$id_tienda){
+								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
+							}else{
+								echo "<option value=\"$id_sala\">$nombre_sala</option>";
+							}							
 						}
 					echo "</select>";
 					echo "<br>";
-					echo "Teléfono: <input type=\"text\" name=\"telefono\" required>"."<br>";
-					echo "Anexo: <input type=\"text\" name=\"anexo\" >"."<br>";
-					echo "Cargo: <select name=\"cargo\">";			
-						echo "<option value=\"-1\">Seleccione</option>";
+					echo "Teléfono: <input type=\"text\" name=\"telefono\" value=\"$telefono\" >"."<br>";
+					echo "Anexo: <input type=\"text\" name=\"anexo\" value=\"$anexo\" >"."<br>";
+					echo "Cargo: <select name=\"cargo\">";								
+						echo "<option value=\"$cargo\">actual: $cargo</option>";
 						echo "<option value=\"Jefe de Visual\">Jefe de Visual</option>";
 						echo "<option value=\"Publicista\">Publicista</option>";
 						echo "<option value=\"Flejista\">Flejista</option>";
@@ -121,9 +142,11 @@ session_start();
 					echo "</select>";
 					echo "<br>";
 					echo "<br>";
-					echo "<input type=\"submit\" value=\"Aceptar\">";
-					echo "<a href=\"admin-usuarios.php\">Volver</a>";
+					echo "<input type=\"submit\" value=\"Modificar\">";
+					echo "<a href=\"modificar-usuarios.php\">Volver</a>";
 					echo "</form>";
+					
+					
 				?>
 			</div>			
 		</div>		

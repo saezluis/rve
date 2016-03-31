@@ -181,8 +181,8 @@ session_start();
 				<?php			
 					echo "<a href=\"consultar-usuarios.php\">Consultar usuarios</a>";
 					echo "<a href=\"agregar-usuario.php\">Agregar usuarios</a>";
-					echo "<a href=\"#\">Modificar usuarios</a>";
-					echo "<a href=\"#\">Eliminar usuarios</a>";
+					echo "<a href=\"modificar-usuarios.php\">Modificar usuarios</a>";
+					echo "<a href=\"eliminar-usuarios.php\">Eliminar usuarios</a>";
 				?>
 			</div>			
 		</div>		

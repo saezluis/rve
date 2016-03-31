@@ -109,11 +109,13 @@ session_start();
 			<div id="example">
 				<?php			
 					echo "<br>";					
-					echo "<h4>Consultar usuarios</h4>";
+					echo "<h4>Modificar usuarios</h4>";
+					echo "<p>Seleccione el id del usuario que desea modificar:</p>";
 
 					echo "<table class=\"pure-table\">";
 						echo "<thead>";
 							echo "<tr>";
+								echo "<th>ID Usuario</th>";
 								echo "<th>Usuario</th>";
 								echo "<th>Password</th>";
 								echo "<th>Nombre</th>";
@@ -129,6 +131,7 @@ session_start();
 						echo "<tbody>";
 							
 							while($reg=mysqli_fetch_array($rss)){
+								$id = $reg['id'];
 								$username = $reg['username'];
 								$password = $reg['password'];
 								$nombre = $reg['nombre'];
@@ -144,6 +147,8 @@ session_start();
 								}
 								
 								echo "<tr>";
+									//echo "<div id=\"orden--6S\"><a href=\"modificar-oc-detalle.php?oc_send=",urlencode($n_orden)," \">Editar</a></div>";
+									echo "<td><a href=\"modificar-usuario-detalle.php?id_send=",urlencode($id)," \">$id</a></td>";
 									echo "<td>$username</td>";
 									echo "<td>$password</td>";
 									echo "<td>$nombre</td>";
@@ -169,7 +174,7 @@ session_start();
 									echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
 								else 
 									//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
-									echo "<a href='consultar-usuarios.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
+									echo "<a href='modificar-usuarios.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 
 								}   
 							}	
 						echo "</div>";				
