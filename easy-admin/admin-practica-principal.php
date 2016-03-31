@@ -32,7 +32,7 @@ session_start();
 	
 	<link rel="stylesheet" href="css/styles.css">
 	
-	<link href="css/featherlight.css" type="text/css" rel="stylesheet" />
+	<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 	
     <title>Administrador General del Sistema RVE</title>
 	
@@ -124,7 +124,7 @@ session_start();
 		$reset_index = @$_REQUEST['reset_inicio'];
 		
 		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
+		$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
 		
 		@$id_campana_get = @$_REQUEST['campana'];
 		//echo "id_campana: ".$id_campana_get;
@@ -154,65 +154,9 @@ session_start();
           <div class="aqui-les-va">
             <h1>Administrador</h1>
 			<div class="init_inicio">
-					<form method="post" action="admin.php">
-						<input type="submit" value="Inicio">
+					<form method="post" action="admin-practicas.php">
+						<input type="submit" value="Volver">
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
-					</form>
-			</div>			
-            <form id="choose" method="post" action="admin.php">             
-              <div class="tienda">
-                <h2>Historial de fotos:</h2>				
-				<h2 style="margin-top: 14px;">Por tienda</h2>
-                <select class="select" name="tienda" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosSala)){
-							$nombre_sala = $reg['nombre_sala'];
-							$id_sala = $reg['id_sala'];
-							if(@$id_tienda_get==$id_sala){
-								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
-							}else{
-								echo "<option value=\"$id_sala\">$nombre_sala</option>";
-							}
-						}
-					?>
-				</select>
-              </div>
-			  <div class="campana">
-                <h2>Por campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
-							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
-							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
-							}							
-						}
-					?>
-				</select>				
-              </div>
-			  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
-            </form>
-			<br>
-			<div>
-					<form class="btns_selectores" method="post" action="admin-usuarios.php">
-						<input type="submit" value="Usuarios">
-						<!--
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
-						-->
-					</form>
-			</div>
-			<br>
-			<div class="cualquiera">
-					<form class="btns_selectores" method="post" action="admin-practicas.php">
-						<input type="submit" value="Buenas / Malas prácticas">
-						<!--
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
-						-->
 					</form>
 			</div>
           </div>
@@ -233,53 +177,47 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-image">
+			<div id="list-users">
 				<?php
-				
-					if(@$id_tienda_get!=''){
-						//echo "tienda trae informacion";
-						//echo "<br>";
+					
+					$id_campana = @$_REQUEST['id_campana'];
+					$id_proveedor = @$_REQUEST['id_proveedor'];
+					
+					if($id_campana!=''){
 						
-						//echo "id tienda: ".$id_tienda_get;
-						//echo "<br>";
+						$nombreC = '';
+						$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
-						$fotosTienda = mysqli_query($conexion,"SELECT * FROM registro WHERE id_sala = '$id_tienda_get' AND id_exhibicion = 0 ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						$num_rows = mysqli_num_rows($fotosTienda);
-						
-						echo "numero rows tienda: ".$num_rows;
-						
-						while($reg=mysqli_fetch_array($fotosTienda)){
-							$nombre_foto = $reg['nombre_foto'];
-							
-							//echo "nombre foto: ".$nombre_foto;
-							//echo "<br>";
-							
-							echo "<ul>";
-								echo "<li><a href=\"#\" data-featherlight=\"../easy-web/images/$nombre_foto\" > <img src=\"../easy-web/images/$nombre_foto\" width=\"200px\" height=\"200px\" > </a></li>";
-							echo "</ul>";
+						if($regC=mysqli_fetch_array($registrosCampana)){
+							$nombreC = $regC['nombre'];
 						}
+						
+						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: $nombreC";
+						echo "<br>";
+						echo "<br>";
+						echo "<p>Seleccione una opción:</p>";
+						echo "<form method=\"post\" action=\"buenas-practicas.php\">";
+							echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+							echo "<ul>";
+								echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
+								echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
+							echo "</ul>";
+						echo "</form>";
 					}
 					
-					if(@$id_campana_get!=''){
+					if($id_proveedor!=''){
+					
+						$nombreP = '';
+						$registrosProveedor = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_proveedor' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
-						$fotosCampana = mysqli_query($conexion,"SELECT * FROM registro WHERE id_campana = '$id_campana_get' AND id_exhibicion = 0 ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						$num_rows2 = mysqli_num_rows($fotosCampana);
-						
-						echo "numero rows campaña: ".$num_rows2;
-						
-						while($reg=mysqli_fetch_array($fotosCampana)){
-							$nombre_foto = $reg['nombre_foto'];
-							
-							//echo "nombre foto: ".$nombre_foto;
-							//echo "<br>";
-							
-							echo "<ul>";
-								echo "<li><a href=\"#\" data-featherlight=\"../easy-web/images/$nombre_foto\" > <img src=\"../easy-web/images/$nombre_foto\" width=\"200px\" height=\"200px\" > </a></li>";
-							echo "</ul>";
+						if($regP=mysqli_fetch_array($registrosProveedor)){
+							$nombreP = $regP['nombre'];
 						}
+						
+						echo "Usted se encuentra modificando las buenas/malas prácticas del proveedor: $nombreP";
+						echo "<br>";
 					}
+					
 				?>
 			</div>			
 		</div>		
