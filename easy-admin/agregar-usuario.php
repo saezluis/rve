@@ -83,57 +83,47 @@ session_start();
 			<div id="example">
 				<?php			
 					echo "<br>";					
-					echo "<h4>Consultar usuarios</h4>";
+					echo "<h4>Agregar usuario</h4>";
 					
-					$registrosMembers = mysqli_query($conexion,"SELECT * FROM members") or die("Problemas en el select de members: ".mysqli_error($conexion));
-					
-					echo "<table class=\"pure-table\">";
-						echo "<thead>";
-							echo "<tr>";
-								echo "<th>Usuario</th>";
-								echo "<th>Password</th>";
-								echo "<th>Nombre</th>";
-								echo "<!-- <th>Tipo de usuario</th> -->";
-								echo "<th>Tienda</th>";
-								echo "<th>Teléfono</th>";
-								echo "<th>Anexo</th>";
-								echo "<th>Cargo</th>";
-								echo "<!-- <th>Foto perfil</th> -->";
-							echo "</tr>";
-						echo "</thead>";
-
-						echo "<tbody>";
-							
-							while($reg=mysqli_fetch_array($registrosMembers)){
-								$username = $reg['username'];
-								$password = $reg['password'];
-								$nombre = $reg['nombre'];
-								$id_sala = $reg['id_sala'];
-								$celular = $reg['celular'];
-								$anexo = $reg['anexo'];
-								$cargo = $reg['cargo'];
-								
-								$registrosSala = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_sala' ") or die("Problemas en el select de sala: ".mysqli_error($conexion));
-								
-								if($regS=mysqli_fetch_array($registrosSala)){
-									$nombre_sala = $regS['nombre_sala'];
-								}
-								
-								echo "<tr>";
-									echo "<td>$username</td>";
-									echo "<td>$password</td>";
-									echo "<td>$nombre</td>";
-									echo "<!-- <td>Administrador</td> -->";
-									echo "<td>$nombre_sala</td>";
-									echo "<td>$celular</td>";
-									echo "<td>$anexo</td>";
-									echo "<td>$cargo</td>";
-									echo "<!-- <td>foto-perfil</td> -->";
-								echo "</tr>";
-							}
-							
-						echo "</tbody>";
-					echo "</table>";
+					$registrosTienda = mysqli_query($conexion," SELECT * from sala ") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
+					/*
+					echo "<th>Usuario</th>";
+					echo "<th>Password</th>";
+					echo "<th>Nombre</th>";
+					echo "<!-- <th>Tipo de usuario</th> -->";
+					echo "<th>Tienda</th>";
+					echo "<th>Teléfono</th>";
+					echo "<th>Anexo</th>";
+					echo "<th>Cargo</th>";
+					echo "<!-- <th>Foto perfil</th> -->";
+					*/			
+					echo "<form>";
+					echo "Usuario: <input type=\"text\" name=\"username\" required>"."<br>";
+					echo "Contraseña: <input type=\"password\" name=\"password\" required>"."<br>";
+					echo "Nombre completo: <input type=\"text\" name=\"nombre-real\" required>"."<br>";
+					echo "Tienda: <select name=\"tienda\">";			
+						echo "<option value=\"-1\">Seleccione</option>";
+						while($regT=mysqli_fetch_array($registrosTienda)){
+							$id_sala = $regT['id_sala'];
+							$nombre_sala = $regT['nombre_sala'];							
+							echo "<option value=\"$id_sala\">$nombre_sala</option>";
+						}
+					echo "</select>";
+					echo "<br>";
+					echo "Teléfono: <input type=\"text\" name=\"telefono\" required>"."<br>";
+					echo "Anexo: <input type=\"text\" name=\"anexo\" >"."<br>";
+					echo "Cargo: <select name=\"cargo\">";			
+						echo "<option value=\"-1\">Seleccione</option>";
+						echo "<option value=\"Jefe de Visual\">Jefe de Visual</option>";
+						echo "<option value=\"Publicista\">Publicista</option>";
+						echo "<option value=\"Flejista\">Flejista</option>";
+						echo "<option value=\"Gerente\">Gerente</option>";						
+					echo "</select>";
+					echo "<br>";
+					echo "<br>";
+					echo "<input type=\"submit\" value=\"Aceptar\">";
+					echo "<input type=\"button\" value=\"Cancelar\">";
+					echo "</form>";
 				?>
 			</div>			
 		</div>		
