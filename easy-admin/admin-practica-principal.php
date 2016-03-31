@@ -177,7 +177,7 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users">
+			<div id="list-users-practicas">
 				<?php
 					
 					$id_campana = @$_REQUEST['id_campana'];

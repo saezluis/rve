@@ -415,8 +415,76 @@ striping:
 }
 
 
+#list-users-practicas{
+	width: 100%;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-top: 2em;
+}
 
+#list-users-practicas label{
+	margin-right: 30px;
+}
 
+#list-users-practicas select{
+	width: 16%;
+}
 
+#list-users-practicas {
 
+}
 
+#list-users-practicas form.practice{
+	margin-top: 1em;
+}
+
+#list-users-practicas ul{
+	margin:0;
+	padding:0;
+	list-style: none;
+}
+
+#list-users-practicas ul li input[type="submit"]{ 
+    border: none;
+    padding: 6px 8px;
+    color: #fff;
+    background: #ed1c24;
+    font-size: 0.8em;
+    text-align: center;
+    width: 20%;
+    display: block;
+    transition: all .3s;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 1em;
+    transition: .3s all;
+}
+#list-users-practicas ul li input[type="submit"]:hover{
+	background: #89030D;
+} 
+
+#list-users-practicas ul li input[type="submit"]:hover{
+	background: #89030D;
+}
+
+#list-users-practicas form.added input[type="submit"]{
+	border: none;
+    padding: 6px 8px;
+    color: #fff;
+    background: #ed1c24;
+    font-size: 0.8em;
+    text-align: center;
+    width: 20%;
+    display: block;
+    transition: all .3s;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 1em 0;
+    transition: .3s all;
+}
+
+#list-users-practicas form.added input[type="submit"]:hover{
+	background: #89030D;
+}

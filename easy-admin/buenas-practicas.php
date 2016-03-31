@@ -177,7 +177,7 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users">
+			<div id="list-users-practicas">
 				<?php
 					
 					$id_campana = @$_REQUEST['id_campana'];
@@ -194,11 +194,11 @@ session_start();
 						echo "<p> Usted se encuentra modificando las <b>buenas prácticas</b> de la campaña: $nombreC </p>";
 						
 						echo "<h5>Agregar foto</h5>";
-						echo "<form  method=\"POST\" action=\"agregar-foto.php\" enctype=\"multipart/form-data\">";
+						echo "<form  class=\"added\" method=\"POST\" action=\"agregar-foto.php\" enctype=\"multipart/form-data\">";
 							echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
 							echo "<input type=\"text\" name=\"condicion\" value=\"buena\" hidden=hidden>";
-							echo "<input type=\"file\" name=\"upload\" id=\"upload\" >";
-							echo "<input type=\"submit\" value=\"aceptar\">";
+							echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
+							echo "<input type=\"submit\" value=\"Subir foto\">";
 						echo "</form>";
 						
 						echo "<h5>Fotos:</h5>";
@@ -215,7 +215,7 @@ session_start();
 										echo "<input type=\"text\" name=\"id_foto_send\" value=\"$id_foto\" hidden=hidden>";
 										echo "<input type=\"text\" name=\"id_campana_send\" value=\"$id_campana\" hidden=hidden>";
 										
-										echo "<li> <img src=\"images/$nombreF\" width=\"400px\" height=\"400px\" > <input type=\"submit\" value=\"X\" onclick=\"return confirm('¿ Desea eliminar éste foto ?')\"> </li>";
+										echo "<li style=\"border-bottom:1px solid #ccc; padding: 1em 0;\"> <img src=\"images/$nombreF\" width=\"400px\" height=\"400px\" > <input type=\"submit\" value=\"eliminar foto\" onclick=\"return confirm('¿ Desea eliminar éste foto ?')\"> </li>";
 									echo "</form>";
 								}
 						echo "</ul>";

@@ -177,12 +177,12 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users">
+			<div id="list-users-practicas">
 				<?php
 					echo "<p>Para comenzar debe seleccionar una de estas categorías:</p>";
 					echo "<form method=\"POST\" action=\"admin-practica-principal.php\">"; 
-						echo "<label>Seleccionar campaña:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
-							echo "<option value=\"-1\">Seleccione</option>";
+						echo "<label style=\"margin-right:55px;\">Seleccionar campaña:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
+							echo "<option  value=\"-1\">Seleccione</option>";
 							while($regT=mysqli_fetch_array($registrosCampana)){
 								$id_campana = $regT['id_campana'];
 								$nombre_campana = $regT['nombre'];							
@@ -190,7 +190,7 @@ session_start();
 							}
 						echo "</select>";
 					echo "</form>";
-					echo "<form method=\"POST\" action=\"admin-practica-principal.php\">"; 
+					echo "<form class=\"practice\" method=\"POST\" action=\"admin-practica-principal.php\">"; 
 						echo "<label>Seleccionar proveedores:</label> <select name=\"id_proveedor\" onchange=\"this.form.submit()\">";
 							echo "<option value=\"-1\">Seleccione</option>";
 							while($regE=mysqli_fetch_array($registrosExhibicion)){
