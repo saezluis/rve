@@ -233,7 +233,7 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
     border-spacing: 0;
     /*empty-cells: show;*/
     border: 1px solid #cbcbcb;
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%;
 }
 
@@ -252,7 +252,7 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
     margin: 0;
     overflow: visible; /*to make ths where the title is really long work*/
     /*padding: 0.5em 1em;  cell padding */
-    padding: 5px;
+    padding: 8px;
 }
 
 /* Consider removing this next declaration block, as it causes problems when
@@ -275,6 +275,18 @@ there's a rowspan on the first cell. Case added to the tests. issue#432 */
 	text-align: center;
 }
 
+.pure-table .equis{
+    background: #ed1c24;
+    padding: 2px 6px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: .3s all;
+}
+
+.pure-table .equis:hover{
+	background:  #89030D;
+}
 
 /*
 striping:
@@ -283,6 +295,7 @@ striping:
 */
 .pure-table td {
     background-color: transparent;
+    border-bottom: 1px solid #ccc;
 }
 .pure-table-odd td {
     background-color: #f2f2f2;
@@ -312,6 +325,98 @@ striping:
 .pure-table-horizontal tbody > tr:last-child > td {
     border-bottom-width: 0;
 }
+
+.paginator-odd{
+	width: 100%;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	text-align: center;
+	width: 100%;
+}
+
+.paginator-odd a{
+	/*background: red;*/
+    padding: 5px 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.paginator-odd span.active{
+	background: red;
+	color: #fff;
+    padding: 5px 10px;
+    font-size: 13px;
+    border-radius: 50px;
+}
+
+/*ADD uSER*/
+
+
+.my-hero-form{
+	width: 30%;
+	height: auto;
+	border:1px solid #ccc;
+	padding: 10px;
+}
+
+.my-hero-form label, input, select{
+	width: 100%;
+	margin-bottom:0.5em;
+}
+.my-hero-form label{
+	font-size: 0.9em;
+	text-align: left;
+	font-weight: bold;
+}
+.my-hero-form input[type="text"], input[type="password"]{
+	padding: 5px;
+}
+
+.my-hero-form input[type="submit"]{
+	border: none;
+	padding: 6px 8px;
+	color: #fff;
+	background: #ed1c24;
+	font-size: 0.8em;
+	text-align: center;
+	width: 100%;
+	margin-top: 0.9em;
+	display: block;
+	transition: all .3s;
+	border-radius: 4px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .3s all;
+}
+
+.my-hero-form input[type="submit"]:hover{
+	background: #89030D;
+}
+
+.my-hero-form a.cancel{
+	border: none;
+	padding: 6px 8px;
+	color: #fff;
+	background: #ed1c24;
+	font-size: 0.8em;
+	text-align: center;
+	width: 100%;
+	margin-top: 0.9em;
+	display: block;
+	transition: all .3s;
+	border-radius: 4px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .3s all;
+}
+
+.my-hero-form a.cancel:hover{
+	background:  #89030D;
+}
+
+
+
+
 
 
 

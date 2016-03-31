@@ -113,11 +113,11 @@ session_start();
 						$cargo = $regU['cargo'];
 					}
 					
-					echo "<form method=\"POST\" action=\"procesar-modificar-usuario.php\">";
+					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"procesar-modificar-usuario.php\">";
 					echo "<input type=\"text\" name=\"id_send\" value=\"$id_usuario\" hidden=hidden>";
-					echo "Usuario: <input type=\"text\" name=\"username\" value=\"$username\" >"."<br>";
-					echo "Contraseña: <input type=\"text\" name=\"password\" value=\"$password\" >"."<br>";
-					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" value=\"$nombre_real\" >"."<br>";
+					echo "Usuario: <input type=\"text\" name=\"username\" value=\"$username\" >";
+					echo "Contraseña: <input type=\"text\" name=\"password\" value=\"$password\" >";
+					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" value=\"$nombre_real\" >";
 					echo "Tienda: <select name=\"id_tienda\">";			
 						echo "<option value=\"-1\">Seleccione</option>";
 						while($regT=mysqli_fetch_array($registrosTienda)){
@@ -130,9 +130,9 @@ session_start();
 							}							
 						}
 					echo "</select>";
-					echo "<br>";
-					echo "Teléfono: <input type=\"text\" name=\"telefono\" value=\"$telefono\" >"."<br>";
-					echo "Anexo: <input type=\"text\" name=\"anexo\" value=\"$anexo\" >"."<br>";
+				
+					echo "Teléfono: <input type=\"text\" name=\"telefono\" value=\"$telefono\" >";
+					echo "Anexo: <input type=\"text\" name=\"anexo\" value=\"$anexo\" >";
 					echo "Cargo: <select name=\"cargo\">";								
 						echo "<option value=\"$cargo\">actual: $cargo</option>";
 						echo "<option value=\"Jefe de Visual\">Jefe de Visual</option>";
@@ -140,10 +140,9 @@ session_start();
 						echo "<option value=\"Flejista\">Flejista</option>";
 						echo "<option value=\"Gerente\">Gerente</option>";						
 					echo "</select>";
-					echo "<br>";
-					echo "<br>";
+
 					echo "<input type=\"submit\" value=\"Modificar\">";
-					echo "<a href=\"modificar-usuarios.php\">Volver</a>";
+					echo "<a class=\"cancel\" href=\"modificar-usuarios.php\">Volver</a>";
 					echo "</form>";
 					
 					

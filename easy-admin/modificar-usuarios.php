@@ -148,7 +148,7 @@ session_start();
 								
 								echo "<tr>";
 									//echo "<div id=\"orden--6S\"><a href=\"modificar-oc-detalle.php?oc_send=",urlencode($n_orden)," \">Editar</a></div>";
-									echo "<td><a href=\"modificar-usuario-detalle.php?id_send=",urlencode($id)," \">$id</a></td>";
+									echo "<td><a class=\"equis\" href=\"modificar-usuario-detalle.php?id_send=",urlencode($id)," \">$id</a></td>";
 									echo "<td>$username</td>";
 									echo "<td>$password</td>";
 									echo "<td>$nombre</td>";
@@ -165,13 +165,13 @@ session_start();
 					echo "</table>";
 					
 					echo "<div class=\"caja-100\">";
-						echo "<div class=\"paginator\">";					
+						echo "<div class=\"paginator-odd \">";					
 						//muestro los distintos índices de las páginas, si es que hay varias páginas 
 							if ($total_paginas > 1){ 
 							for ($i=1;$i<=$total_paginas;$i++){ 
 								if ($pagina == $i) 
 									//si muestro el índice de la página actual, no coloco enlace 
-									echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
+									echo "<span class=\"active\">" . $pagina . "</span>" . " "; 
 								else 
 									//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
 									echo "<a href='modificar-usuarios.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 

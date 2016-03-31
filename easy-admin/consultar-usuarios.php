@@ -160,13 +160,13 @@ session_start();
 					echo "</table>";
 					
 					echo "<div class=\"caja-100\">";
-						echo "<div class=\"paginator\">";					
+						echo "<div class=\"paginator-odd\">";					
 						//muestro los distintos índices de las páginas, si es que hay varias páginas 
 							if ($total_paginas > 1){ 
 							for ($i=1;$i<=$total_paginas;$i++){ 
 								if ($pagina == $i) 
 									//si muestro el índice de la página actual, no coloco enlace 
-									echo "<span class=\"pag--cube\">" . $pagina . "</span>" . " "; 
+									echo "<span class=\"active\">" . $pagina . "</span>" . " "; 
 								else 
 									//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa página 				
 									echo "<a href='consultar-usuarios.php?pagina=" . $i . "'>"  . $i .  "</a> " ; 

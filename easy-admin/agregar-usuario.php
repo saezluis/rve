@@ -97,11 +97,11 @@ session_start();
 					echo "<th>Cargo</th>";
 					echo "<!-- <th>Foto perfil</th> -->";
 					*/			
-					echo "<form method=\"POST\" action=\"procesar-agregar-usuario.php\">";
-					echo "Usuario: <input type=\"text\" name=\"username\" required>"."<br>";
-					echo "Contraseña: <input type=\"password\" name=\"password\" required>"."<br>";
-					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" required>"."<br>";
-					echo "Tienda: <select name=\"id_tienda\">";			
+					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"procesar-agregar-usuario.php\">";
+					echo "<label>Usuario:</label> <input type=\"text\" name=\"username\" required>";
+					echo "<label>Contraseña:</label> <input type=\"password\" name=\"password\" required>";
+					echo "<label>Nombre completo:</label> <input type=\"text\" name=\"nombre_real\" required>";
+					echo "<label>Tienda:</label> <select name=\"id_tienda\">";			
 						echo "<option value=\"-1\">Seleccione</option>";
 						while($regT=mysqli_fetch_array($registrosTienda)){
 							$id_sala = $regT['id_sala'];
@@ -109,20 +109,19 @@ session_start();
 							echo "<option value=\"$id_sala\">$nombre_sala</option>";
 						}
 					echo "</select>";
-					echo "<br>";
-					echo "Teléfono: <input type=\"text\" name=\"telefono\" required>"."<br>";
-					echo "Anexo: <input type=\"text\" name=\"anexo\" >"."<br>";
-					echo "Cargo: <select name=\"cargo\">";			
+				
+					echo "<label>Teléfono:</label> <input type=\"text\" name=\"telefono\" required>";
+					echo "<label>Anexo:</label> <input type=\"text\" name=\"anexo\" >";
+					echo "<label>Cargo:</label> <select name=\"cargo\">";			
 						echo "<option value=\"-1\">Seleccione</option>";
 						echo "<option value=\"Jefe de Visual\">Jefe de Visual</option>";
 						echo "<option value=\"Publicista\">Publicista</option>";
 						echo "<option value=\"Flejista\">Flejista</option>";
 						echo "<option value=\"Gerente\">Gerente</option>";						
 					echo "</select>";
-					echo "<br>";
-					echo "<br>";
+
 					echo "<input type=\"submit\" value=\"Aceptar\">";
-					echo "<a href=\"admin-usuarios.php\">Volver</a>";
+					echo "<a class=\"cancel\" href=\"admin-usuarios.php\">Cancelar</a>";
 					echo "</form>";
 				?>
 			</div>			
