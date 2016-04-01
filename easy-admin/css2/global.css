@@ -430,7 +430,7 @@ striping:
 	width: 16%;
 }
 
-#list-users-practicas {
+#list-users-practicas  {
 
 }
 
@@ -444,7 +444,7 @@ striping:
 	list-style: none;
 }
 
-#list-users-practicas ul li input[type="submit"]{ 
+#list-users-practicas ul li input[type="submit"], .bootext{ 
     border: none;
     padding: 6px 8px;
     color: #fff;

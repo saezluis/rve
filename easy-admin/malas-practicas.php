@@ -206,8 +206,8 @@ session_start();
 								echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
 								echo "<input type=\"text\" name=\"tipo_practica\" value=\"mala\" hidden=hidden>";
 								echo "<input type=\"text\" name=\"id_texto_send\" value=\"$id_texto\" hidden=hidden>";
-								echo "<textarea name=\"texto_bp\">$texto</textarea>";
-								echo "<input type=\"submit\" value=\"Agregar Texto\" onclick=\"alert('El texto fue agregado')\">";
+								echo "<textarea style=\" border: 1px solid #ed1c24; padding: 8px; width: 400px; height: 150px;\" name=\"texto_bp\">$texto</textarea>";
+								echo "<input class=\"bootext\" type=\"submit\" value=\"Agregar Texto\" onclick=\"alert('El texto fue agregado')\">";
 							echo "</form>";
 						
 						echo "<h5>Agregar foto</h5>";
