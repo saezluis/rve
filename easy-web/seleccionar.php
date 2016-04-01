@@ -76,7 +76,7 @@ session_start();
       </form>
       <hr>
       <p class="T-exibicion">Seleccionar exhibición proveedores</p>
-      <form id="exhibicion" method="post" action="como-implementar.php">
+      <form id="exhibicion" method="post" action="como-implementar-pro.php">
         <select class="select" name="exhibicion" onchange="this.form.submit()">
 			<?php
 			echo "<option value=\"\" style=\"color:#000;\">Seleccione</option>";

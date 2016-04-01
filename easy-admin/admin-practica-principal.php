@@ -195,28 +195,20 @@ session_start();
 						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: $nombreC";
 						echo "<br>";
 						echo "<br>";
-						echo "<p>Seleccione una opción:</p>";
-						echo "<form method=\"post\" action=\"buenas-practicas.php\">";
-							echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+						echo "<p>Seleccione una opción:</p>";						
 							echo "<ul>";
-								echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
-								echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
+								echo "<form method=\"post\" action=\"buenas-practicas.php\">";
+									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+									echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
+								echo "</form>";
+								echo "<form method=\"post\" action=\"malas-practicas.php\">";
+									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+									echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
+								echo "</form>";
 							echo "</ul>";
 						echo "</form>";
 					}
 					
-					if($id_proveedor!=''){
-					
-						$nombreP = '';
-						$registrosProveedor = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_proveedor' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						if($regP=mysqli_fetch_array($registrosProveedor)){
-							$nombreP = $regP['nombre'];
-						}
-						
-						echo "Usted se encuentra modificando las buenas/malas prácticas del proveedor: $nombreP";
-						echo "<br>";
-					}
 					
 				?>
 			</div>			

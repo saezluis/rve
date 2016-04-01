@@ -75,14 +75,15 @@ session_start();
 			$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 			$acentos = $conexion->query("SET NAMES 'utf8'");
 			
-			if($campana_store!=''){
-				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+			if($exhibicion_store!=''){
+			
+				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_proveedor = '$exhibicion_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 				
-				$registrosTexto = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$campana_store' AND tipo_practica = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				$registrosTexto = mysqli_query($conexion,"SELECT * FROM textos WHERE id_proveedor = '$exhibicion_store' AND tipo_practica = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 				//echo "entro por campaña";
-				$registrosFotosM = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				$registrosFotosM = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_proveedor = '$exhibicion_store' AND condicion = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 				
-				$registrosTextoM = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$campana_store' AND tipo_practica = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				$registrosTextoM = mysqli_query($conexion,"SELECT * FROM textos WHERE id_proveedor = '$exhibicion_store' AND tipo_practica = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 			}
 			
             echo "<li class=\"Tm\">";

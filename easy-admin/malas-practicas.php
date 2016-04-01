@@ -192,42 +192,42 @@ session_start();
 							$nombreC = $regC['nombre'];
 						}
 						
-						$registrosTexto = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$id_campana' AND tipo_practica = 'buena' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+						$registrosTexto = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$id_campana' AND tipo_practica = 'mala' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
 						if($regT=mysqli_fetch_array($registrosTexto)){	
 							$id_texto = $regT['id_texto'];
 							$texto = $regT['texto'];
 						}
 						
-						echo "<p> Usted se encuentra modificando las <b>buenas prácticas</b> de la campaña: $nombreC </p>";
+						echo "<p> Usted se encuentra modificando las <b>malas prácticas</b> de la campaña: $nombreC </p>";
 						
 						echo "<h5>Agregar texto</h5>";
-							echo "<form method=\"POST\" action=\"agregar-texto-bp.php\">";
+							echo "<form method=\"POST\" action=\"agregar-texto-mp.php\">";
 								echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-								echo "<input type=\"text\" name=\"tipo_practica\" value=\"buena\" hidden=hidden>";
+								echo "<input type=\"text\" name=\"tipo_practica\" value=\"mala\" hidden=hidden>";
 								echo "<input type=\"text\" name=\"id_texto_send\" value=\"$id_texto\" hidden=hidden>";
 								echo "<textarea name=\"texto_bp\">$texto</textarea>";
 								echo "<input type=\"submit\" value=\"Agregar Texto\" onclick=\"alert('El texto fue agregado')\">";
 							echo "</form>";
 						
 						echo "<h5>Agregar foto</h5>";
-						echo "<form  class=\"added\" method=\"POST\" action=\"agregar-foto.php\" enctype=\"multipart/form-data\">";
+						echo "<form  class=\"added\" method=\"POST\" action=\"agregar-foto-mala.php\" enctype=\"multipart/form-data\">";
 							echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-							echo "<input type=\"text\" name=\"condicion\" value=\"buena\" hidden=hidden>";
+							echo "<input type=\"text\" name=\"condicion\" value=\"mala\" hidden=hidden>";
 							echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
 							echo "<input type=\"submit\" value=\"Subir foto\">";
 						echo "</form>";
 						
 						echo "<h5>Fotos:</h5>";
 						
-						$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$id_campana' AND condicion = 'buena' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
+						$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$id_campana' AND condicion = 'mala' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
 						echo "<ul>";
 								while($regF=mysqli_fetch_array($registrosFotos)){
 									$nombreF = $regF['nombre'];
 									$id_foto = $regF['id_foto'];
 									//echo "<li><img src=\"images/$nombreF\" width=\"400px\" height=\"400px\" > <a href=\"\">Eliminar</a> </li>";
-									echo "<form method=\"POST\" action=\"eliminar-foto.php\">";			
+									echo "<form method=\"POST\" action=\"eliminar-foto-mala.php\">";			
 									
 										echo "<input type=\"text\" name=\"id_foto_send\" value=\"$id_foto\" hidden=hidden>";
 										echo "<input type=\"text\" name=\"id_campana_send\" value=\"$id_campana\" hidden=hidden>";

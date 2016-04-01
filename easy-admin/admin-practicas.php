@@ -190,7 +190,7 @@ session_start();
 							}
 						echo "</select>";
 					echo "</form>";
-					echo "<form class=\"practice\" method=\"POST\" action=\"admin-practica-principal.php\">"; 
+					echo "<form class=\"practice\" method=\"POST\" action=\"admin-practica-proveedores.php\">"; 
 						echo "<label>Seleccionar proveedores:</label> <select name=\"id_proveedor\" onchange=\"this.form.submit()\">";
 							echo "<option value=\"-1\">Seleccione</option>";
 							while($regE=mysqli_fetch_array($registrosExhibicion)){
