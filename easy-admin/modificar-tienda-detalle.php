@@ -27,67 +27,15 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	
-	
-	
+
 	<link rel="stylesheet" href="css/styles.css">
 	
 	<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 	
     <title>Administrador General del Sistema RVE</title>
-	
-	<!--
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/jquery.slides.js"></script>
-	-->
-	
+
 	<link rel="stylesheet" href="css2/global.css">
-	<style>
-		#container #list-image{
-			margin-top: 1em;
-		}
-
-		#container #list-image ul{
-			margin: 0;
-			padding:0;
-			list-style: none;
-		}
-
-		#container #list-image ul li{
-			float: left;
-			margin-right: 1em;
-			margin-bottom: 0.5em;
-			height: 150px;
-			overflow: hidden;
-		}
-
-
-		#list-users{
-			   margin-top: 38px;
-		}
-		#list-users a{
-		    padding: 6px 8px;
-		    color: #fff;
-		    background: #ed1c24;
-		    width: 200px;
-		    display: inline-block;
-		    text-align: center;
-		    margin-right: 1em;
-		    border-radius: 5px;
-		    -webkit-border-radius: 5px;
-		    -moz-border-radius: 5px;
-		    transition: .3s all;
-		}
-
-		#list-users a:hover{
-			background: #89030D;
-		}
-
-
-	</style>
 	
-
   </head>
   <body>
 	<?php
@@ -98,53 +46,10 @@ session_start();
 	
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
-		/*
-		@$comentario_sup = @$_REQUEST['comentario_activo'];
 		
-		if(@$comentario_sup==1){
-			//Esta llegando un comentario
-			$mensaje_sup = $_REQUEST['mensaje_supervisor'];			
-			$id_foto_coment = $_REQUEST['foto_activo'];
-			/*
-			echo "mensaje: ".$mensaje_sup;
-			echo "<br>";
-			echo "id member a quien va el coment: ".$id_member_para;
-			echo "<br>";
-			echo "id de la foto: ".$id_foto_coment;
-			*/
-			//mysqli_query($conexion, "UPDATE registro SET comentario = '$mensaje_sup' WHERE id_registro = $id_foto_coment") 
-			//or die("Problemas con el insert del registro");
-		//}
+		$id_sala = $_GET['id_send'];
 		
-		$cualquiera = 1;
-		if(@$_REQUEST['reset_cualquiera']!=''){
-			$cualquiera = 2;
-		}
-		
-		$reset_index = @$_REQUEST['reset_inicio'];
-		
-		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
-		
-		@$id_campana_get = @$_REQUEST['campana'];
-		//echo "id_campana: ".$id_campana_get;
-		//echo "<br>";
-		
-		/*
-		if(@$id_campana_get!=''){
-			$_SESSION['campana_set'] = @$id_campana_get;
-		}
-		*/
-		
-		@$id_tienda_get = @$_REQUEST['tienda'];
-		//echo "id_tienda: ".$id_tienda_get;
-		//echo "<br>";
-		
-		/*
-		if(@$id_tienda_get!=''){
-			$_SESSION['tienda_set'] = @$id_tienda_get;
-		}
-		*/
+		//echo "id usuario: ".$id_usuario;
 		
 	?>
     <div class="ed-container">
@@ -154,7 +59,7 @@ session_start();
           <div class="aqui-les-va">
             <h1>Administrador</h1>
 			<div class="init_inicio">
-					<form method="post" action="admin.php">
+					<form method="post" action="admin-tiendas.php">
 						<input type="submit" value="Volver">
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
@@ -177,12 +82,42 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users">
+			<div id="example">
 				<?php			
-					echo "<a href=\"consultar-usuarios.php\">Consultar usuarios</a>";
-					echo "<a href=\"agregar-usuario.php\">Agregar usuarios</a>";
-					echo "<a href=\"modificar-usuarios.php\">Modificar usuarios</a>";
-					echo "<a href=\"eliminar-usuarios.php\">Eliminar usuarios</a>";
+					echo "<br>";					
+					echo "<h4>Modificar usuario</h4>";
+					
+					//$registrosUsuario = mysqli_query($conexion," SELECT * from members WHERE id = '$id_usuario'") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
+					
+					$registrosTienda = mysqli_query($conexion," SELECT * from sala WHERE id_sala = $id_sala ") or die("Problemas en el select de tienda: ".mysqli_error($conexion));
+					
+					/*
+					echo "<th>Usuario</th>";
+					echo "<th>Password</th>";
+					echo "<th>Nombre</th>";
+					echo "<!-- <th>Tipo de usuario</th> -->";
+					echo "<th>Tienda</th>";
+					echo "<th>Teléfono</th>";
+					echo "<th>Anexo</th>";
+					echo "<th>Cargo</th>";
+					echo "<!-- <th>Foto perfil</th> -->";
+					*/	
+					
+					if($regU=mysqli_fetch_array($registrosTienda)){
+						
+						$nombre_sala = $regU['nombre_sala'];						
+					}
+					
+					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"procesar-modificar-tienda.php\">";
+					echo "<input type=\"text\" name=\"id_send\" value=\"$id_sala\" hidden=hidden>";
+					echo "Nombre sala: <input type=\"text\" name=\"nombre_sala\" value=\"$nombre_sala\" >";
+					
+
+					echo "<input type=\"submit\" value=\"Modificar\">";
+					echo "<a class=\"cancel\" href=\"modificar-tiendas.php\">Volver</a>";
+					echo "</form>";
+					
+					
 				?>
 			</div>			
 		</div>		

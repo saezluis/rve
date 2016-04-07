@@ -151,76 +151,121 @@ session_start();
       <div class="ed-item base-20">
         <aside>
           <div class="logo"><img src="img/logo.png" alt=""></div>
-          <div class="aqui-les-va">
-            <h1>Administrador</h1>
-			<div class="init_inicio">
-					<form method="post" action="admin.php">
-						<input type="submit" value="Inicio">
-						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
-					</form>
-			</div>			
-            <form id="choose" method="post" action="admin.php">             
-              <div class="tienda">
-                <h2>Historial de fotos:</h2>				
-				<h2 style="margin-top: 14px;">Por tienda</h2>
-                <select class="select" name="tienda" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosSala)){
-							$nombre_sala = $reg['nombre_sala'];
-							$id_sala = $reg['id_sala'];
-							if(@$id_tienda_get==$id_sala){
-								echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
-							}else{
-								echo "<option value=\"$id_sala\">$nombre_sala</option>";
+			<div class="aqui-les-va">
+				<h1>Administrador</h1>
+				<div class="init_inicio">
+						<form method="post" action="admin.php">
+							<input type="submit" value="Inicio">
+							<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
+						</form>
+				</div>			
+				<form id="choose" method="post" action="admin.php">             
+				  <div class="tienda">
+					<h2>Historial de fotos:</h2>				
+					<h2 style="margin-top: 14px;">Por tienda</h2>
+					<select class="select" name="tienda" onchange="this.form.submit()">
+						<?php
+							echo "<option value=\"0\">Seleccione</option>";
+							while($reg=mysqli_fetch_array($registrosSala)){
+								$nombre_sala = $reg['nombre_sala'];
+								$id_sala = $reg['id_sala'];
+								if(@$id_tienda_get==$id_sala){
+									echo "<option value=\"$id_sala\" selected=selected>$nombre_sala</option>";
+								}else{
+									echo "<option value=\"$id_sala\">$nombre_sala</option>";
+								}
 							}
-						}
-					?>
-				</select>
-              </div>
-			  <div class="campana">
-                <h2>Por campaña</h2>                
-				<select class="select" name="campana" onchange="this.form.submit()">
-					<?php
-						echo "<option value=\"0\">Seleccione</option>";
-						while($reg=mysqli_fetch_array($registrosCampana)){
-							$nombre = $reg['nombre'];
-							$id_campana = $reg['id_campana'];
-							if(@$id_campana_get==$id_campana){
-								echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
-							}else{
-								echo "<option value=\"$id_campana\">$nombre</option>";
-							}							
-						}
-					?>
-				</select>				
-              </div>
-			  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
-            </form>
-			<br>
-			<div>
-					<form class="btns_selectores" method="post" action="admin-usuarios.php">
-						<input type="submit" value="Usuarios">
+						?>
+					</select>
+				  </div>
+				  <div class="campana">
+					<h2>Por campaña</h2>                
+					<select class="select" name="campana" onchange="this.form.submit()">
+						<?php
+							echo "<option value=\"0\">Seleccione</option>";
+							while($reg=mysqli_fetch_array($registrosCampana)){
+								$nombre = $reg['nombre'];
+								$id_campana = $reg['id_campana'];
+								if(@$id_campana_get==$id_campana){
+									echo "<option value=\"$id_campana\" selected=selected>$nombre</option>";
+								}else{
+									echo "<option value=\"$id_campana\">$nombre</option>";
+								}							
+							}
+						?>
+					</select>				
+				  </div>
+				  <input type="text" value="2" name="reset_cualquiera" hidden=hidden>
+				</form>
+				<br>
+				<div>
+						<form class="btns_selectores" method="post" action="admin-usuarios.php">
+							<input type="submit" value="Usuarios">
+							<!--
+							<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+							-->
+						</form>
+				</div>
+				<br>
+				<div class="cualquiera">
+						<form class="btns_selectores" method="post" action="admin-practicas.php">
+							<input type="submit" value="Buenas / Malas prácticas">
+							<!--
+							<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+							-->
+						</form>
+				</div>			
+				<br>
+				<div class="cualquiera">
+						<form class="btns_selectores" method="post" action="admin-tiendas.php">
+							<input type="submit" value="Tiendas">
+							<!--
+							<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
+							-->
+						</form>
+				</div>			
+				<br>
+				<?php
+					if($nombre_user=='adminvi'){
+						//echo "<br>";
+						echo "<div class=\"cualquiera\">";
+								echo "<form class=\"btns_selectores\" method=\"post\" action=\"admin-campanas.php\">";
+									echo "<input type=\"submit\" value=\"Campañas\">";
+									//<!--
+									echo "<input type=\"text\" value=\"resetear\" name=\"reset_inicio\" hidden=hidden>";
+									//-->
+								echo "</form>";					
+						echo "</div>";
+						echo "<br>";
+					}
+					if($nombre_user=='adminpro'){
+						//echo "<br>";					
+						echo "<div class=\"cualquiera\">";
+								echo "<form class=\"btns_selectores\" method=\"post\" action=\"admin-proveedores.php\">";
+									echo "<input type=\"submit\" value=\"Proveedores\">";
+									//<!--
+									echo "<input type=\"text\" value=\"resetear\" name=\"reset_inicio\" hidden=hidden>";
+									//-->
+								echo "</form>";
+						echo "</div>";
+						echo "<br>";
+					}
+				?>
+				<div class="cualquiera">
+					<form class="btns_selectores" method="post" action="admin-perfil.php">
+						<input type="submit" value="Editar perfil">
 						<!--
 						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
 						-->
 					</form>
+				</div>			
+				<br>
 			</div>
-			<br>
-			<div class="cualquiera">
-					<form class="btns_selectores" method="post" action="admin-practicas.php">
-						<input type="submit" value="Buenas / Malas prácticas">
-						<!--
-						<input type="text" value="resetear" name="reset_inicio" hidden=hidden>
-						-->
-					</form>
-			</div>
-          </div>
         </aside>
       </div>
       <div class="ed-item base-80">
         <header class="int">
-          <h1>Administrador General (Version Beta)</h1>
+          <h1>Administrador General</h1>
           <div class="items-header">
             <div class="custion">
 			<?php

@@ -21,7 +21,7 @@ session_start();
 	}
 ?>
 <!DOCTYPE html>
-<html ng-app lang="es">
+<html lang="es">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,16 +38,6 @@ session_start();
 	
 	<link rel="stylesheet" href="css2/global.css">
 	
-	<style>
-            #dv1{ border:1px solid #DBDCE9; height: auto;  margin-left:auto; margin-right:auto;  width:100%; border-radius:7px;   padding: 25px; }
-            /*div {width: 100%;}*/
-            
-            ul {list-style-type: none;  margin: 0;padding: 0;            }
-            li {font: 1px Helvetica, Verdana, sans-serif; padding:1em 0; font-size:0.9em;               border-bottom: 1px solid #ccc;            }
-            li:last-child {border: none; }
-            li a { text-decoration: none; color: #000; display: block;        }
-			
-    </style>
 	
 	
 
@@ -201,8 +191,6 @@ session_start();
 					<div class="slides_container">						
 						<?php
 							
-							$x = 0;
-							$y = 1;
 							$c = 0;
 							if($reset_index=='resetear' || $cualquiera==1){
 								echo "<div class=\"slide\">";								
@@ -250,7 +238,6 @@ session_start();
 									$id_mem = $reg2['id'];
 									$nombre = $reg2['nombre'];
 									$celular = $reg2['celular'];
-									$email = $reg2['username'];
 								}
 								
 								$registrosSala = mysqli_query($conexion,"SELECT * FROM sala WHERE id_sala = '$id_sala'") or die("Problemas en el select de sala: ".mysqli_error($conexion));
@@ -259,11 +246,6 @@ session_start();
 									$nombre_sala = $reg3['nombre_sala'];
 								}
 								
-								$registrosProveedores = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_exhibicion_get'") or die("Problemas en el select campana: ".mysqli_error($conexion));
-								
-								if($rowP = mysqli_fetch_array($registrosProveedores)){
-									$nombre_P = $rowP['nombre'];
-								}
 								echo "<div class=\"slide\">";
 								//echo "<img src=\"../easy-web/images/$nombre_foto\" title=\"Imágen tomada por: $nombre\">";
 									echo "<img src=\"../easy-web/images/$nombre_foto\">";
@@ -275,69 +257,19 @@ session_start();
 								$c = $c + 1;
 								$m = 'message'.$c;
 								
-								/*
-								if($x%2 == 0){
-									//$class = 'even';
-									$nn = 'n'.$x;
-									echo $nn;
-								}
-								*/
-								$nn = 'n'.$x;
-								//echo $nn;
-								$x = $x + 2;
-								//echo "x: ".$x;
-								//echo "<br>";
-								//$class = 'odd';								
-								
-								$nm = 'n'.$y;
-								//echo $nm;
-								$y = $y + 2;
-								//echo "y: ".$y;
-								//echo "<br>";
-								
-								//con esto lleno el array con los nombres de las fotos
-								
-								$result = mysqli_query($conexion,"SELECT * FROM comentarios WHERE id_foto = '$id_foto' ORDER BY id_comentario DESC") or die("Problemas en el select comentario: ".mysqli_error($conexion));
-								$results = array();
-								while($row = mysqli_fetch_assoc($result))
-								{
-									$comentariofoto = $row['comentario'];
-									$results[] = $comentariofoto;
-								}
-								
-								$cantidad_comentarios = mysqli_num_rows($result);
-								//echo "comentario 1: ".$results[2];
-								//echo "cantidad de comentarios: ".$cantidad_comentarios;
-								echo "<div id=\"dv1\" class=\"content-caja-mensajes\">";								
-									echo "<form ng-controller=\"FrmController\" id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
-										echo "<h4>Comentario:</h4>";										
-										echo "<textarea ng-model=\"txtcomment\" id=\"$nn\" onkeyup=\"sync()\"></textarea>";
-
-										echo "<textarea name=\"mensaje_supervisor\" id=\"$nm\" hidden=hidden></textarea>";
-										echo "<input ng-click=\"btn_add();\" type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
+								echo "<div class=\"content-caja-mensajes\">";
+									echo "<form id=\"$m\" class=\"message\">"; //method=\"post\" action=\"visual.php\"
+										echo "<h3>Comentarios</h3>";
+										echo "<textarea name=\"mensaje_supervisor\">$comentario</textarea>";										
+										echo "<input type=\"submit\" value=\"Enviar\" class=\"enviar\" >";
 										echo "<input type=\"text\" value=\"1\" name=\"comentario_activo\" hidden=hidden>";
 										//echo "<input type=\"text\" value=\"$id_mem\" name=\"member_activo\" hidden=hidden>";
 										echo "<input type=\"text\" value=\"$id_foto\" name=\"foto_activo\" hidden=hidden>";
-										echo "<input type=\"text\" value=\"$email\" name=\"email_activo\" hidden=hidden>";
-										echo "<input type=\"text\" value=\"$nombre_C\" name=\"campana_activa\" hidden=hidden>";
 										//$id_foto
-										echo "<h4>Comentarios anteriores:</h4>";
-											echo "<ul>";												
-												echo "<li ng-repeat=\"comnt in comment\"> {{ comnt }} </li>"; //<a  style=\"float: right;\" href=\"\" ng-click=\"remItem($index)\">x</a>												
-												//con esto recorro los comentarios anteriores	
-												for ($xx = 0; $xx < $cantidad_comentarios; $xx++) {
-													//echo "The number is: $x <br>";
-													echo "<li>".$results[$xx]."</li>";
-												} 												
-											echo "</ul>";
 									echo "</form>";
-									//echo "<p align=\"left\">Comentarios anteriores: </p>";
-									//echo "<p align=\"left\">$comentario</p>";
-									echo "<br>";
 								echo "</div>";
 								
-								echo "</div>";
-															
+								echo "</div>";								
 							}
 							
 							$rows = mysqli_num_rows($registroFotos);
@@ -463,30 +395,11 @@ session_start();
 		});
 	</script>
 	
-	<script src="js/comentarios2.js"></script>
+	<script src="js/comentarios.js"></script>
 	<!--
 	<script type="text/javascript">
 		
 	</script>
 	-->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	
-	<script type="text/javascript">
-            function FrmController($scope) {
-                $scope.comment = [];
-                $scope.btn_add = function() {
-                    if($scope.txtcomment !=''){
-                    $scope.comment.push($scope.txtcomment);
-                    $scope.txtcomment = "";
-                    }
-                }
-
-                $scope.remItem = function($index) {
-                    $scope.comment.splice($index, 1);
-                }
-            }
-    </script>
-	
-	<script src="js/sync2.js"></script>
   </body>
 </html>

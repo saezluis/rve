@@ -69,7 +69,7 @@ session_start();
       </div>
       <div class="ed-item base-80">
         <header class="int">
-          <h1>Administrador General (Version Alpha)</h1>
+          <h1>Administrador General</h1>
           <div class="items-header">
             <div class="custion">
 			<?php

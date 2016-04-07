@@ -56,39 +56,16 @@ session_start();
 			<?php
 				echo "<p>Hola <span>$nombre_user</span></p>";
 			?>
-            <div class="getOut"><a href="logout.php">Cerrar Sesión</a></div>
-			<div class="getOut"><a href="mi-perfil.php">Mi perfil</a></div>
+            <div class="getOut"><a href="seleccionar.php">Volver</a></div>
           </div>
       </div>
     </header>
     <section class="content">
-      <p>Seleccionar campaña Easy</p>
-      <form id="campana" method="post" action="como-implementar.php">
-        <select class="select" name="campana" onchange="this.form.submit()">
-			<?php
-			echo "<option value=\"\" style=\"color:#000;\">Seleccione</option>";
-				while($reg=mysqli_fetch_array($registrosCampana)){
-					$nombre = $reg['nombre'];
-					$id_campana = $reg['id_campana'];
-					echo "<option value=\"$id_campana\" style=\"color:#000;\">$nombre</option>";
-				}
-			?>
-        </select>
-      </form>
-      <hr>
-      <p class="T-exibicion">Seleccionar exhibición proveedores</p>
-      <form id="exhibicion" method="post" action="como-implementar-pro.php">
-        <select class="select" name="exhibicion" onchange="this.form.submit()">
-			<?php
-			echo "<option value=\"\" style=\"color:#000;\">Seleccione</option>";
-				while($reg=mysqli_fetch_array($registrosExhibicion)){
-					$nombre = $reg['nombre'];
-					$id_exhibicion = $reg['id_exhibicion'];
-					echo "<option value=\"$id_exhibicion\" style=\"color:#000;\">$nombre</option>";
-				}
-			?>
-        </select>
-	  </form>
+		<?php
+			echo "<p>Mi perfil</p>";
+			echo "<a href=\"cambiar-pass.php\">Cambiar contraseña</a>";
+			echo "<a href=\"cambiar-datos.php\">Modificar datos cuenta</a>";
+        ?> 
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

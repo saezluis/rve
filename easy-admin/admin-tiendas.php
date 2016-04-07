@@ -124,7 +124,7 @@ session_start();
 		$reset_index = @$_REQUEST['reset_inicio'];
 		
 		$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-		$registrosExhibicion = mysqli_query($conexion,"SELECT * FROM exhibicion") or die("Problemas en el select de exhibicion: ".mysqli_error($conexion));
+		$registrosSala = mysqli_query($conexion,"SELECT * FROM sala") or die("Problemas en el select de sala: ".mysqli_error($conexion));
 		
 		@$id_campana_get = @$_REQUEST['campana'];
 		//echo "id_campana: ".$id_campana_get;
@@ -154,7 +154,7 @@ session_start();
           <div class="aqui-les-va">
             <h1>Administrador</h1>
 			<div class="init_inicio">
-					<form method="post" action="admin-practicas.php">
+					<form method="post" action="admin.php">
 						<input type="submit" value="Volver">
 						<input class="inicio_reset" type="text" value="resetear" name="reset_inicio" hidden=hidden>
 					</form>
@@ -177,39 +177,12 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users-practicas">
-				<?php
-					
-					$id_campana = @$_REQUEST['id_campana'];
-					$id_proveedor = @$_REQUEST['id_proveedor'];
-					
-					if($id_campana!=''){
-						
-						$nombreC = '';
-						$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
-						
-						if($regC=mysqli_fetch_array($registrosCampana)){
-							$nombreC = $regC['nombre'];
-						}
-						
-						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: $nombreC";
-						echo "<br>";
-						echo "<br>";
-						echo "<p>Seleccione una opción:</p>";						
-							echo "<ul>";
-								echo "<form method=\"post\" action=\"buenas-practicas.php\">";
-									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-									echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
-								echo "</form>";
-								echo "<form method=\"post\" action=\"malas-practicas.php\">";
-									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-									echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
-								echo "</form>";
-							echo "</ul>";
-						echo "</form>";
-					}
-					
-					
+			<div id="list-users">
+				<?php			
+					echo "<a href=\"consultar-tiendas.php\">Consultar Tiendas</a>";
+					echo "<a href=\"agregar-tiendas.php\">Agregar Tiendas</a>";
+					echo "<a href=\"modificar-tiendas.php\">Modificar Tiendas</a>";
+					echo "<a href=\"eliminar-tiendas.php\">Eliminar Tiendas</a>";
 				?>
 			</div>			
 		</div>		

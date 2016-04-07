@@ -30,7 +30,7 @@
 		if($row=(mysqli_fetch_array($result))){
 			//$id = $row['id'];
 			$area = $row['area'];
-			$nombre = $row['nombre'];
+			$nombre = $row['username'];
 			$foto_perfil = $row['foto_perfil'];
 			//$id_sala = $row['id_sala'];			
 		}
