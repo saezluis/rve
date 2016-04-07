@@ -61,11 +61,13 @@ session_start();
       </div>
     </header>
     <section class="content">
-		<?php
-			echo "<p>Mi perfil</p>";
-			echo "<a href=\"cambiar-pass.php\">Cambiar contraseña</a>";
-			echo "<a href=\"cambiar-datos.php\">Modificar datos cuenta</a>";
-        ?> 
+    	<h1 style="color:#fff; ">Mi Perfil</h1>	
+    	<div class="menu-perfils">
+			<ul>
+				<li><a href="cambiar-pass.php">Cambiar contraseña</a></li>
+				<li><a href="cambiar-datos.php">Modificar datos cuenta</a></li>
+			</ul>
+		</div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

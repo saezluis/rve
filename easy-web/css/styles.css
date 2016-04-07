@@ -3003,6 +3003,78 @@ h5 {
 h6 {
   font-size: 0.8em; }
 
+section.content h1 {
+  color: #fff;
+  text-align: center;
+  font-size: 1.3em; }
+section.content .menu-perfils {
+  width: 55%;
+  text-align: center;
+  margin: 0 auto; }
+  @media screen and (min-width: 768px) {
+    section.content .menu-perfils {
+      width: 35%; } }
+  @media screen and (min-width: 1024px) {
+    section.content .menu-perfils {
+      width: 22%; } }
+  section.content .menu-perfils ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+    section.content .menu-perfils ul li {
+      margin-bottom: 1em; }
+      section.content .menu-perfils ul li a {
+        padding: 4px 8px;
+        color: #fff;
+        text-align: center;
+        border-radius: 60px;
+        display: block;
+        border: 1px solid #fff;
+        font-size: 1em; }
+        @media screen and (min-width: 768px) {
+          section.content .menu-perfils ul li a {
+            font-size: 1em; } }
+section.content form.cambia_contra {
+  width: 100%;
+  height: auto; }
+  section.content form.cambia_contra label {
+    width: 100%;
+    color: #fff; }
+  section.content form.cambia_contra input[type="password"] {
+    width: 65%;
+    padding: 8px;
+    margin: 0.8em auto;
+    display: block; }
+    @media screen and (min-width: 768px) {
+      section.content form.cambia_contra input[type="password"] {
+        width: 35%; } }
+    @media screen and (min-width: 1024px) {
+      section.content form.cambia_contra input[type="password"] {
+        width: 22%; } }
+    @media screen and (min-width: 1400px) {
+      section.content form.cambia_contra input[type="password"] {
+        width: 18%; } }
+  section.content form.cambia_contra input[type="submit"] {
+    padding: 4px 8px;
+    color: #fff;
+    text-align: center;
+    border-radius: 60px;
+    display: block;
+    border: 1px solid #fff;
+    font-size: 1.2em;
+    background: transparent;
+    margin: 1.2em auto;
+    width: 60%; }
+    @media screen and (min-width: 768px) {
+      section.content form.cambia_contra input[type="submit"] {
+        width: 35%; } }
+    @media screen and (min-width: 1024px) {
+      section.content form.cambia_contra input[type="submit"] {
+        width: 22%; } }
+    @media screen and (min-width: 1400px) {
+      section.content form.cambia_contra input[type="submit"] {
+        width: 18%; } }
+
 /* Regular */
 @font-face {
   font-family: 'hero_lightlight';
@@ -3040,7 +3112,8 @@ header {
         header .profile p {
           font-size: 0.9em; } }
     header .profile .getOut {
-      width: 100%; }
+      width: 100%;
+      margin-bottom: 0.9em; }
       header .profile .getOut a {
         padding: 4px 8px;
         color: #fff;

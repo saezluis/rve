@@ -61,21 +61,16 @@ session_start();
       </div>
     </header>
     <section class="content">
-		<?php
-			echo "<p>Cambiar constraseña</p>";
-			echo "<br>";
-			echo "<form>";
-				echo "Contraseña anterior: <input type=\"text\" name=\"pass_anterior\">";
-				echo "<br>";
-				echo "Contraseña nueva: <input type=\"text\" name=\"password\">";
-				echo "<br>";
-				echo "Repita contraseña nueva: <input type=\"text\" name=\"repassword\">";
-				echo "<br>";
-			echo "</form>";
-			//echo "<a href=\"cambiar-pass.php\">Cambiar contraseña</a>";
-			echo "<input type=\"submit\" value=\"Cambiar\">";
-			echo "<a href=\"mi-perfil.php\">Volver</a>";
-        ?> 
+		<h1>Cambiar contraseña</h1>
+		<form action="" class="cambia_contra">
+			<label for="">Contraseña anterior</label>
+			<input type="password">
+			<label for="">Contraseña nueva</label>
+			<input type="password">
+			<label for="">Repita contraseña</label>
+			<input type="password">
+			<input type="submit", value="Cambiar">
+		</form>	
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>
