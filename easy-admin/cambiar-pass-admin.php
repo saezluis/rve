@@ -206,11 +206,11 @@ session_start();
         </header>
 		
 		<div id="container">
-			<div id="list-users">
+			<div id="example">
 				<?php			
 					echo "<h4>Cambiar contraseña.</h4>";
 					echo "<br>";
-					echo "<form method=\"POST\" action=\"cambiar-pass-procesar.php\" >";
+					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"cambiar-pass-procesar.php\" >";
 						echo "Contraseña anterior: <input type=\"text\" name=\"pass_anterior\" required>";
 						echo "<br>";
 						echo "Contraseña nueva: <input class=\"form-control\" type=\"password\" name=\"password\" required>";
@@ -218,7 +218,7 @@ session_start();
 						echo "Repetir nueva contraseña: <input id=\"repass\" class=\"form-control\" type=\"password\" name=\"repassword\" required>";
 						echo "<br>";
 						echo "<input type=\"submit\" value=\"Cambiar\">";
-						echo "<a href=\"admin-perfil.php\">Cancelar</a>";
+						echo "<a class=\"cancel\" href=\"admin-perfil.php\">Cancelar</a>";
 					echo "</form>";
 /*					
 <div class="form-group" id="password">
