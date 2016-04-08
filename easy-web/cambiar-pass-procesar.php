@@ -1,5 +1,6 @@
 <?php
-session_start();
+	header('Content-Type: text/html; charset=UTF-8');
+	session_start();
 
 	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
@@ -8,7 +9,7 @@ session_start();
 	
 		header('Content-Type: text/html; charset=UTF-8'); 	
 		echo "<br/>" . "Esta pagina es solo para usuarios registrados." . "<br/>";
-		echo "<br/>" . "<a href='index.html'>Hacer Login</a>";
+		echo "<br/>" . "<a href='login.html'>Hacer Login</a>";
 		exit;
 	}
 	
@@ -16,7 +17,7 @@ session_start();
 
 	if($now > $_SESSION['expire']){
 		session_destroy();
-		echo "<br/><br />" . "Su sesion a terminado, <a href='index.html'> Necesita Hacer Login</a>";
+		echo "<br/><br />" . "Su sesion a terminado, <a href='login.html'> Necesita Hacer Login</a>";
 		exit;
 	}
 ?>
@@ -92,17 +93,62 @@ session_start();
           </div>
       </div>
     </header>
-    <section class="content">
-		<h1>Cambiar contraseña</h1>
-		<form class="cambia_contra" method="POST" action="cambiar-pass-procesar.php">
-			<label for="">Contraseña anterior</label>
-			<input type="password" name="pass_anterior" required>
-			<label for="">Contraseña nueva</label>
-			<input type="password" class="form-control" name="password" required>
-			<label for="">Repita contraseña</label>
-			<input type="password" id="repass" class="form-control" name="repassword" required>
-			<input type="submit" value="Cambiar">
-		</form>	
+    <section class="content">		
+		<?php
+
+		//$nombre_user = $_SESSION['nombre_user'];
+		//$foto_perfil = $_SESSION['foto_perfil'];
+		$username_member = $_SESSION['username'];
+
+		//echo "nombre user: ".$nombre_user;
+		
+		$pass_anterior = $_REQUEST['pass_anterior'];
+		$password = $_REQUEST['password'];
+		$repassword = $_REQUEST['repassword'];
+		
+		//echo "password: ".$repassword;
+
+		include_once 'config.php';
+		
+		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
+		$acentos = $conexion->query("SET NAMES 'utf8'");
+		
+		$registrosMembers = mysqli_query($conexion, "SELECT * FROM members WHERE username = '$username_member' ") or die("Problemas con la conexión de members");
+
+		if($reg=mysqli_fetch_array($registrosMembers)){
+			$pass_old = $reg['password'];
+			$id_member = $reg['id'];
+		}
+		
+		//echo "id supervisor: ".$id_supervisor;
+		
+		if($pass_anterior==$pass_old){
+			//echo "pass viejo correcto";		
+			mysqli_query($conexion, "UPDATE members SET password = '$repassword' WHERE id = $id_member ") or die("Problemas en el update".mysqli_error($conexion));			
+			echo "<h1>Clave cambiada con éxito</h1>";
+			echo "<div class=\"menu-perfils\">";
+				echo "<br>";
+				echo "<ul>";
+					echo "<li><a href=\"mi-perfil.php\">Volver</a></li>";
+				echo "</ul>";
+			echo "</div>";
+		}else{
+			echo "<h1>Las contraseña antigua es incorrecta</h1>";
+			echo "<div class=\"menu-perfils\">";
+				echo "<br>";
+				echo "<ul>";
+					echo "<li><a href=\"cambiar-pass.php\">Volver</a></li>";
+				echo "</ul>";
+			echo "</div>";
+		}
+		
+		//validar el pass anteior
+
+	//luego hacer el update 
+	
+	?>
+		
+		
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="js/classie.js"></script>

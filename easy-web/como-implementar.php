@@ -33,6 +33,12 @@ session_start();
   </head>
   <body>
 	<?php
+	
+		include_once 'config.php';
+	
+		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
+		$acentos = $conexion->query("SET NAMES 'utf8'");
+			
 		$nombre_user = $_SESSION['nombre_user'];
 		
 		$campana_store = @$_REQUEST['campana'];		
@@ -42,12 +48,40 @@ session_start();
 		//echo "session c_store lleva: ".$_SESSION['c_store'];
 		//echo "<br>";
 		
+		$registrosCampana = mysqli_query($conexion, " SELECT * FROM campana WHERE id_campana = '$campana_store' ") or die("Problemas con la conexión de campana");
+		
+		//$num_regs_campana = mysqli_num_rows($registrosCampana);
+		
+		if($regCamp=mysqli_fetch_array($registrosCampana)){
+			$practica_camp = $regCamp['practica'];
+		}
+		
+		if($practica_camp=='no'){
+			//aqui llamo el redirect
+			//$desdeI = 'si';
+			header("Location: take.php?imp="."si");
+			//$ney = '';
+		}
+		
 		$exhibicion_store = @$_REQUEST['exhibicion'];
 		if($exhibicion_store!=''){
 			$_SESSION['e_store'] = $exhibicion_store;
 		}
 		//echo "session store lleva: ".$_SESSION['e_store'];
 		//echo "<br>";
+		
+		$registrosExhibicion = mysqli_query($conexion, " SELECT * FROM exhibicion WHERE id_exhibicion = '$exhibicion_store' ") or die("Problemas con la conexión de campana");
+		
+		if($regEx=mysqli_fetch_array($registrosExhibicion)){
+			$practica_ex = $regEx['practica'];
+		}
+		
+		if($practica_ex=='no'){
+			//aqui llamo el redirect
+			//$desdeI = 'si';
+			header("Location: take.php?imp="."si");
+			//$ney = '';
+		}
 		
 	?>
     <header>
@@ -70,10 +104,7 @@ session_start();
           <ul class="tabs">
 			<?php
 			
-			include_once 'config.php';
-	
-			$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
-			$acentos = $conexion->query("SET NAMES 'utf8'");
+			
 			
 			if($campana_store!=''){
 				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));

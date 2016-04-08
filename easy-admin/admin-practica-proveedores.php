@@ -185,14 +185,25 @@ session_start();
 					
 					if($id_proveedor!=''){
 						
+						$mostrar_bmp = @$_REQUEST['mostrar_bmp'];
+					
+						if($mostrar_bmp!=''){
+							mysqli_query($conexion, "UPDATE exhibicion SET practica = '$mostrar_bmp' WHERE id_exhibicion = $id_proveedor ") or die("Problemas en el update de campana".mysqli_error($conexion));
+							echo "<script>";
+								echo "alert('Información: mostrar en aplicación web actualizado');";
+							echo "</script>";
+							
+						}
+						
 						$nombreP = '';
 						$registrosProveedor = mysqli_query($conexion,"SELECT * FROM exhibicion WHERE id_exhibicion = '$id_proveedor' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
 						if($regP=mysqli_fetch_array($registrosProveedor)){
 							$nombreP = $regP['nombre'];
+							$practica_mostrar = $regP['practica'];
 						}
 						
-						echo "Usted se encuentra modificando las buenas/malas prácticas del proveedor: $nombreP";
+						echo "Usted se encuentra modificando las buenas/malas prácticas del proveedor: <b>$nombreP</b>";
 						echo "<br>";
 						echo "<br>";
 						echo "<p>Seleccione una opción:</p>";						
@@ -200,13 +211,30 @@ session_start();
 								echo "<form method=\"post\" action=\"buenas-practicas-pro.php\">";
 									echo "<input type=\"text\" name=\"id_proveedor_send\" value=\"$id_proveedor\" hidden=hidden>";
 									echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
-								echo "</form>";
+									echo "</form>";
 								echo "<form method=\"post\" action=\"malas-practicas-pro.php\">";
 									echo "<input type=\"text\" name=\"id_proveedor_send\" value=\"$id_proveedor\" hidden=hidden>";
 									echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
 								echo "</form>";
 							echo "</ul>";
 						echo "</form>";
+						echo "<h6>Nota: para mostrar buenas/malas prácticas en la app web es necesario agregar 1 foto/comentario por cada buena/mala práctica.</h6>";
+						echo "<p>Mostrar en aplicación web:</p>";
+							echo "<form method=\"POST\" action=\"admin-practica-proveedores.php\" >";
+								echo "<select name=\"mostrar_bmp\" onchange=\"this.form.submit()\" >";
+									echo "<option value=\"-1\" >-- Seleccione --</option>";
+									if($practica_mostrar=='si'){
+										echo "<option value=\"si\" selected=selected >Sí</option>";
+										echo "<option value=\"no\" >No</option>";
+									}
+									if($practica_mostrar=='no'){
+										echo "<option value=\"si\" >Sí</option>";
+										echo "<option value=\"no\" selected=selected>No</option>";
+									}
+								echo "</select>";
+								echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+								echo "<input type=\"text\" name=\"id_proveedor\" value=\"$id_proveedor\" hidden=hidden>";
+							echo "</form>";
 					}
 					
 				?>

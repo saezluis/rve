@@ -93,7 +93,7 @@ session_start();
       </div>
     </header>
     <section class="content">
-		<h1>Cambiar contraseña</h1>
+		<h1>Cambiar datos cuenta</h1>
 		<form class="cambia_contra" method="POST" action="cambiar-pass-procesar.php">
 			<label for="">Contraseña anterior</label>
 			<input type="password" name="pass_anterior" required>

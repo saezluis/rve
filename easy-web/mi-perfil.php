@@ -65,7 +65,9 @@ session_start();
     	<div class="menu-perfils">
 			<ul>
 				<li><a href="cambiar-pass.php">Cambiar contraseña</a></li>
+				<!--
 				<li><a href="cambiar-datos.php">Modificar datos cuenta</a></li>
+				-->
 			</ul>
 		</div>
     </section>

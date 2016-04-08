@@ -66,11 +66,13 @@ session_start();
 			<br>			
 			<form method="post" action="finish.php">
 				<?php
+					
 					$desde_implementar = @$_REQUEST['aceptar_implementar'];
-					if($desde_implementar=='si'){
+					$desde_implementar2 = @$_GET['imp'];
+					if($desde_implementar=='si' || $desde_implementar2=='si'){
 						//$nothing = "";
 						//echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";
-						echo "<input type=\"button\" onclick=\"location.href='como-implementar.php';\" value=\"volver\" class=\"cont\" style=\"margin-top:15px;\">";
+						echo "<input type=\"button\" onclick=\"location.href='seleccionar.php';\" value=\"volver\" class=\"cont\" style=\"margin-top:15px;\">";
 					}else{
 						echo "<input type=\"button\" onclick=\"location.href='finish.php';\" value=\"cancelar\" class=\"cont\" style=\"margin-top:15px;\">";
 						//echo "<section class=\"go\"><a href=\"#\"><input type=\"submit\" value=\"Volver\" class=\"cont\"></a></section>";

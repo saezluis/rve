@@ -32,8 +32,10 @@
 			$tipo_user = $row['tipo_user'];
 			$id_sala = $row['id_sala'];
 			$nombre_user = $row['nombre'];
+			//$username_member = $row['username'];
 		}
 		
+		//$_SESSION['nombre_user'] = $username_member;
 		//echo "Tipo user: ".$tipo_user;
 		//echo "<br>";
 		//echo "count: ".$count;
@@ -95,7 +97,7 @@
 		}
 		else{
 			  echo "<h1>Algo ocurrió mal :(</h1>";
-			  echo "<p class=\"alarm\">Tu correo o contraseña está incorrecta, haz click <a href=\"login-admin.php\">aquí  </a>para volver a intentarlo.</p>";
+			  echo "<p class=\"alarm\">Tu correo o contraseña está incorrecta, haz click <a href=\"index.html\">aquí  </a>para volver a intentarlo.</p>";
 			
 		}
 	

@@ -46,7 +46,7 @@ session_start();
 	<style>
 		#container #list-image{
 			margin-top: 1em;
-		}
+			}
 
 		#container #list-image ul{
 			margin: 0;
@@ -185,14 +185,25 @@ session_start();
 					
 					if($id_campana!=''){
 						
+						$mostrar_bmp = @$_REQUEST['mostrar_bmp'];
+					
+						if($mostrar_bmp!=''){
+							mysqli_query($conexion, "UPDATE campana SET practica = '$mostrar_bmp' WHERE id_campana = $id_campana ") or die("Problemas en el update de campana".mysqli_error($conexion));
+							echo "<script>";
+								echo "alert('Información: mostrar en aplicación web actualizado');";
+							echo "</script>";
+							
+						}
+						
 						$nombreC = '';
 						$registrosCampana = mysqli_query($conexion,"SELECT * FROM campana WHERE id_campana = '$id_campana' ") or die("Problemas en el select de campana: ".mysqli_error($conexion));
 						
 						if($regC=mysqli_fetch_array($registrosCampana)){
 							$nombreC = $regC['nombre'];
+							$practica_mostrar = $regC['practica'];
 						}
 						
-						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: $nombreC";
+						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: <b>$nombreC</b>";
 						echo "<br>";
 						echo "<br>";
 						echo "<p>Seleccione una opción:</p>";						
@@ -206,8 +217,26 @@ session_start();
 									echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
 								echo "</form>";
 							echo "</ul>";
-						echo "</form>";
+						echo "<h6>Nota: para mostrar buenas/malas prácticas en la app web es necesario agregar 1 foto/comentario por cada buena/mala práctica.</h6>";
+						echo "<p>Mostrar en aplicación web:</p>";
+							echo "<form method=\"POST\" action=\"admin-practica-principal.php\" >";
+								echo "<select name=\"mostrar_bmp\" onchange=\"this.form.submit()\" >";
+									echo "<option value=\"-1\" >-- Seleccione --</option>";
+									if($practica_mostrar=='si'){
+										echo "<option value=\"si\" selected=selected >Sí</option>";
+										echo "<option value=\"no\" >No</option>";
+									}
+									if($practica_mostrar=='no'){
+										echo "<option value=\"si\" >Sí</option>";
+										echo "<option value=\"no\" selected=selected>No</option>";
+									}
+								echo "</select>";
+								echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+								echo "<input type=\"text\" name=\"id_proveedor\" value=\"$id_proveedor\" hidden=hidden>";
+							echo "</form>";
 					}
+					//ojo meter el update aqui mismo
+					
 					
 					
 				?>
