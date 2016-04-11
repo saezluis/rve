@@ -76,7 +76,7 @@ session_start();
 			$practica_ex = $regEx['practica'];
 		}
 		
-		if($practica_ex=='no'){
+		if(@$practica_ex=='no'){
 			//aqui llamo el redirect
 			//$desdeI = 'si';
 			header("Location: take.php?imp="."si");
@@ -130,7 +130,7 @@ session_start();
 					echo "<div class=\"slider\">";
 						while($regF=mysqli_fetch_array($registrosFotos)){
 							$nombreF = $regF['nombre'];
-							echo "<img src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
 						}						
 						//echo "<img src=\"img/foto2.jpg\" alt=\"\">";
 						//echo "<img src=\"img/foto3.jpg\" alt=\"\">";
@@ -154,7 +154,7 @@ session_start();
                   echo "<div class=\"slider\">";
 						while($regF=mysqli_fetch_array($registrosFotosM)){
 							$nombreF = $regF['nombre'];
-							echo "<img src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
 						}
 						//echo "<img src=\"img/foto2-no.jpg\" alt=\"\">";
 						//echo "<img src=\"img/foto3-no.jpg\" alt=\"\">";

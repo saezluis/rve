@@ -102,7 +102,7 @@
 	
 		$newNameFinal = $newName.'.jpg';
 		
-		WideImage::load($target_file)->resize(600, 363)->saveToFile('nombreFinal.jpg');
+		WideImage::load($target_file)->resize(null, 345)->saveToFile('nombreFinal.jpg');
 		
 		rename("nombreFinal.jpg",$target_dir . $newNameFinal);
 		
