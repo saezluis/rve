@@ -80,6 +80,35 @@ section.content{
     }
 	}
 
+.pdf{
+    display: block;
+    width: 100%;
+    padding: 0 0 0 0;//45px
+
+    @include desde (web){
+      padding: 0 0 25px 0;
+    }
+
+    p.download{
+      color:$blanco;
+      width: 100%;
+      font-size:0.95em;
+    }
+
+    .bajarPdf{
+      background: #fff;
+      text-align: center;
+      padding: 5px;
+      color: #000;
+      display: block;
+      width: 30%;
+      margin: 13px auto;
+      @include desde (web){
+        width: 16%;
+        padding: 1%;
+      }
+    }
+}
 
 .tabs {
   width: 100%;  

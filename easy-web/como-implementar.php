@@ -106,8 +106,85 @@ session_start();
           <ul class="tabs">
 			<?php
 			
+	
+			if($campana_store!=''){
+				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				
+				$registrosTexto = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$campana_store' AND tipo_practica = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				//echo "entro por campaña";
+				$registrosFotosM = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+				
+				$registrosTextoM = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$campana_store' AND tipo_practica = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
+			}
+			
+			$num_registros_fotosB = mysqli_num_rows($registrosFotos);
+			$num_registros_fotosM = mysqli_num_rows($registrosFotosM);
+			
+			//echo "textos buenos: ".$num_registros_fotosB;
+			//echo "<br>";
+			//echo "textos malos: ".$num_registros_fotosM;
+			
+			if($num_registros_fotosB!=0){
+				echo "<li class=\"Tm\">";
+				  echo "<input id=\"tab1\" type=\"radio\" name=\"tabs\" checked=\"\">";
+				  echo "<label for=\"tab1\">Buenas Prácticas</label>";
+				  
+				  echo "<div id=\"tab-content1\" class=\"tab-content\">";
+					if($regT=mysqli_fetch_array($registrosTexto)){
+						$texto_bp = $regT['texto'];
+						echo "<p>$texto_bp</p>";
+					}                
+					echo "<div class=\"ima-B-M\">";
+					  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
+						echo "<div class=\"slider\">";
+							while($regF=mysqli_fetch_array($registrosFotos)){
+								$nombreF = $regF['nombre'];
+								echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							}						
+							//echo "<img src=\"img/foto2.jpg\" alt=\"\">";
+							//echo "<img src=\"img/foto3.jpg\" alt=\"\">";
+						echo "</div>";
+					  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
+					echo "</div>";                
+				  echo "</div>";
+				echo "</li>";
+            }
+			
+			if($num_registros_fotosM!=0){
+				echo "<li>";
+				  echo "<input id=\"tab2\" type=\"radio\" name=\"tabs\">";
+				  echo "<label for=\"tab2\">Malas Prácticas</label>";
+				  echo "<div id=\"tab-content2\" class=\"tab-content\">";
+				  if($regT=mysqli_fetch_array($registrosTextoM)){
+						$texto_bp = $regT['texto'];
+						echo "<p>$texto_bp</p>";
+					}
+				   //echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>";
+					echo "<div class=\"ima-B-M\">";
+					  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
+					  echo "<div class=\"slider\">";
+							while($regF=mysqli_fetch_array($registrosFotosM)){
+								$nombreF = $regF['nombre'];
+								echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							}
+							//echo "<img src=\"img/foto2-no.jpg\" alt=\"\">";
+							//echo "<img src=\"img/foto3-no.jpg\" alt=\"\">";
+						echo "</div>";
+					  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
+					echo "</div>";               
+				  echo "</div>";
+				echo "</li>";	
+			}
+			
+			?>
+          </ul>
+          <!--pdf-->
+          <ul class="pdf">
+			<?php
+			
 			if($archivo_pdf!=''){
-				echo "Descargar archivo PDF: <a href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
+				echo "<p class=\"download\">Descargar archivo PDF:</p> 
+						<a class=\"bajarPdf\" href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
 			}else{
 				$blankspace = '';
 			}
@@ -183,6 +260,7 @@ session_start();
 			
 			?>
           </ul>
+          <!--fin pdf-->
         </div>
       </div>
     </section>
