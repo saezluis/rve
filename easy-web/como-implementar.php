@@ -103,10 +103,12 @@ session_start();
       <p class="Bot-ti">Cómo implementar esta: campaña / exhibición</p>
       <div class="ed-container">
         <div class="ed-item base-100 no-padding">
-          <ul class="tabs">
-			<?php
+        <?php  
 			
-	
+		if($archivo_pdf==''){
+			
+			echo "<ul class=\"tabs\">";
+			
 			if($campana_store!=''){
 				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 				
@@ -176,15 +178,20 @@ session_start();
 				echo "</li>";	
 			}
 			
-			?>
-          </ul>
-          <!--pdf-->
-          <ul class="pdf">
-			<?php
+			
+          echo "</ul>";
+		  
+		}
+		
+		if($archivo_pdf!=''){
+          //pdf
+          echo "<ul class=\"pdf\">";
+			
 			
 			if($archivo_pdf!=''){
-				echo "<p class=\"download\">Descargar archivo PDF:</p> 
+				echo "<p class=\"download\">Descargar archivo PDF:</p>
 						<a class=\"bajarPdf\" href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
+				echo "<br>";
 			}else{
 				$blankspace = '';
 			}
@@ -258,9 +265,11 @@ session_start();
 				echo "</li>";	
 			}
 			
-			?>
-          </ul>
-          <!--fin pdf-->
+			
+          echo "</ul>";
+          //fin pdf
+		  }
+		  ?>
         </div>
       </div>
     </section>
