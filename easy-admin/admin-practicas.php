@@ -179,27 +179,33 @@ session_start();
 		<div id="container">
 			<div id="list-users-practicas">
 				<?php
-					echo "<p>Para comenzar debe seleccionar una de estas categorías:</p>";
-					echo "<form method=\"POST\" action=\"admin-practica-principal.php\">"; 
-						echo "<label style=\"margin-right:55px;\">Seleccionar Item RVE:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
-							echo "<option  value=\"-1\">Seleccione</option>";
-							while($regT=mysqli_fetch_array($registrosCampana)){
-								$id_campana = $regT['id_campana'];
-								$nombre_campana = $regT['nombre'];							
-								echo "<option value=\"$id_campana\">$nombre_campana</option>";
-							}
-						echo "</select>";
-					echo "</form>";
-					echo "<form class=\"practice\" method=\"POST\" action=\"admin-practica-proveedores.php\">"; 
-						echo "<label>Seleccionar proveedores:</label> <select name=\"id_proveedor\" onchange=\"this.form.submit()\">";
-							echo "<option value=\"-1\">Seleccione</option>";
-							while($regE=mysqli_fetch_array($registrosExhibicion)){
-								$id_exhibicion = $regE['id_exhibicion'];
-								$nombre_exhibicion = $regE['nombre'];							
-								echo "<option value=\"$id_exhibicion\">$nombre_exhibicion</option>";
-							}
-						echo "</select>";
-					echo "</form>";
+					//echo "<p>Para comenzar debe seleccionar una de estas categorías:</p>";
+					if($nombre_user=='adminV'){
+					
+						echo "<form method=\"POST\" action=\"admin-practica-principal.php\">"; 
+							echo "<label style=\"margin-right:55px;\">Seleccionar Item RVE:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
+								echo "<option  value=\"-1\">Seleccione</option>";
+								while($regT=mysqli_fetch_array($registrosCampana)){
+									$id_campana = $regT['id_campana'];
+									$nombre_campana = $regT['nombre'];							
+									echo "<option value=\"$id_campana\">$nombre_campana</option>";
+								}
+							echo "</select>";
+						echo "</form>";
+					}
+					
+					if($nombre_user=='adminP'){					
+						echo "<form class=\"practice\" method=\"POST\" action=\"admin-practica-proveedores.php\">"; 
+							echo "<label>Seleccionar proveedores:</label> <select name=\"id_proveedor\" onchange=\"this.form.submit()\">";
+								echo "<option value=\"-1\">Seleccione</option>";
+								while($regE=mysqli_fetch_array($registrosExhibicion)){
+									$id_exhibicion = $regE['id_exhibicion'];
+									$nombre_exhibicion = $regE['nombre'];							
+									echo "<option value=\"$id_exhibicion\">$nombre_exhibicion</option>";
+								}
+							echo "</select>";
+						echo "</form>";
+					}
 				?>
 			</div>			
 		</div>		

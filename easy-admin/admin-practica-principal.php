@@ -94,10 +94,44 @@ session_start();
 		$nombre_user = $_SESSION['nombre_user'];
 		$foto_perfil = $_SESSION['foto_perfil'];
 		
+		$nombreFoto = '';
+		$textoCheckB = '';
+		$textoCheckM = '';
+		
+		
 		include_once 'config.php';
 	
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
+		
+		$id_campana = @$_REQUEST['id_campana'];
+		
+		$registrosCampanaCheck = mysqli_query($conexion, " SELECT * FROM campana WHERE id_campana = '$id_campana' ") or die("Problemas con la conexión de campana");
+		
+		if($regCampCheck=mysqli_fetch_array($registrosCampanaCheck)){			
+			$archivo_pdfCheck = $regCampCheck['archivo_pdf'];
+		}
+		
+		
+		$textosCheckBuenos = mysqli_query($conexion, " SELECT * FROM textos WHERE id_campana = '$id_campana' AND tipo_practica = 'buena' ") or die("Problemas con la conexión de campana");
+		
+		if($regTextosB=mysqli_fetch_array($textosCheckBuenos)){
+			$textoCheckB = $regTextosB['texto'];
+		}
+		
+		$textosCheckMalos= mysqli_query($conexion, " SELECT * FROM textos WHERE id_campana = '$id_campana' AND tipo_practica = 'mala' ") or die("Problemas con la conexión de campana");
+		
+		if($regTextosM=mysqli_fetch_array($textosCheckMalos)){
+			$textoCheckM = $regTextosM['texto'];
+		}
+		
+		
+		$fotosCheck = mysqli_query($conexion, " SELECT * FROM fotos_practicas WHERE id_campana = '$id_campana' ") or die("Problemas con la conexión de campana");
+		
+		if($regFotosCheck=mysqli_fetch_array($fotosCheck)){
+			$nombreFoto = $regFotosCheck['nombre'];
+		}
+		
 		/*
 		@$comentario_sup = @$_REQUEST['comentario_activo'];
 		
@@ -180,7 +214,7 @@ session_start();
 			<div id="list-users-practicas">
 				<?php
 					
-					$id_campana = @$_REQUEST['id_campana'];
+					//$id_campana = @$_REQUEST['id_campana'];
 					$id_proveedor = @$_REQUEST['id_proveedor'];
 					
 					if($id_campana!=''){
@@ -214,27 +248,34 @@ session_start();
 						}
 						//echo "<td><a class=\"equis\" href=\"eliminar-proveedor-procesar.php?id_send=",urlencode($id_proveedor)," \" onclick=\"return confirm('¿ Desea eliminar ésta proveedor ?')\">x</a></td>";
 						echo "<br>";
-						echo "Subir archivo PDF:";
-							echo "<form  class=\"added\" method=\"POST\" action=\"agregar-archivo.php\" enctype=\"multipart/form-data\">";
-								//echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-								echo "<input type=\"text\" name=\"id_camp\" value=\"$id_campana\" hidden=hidden>";
-								echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
-								echo "<input type=\"submit\" value=\"Subir archivo\">";
-							echo "</form>";
+						
+						if($textoCheckB=='' && $textoCheckM=='' && $nombreFoto==''){
+							echo "Subir archivo PDF:";
+								echo "<form  class=\"added\" method=\"POST\" action=\"agregar-archivo.php\" enctype=\"multipart/form-data\">";
+									//echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+									echo "<input type=\"text\" name=\"id_camp\" value=\"$id_campana\" hidden=hidden>";
+									echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
+									echo "<input type=\"submit\" value=\"Subir archivo\">";
+								echo "</form>";
+						}
 						
 						echo "<br>";
-						echo "<p>Seleccione una opción:</p>";
-							echo "<ul>";
-								echo "<form method=\"post\" action=\"buenas-practicas.php\">";
-									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-									echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
-								echo "</form>";
-								echo "<form method=\"post\" action=\"malas-practicas.php\">";
-									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
-									echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
-								echo "</form>";
-							echo "</ul>";
-						echo "<h6>Nota: para mostrar buenas/malas prácticas en la app web es necesario agregar 1 foto/comentario por cada buena/mala práctica.</h6>";
+						
+						if($archivo_pdfCheck==''){
+							echo "<p>Seleccione una opción:</p>";
+								echo "<ul>";
+									echo "<form method=\"post\" action=\"buenas-practicas.php\">";
+										echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+										echo "<li><input type=\"submit\" value=\"Buenas prácticas\"></li>";
+									echo "</form>";
+									echo "<form method=\"post\" action=\"malas-practicas.php\">";
+										echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+										echo "<li><input type=\"submit\" value=\"Malas prácticas\"></li>";
+									echo "</form>";
+								echo "</ul>";
+							echo "<h6>Nota: para mostrar buenas/malas prácticas en la app web es necesario agregar 1 foto/comentario por cada buena/mala práctica.</h6>";
+						}
+						
 						echo "<p>Mostrar en aplicación web:</p>";
 							echo "<form method=\"POST\" action=\"admin-practica-principal.php\" >";
 								echo "<select name=\"mostrar_bmp\" onchange=\"this.form.submit()\" >";
