@@ -172,7 +172,8 @@ session_start();
 			echo "<ul class=\"pdf\">";
 			
 					if($archivo_pdf!=''){
-						echo "Descargar archivo PDF: <a href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
+						echo "<p class=\"download\">Descargar archivo PDF:</p> 
+								<a class=\"bajarPdf\" href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
 					}else{
 						$blankspace = '';
 					}
