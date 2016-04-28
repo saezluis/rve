@@ -201,10 +201,27 @@ session_start();
 						if($regP=mysqli_fetch_array($registrosProveedor)){
 							$nombreP = $regP['nombre'];
 							$practica_mostrar = $regP['practica'];
+							$archivo_pdf = $regP['archivo_pdf'];
 						}
 						
 						echo "Usted se encuentra modificando las buenas/malas prácticas del proveedor: <b>$nombreP</b>";
 						echo "<br>";
+						echo "<br>";
+						if($archivo_pdf!=''){
+							echo "Archivo asociado a éste proveedor: $archivo_pdf<a href=\"archivos/$archivo_pdf\" download> -> Descargar</a> ó <a href=\"eliminar-archivo-pro.php?id_send=",urlencode($id_proveedor)," \" onclick=\"return confirm('¿ Desea eliminar ésta archivo ?')\"> Eliminar </a>";
+						}else{
+							echo "Ëste proveedor no tiene archivo PDF asociado";
+						}
+						//echo "<td><a class=\"equis\" href=\"eliminar-proveedor-procesar.php?id_send=",urlencode($id_proveedor)," \" onclick=\"return confirm('¿ Desea eliminar ésta proveedor ?')\">x</a></td>";
+						echo "<br>";
+						echo "Subir archivo PDF:";
+							echo "<form  class=\"added\" method=\"POST\" action=\"agregar-archivo-p.php\" enctype=\"multipart/form-data\">";
+								//echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+								echo "<input type=\"text\" name=\"id_camp\" value=\"$id_proveedor\" hidden=hidden>";
+								echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
+								echo "<input type=\"submit\" value=\"Subir archivo\">";
+							echo "</form>";
+						
 						echo "<br>";
 						echo "<p>Seleccione una opción:</p>";						
 							echo "<ul>";

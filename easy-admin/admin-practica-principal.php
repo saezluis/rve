@@ -201,12 +201,29 @@ session_start();
 						if($regC=mysqli_fetch_array($registrosCampana)){
 							$nombreC = $regC['nombre'];
 							$practica_mostrar = $regC['practica'];
+							$archivo_pdf = $regC['archivo_pdf'];
 						}
 						
 						echo "Usted se encuentra modificando las buenas/malas prácticas de la campaña: <b>$nombreC</b>";
 						echo "<br>";
 						echo "<br>";
-						echo "<p>Seleccione una opción:</p>";						
+						if($archivo_pdf!=''){
+							echo "Archivo asociado a esta campaña: $archivo_pdf<a href=\"archivos/$archivo_pdf\" download> -> Descargar</a> ó <a href=\"eliminar-archivo.php?id_send=",urlencode($id_campana)," \" onclick=\"return confirm('¿ Desea eliminar ésta archivo ?')\"> Eliminar </a>";
+						}else{
+							echo "Esta campaña no tiene archivo PDF asociado";
+						}
+						//echo "<td><a class=\"equis\" href=\"eliminar-proveedor-procesar.php?id_send=",urlencode($id_proveedor)," \" onclick=\"return confirm('¿ Desea eliminar ésta proveedor ?')\">x</a></td>";
+						echo "<br>";
+						echo "Subir archivo PDF:";
+							echo "<form  class=\"added\" method=\"POST\" action=\"agregar-archivo.php\" enctype=\"multipart/form-data\">";
+								//echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";
+								echo "<input type=\"text\" name=\"id_camp\" value=\"$id_campana\" hidden=hidden>";
+								echo "<input type=\"file\" name=\"upload\" id=\"upload\" required>";
+								echo "<input type=\"submit\" value=\"Subir archivo\">";
+							echo "</form>";
+						
+						echo "<br>";
+						echo "<p>Seleccione una opción:</p>";
 							echo "<ul>";
 								echo "<form method=\"post\" action=\"buenas-practicas.php\">";
 									echo "<input type=\"text\" name=\"id_campana\" value=\"$id_campana\" hidden=hidden>";

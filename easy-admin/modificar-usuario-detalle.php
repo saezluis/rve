@@ -115,7 +115,7 @@ session_start();
 					
 					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"procesar-modificar-usuario.php\">";
 					echo "<input type=\"text\" name=\"id_send\" value=\"$id_usuario\" hidden=hidden>";
-					echo "Usuario: <input type=\"text\" name=\"username\" value=\"$username\" >";
+					echo "Usuario/email: <input type=\"text\" name=\"username\" value=\"$username\" >";
 					echo "Contraseña: <input type=\"text\" name=\"password\" value=\"$password\" >";
 					echo "Nombre completo: <input type=\"text\" name=\"nombre_real\" value=\"$nombre_real\" >";
 					echo "Tienda: <select name=\"id_tienda\">";			

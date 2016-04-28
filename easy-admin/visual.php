@@ -130,6 +130,7 @@ session_start();
                 <select class="select" name="tienda">
 					<?php
 						echo "<option value=\"0\">Seleccione</option>";
+						//echo "<option value=\"todas\">Todas</option>";
 						while($reg=mysqli_fetch_array($registrosSala)){
 							$nombre_sala = $reg['nombre_sala'];
 							$id_sala = $reg['id_sala'];
@@ -143,10 +144,11 @@ session_start();
 				</select>
               </div>
 			  <div class="campana">
-                <h2>Seleccionar campaña</h2>                
+                <h2>Seleccionar Item RVE</h2>                
 				<select class="select" name="campana" onchange="this.form.submit()">
 					<?php
 						echo "<option value=\"0\">Seleccione</option>";
+						//echo "<option value=\"todas\">Todos</option>";
 						while($reg=mysqli_fetch_array($registrosCampana)){
 							$nombre = $reg['nombre'];
 							$id_campana = $reg['id_campana'];

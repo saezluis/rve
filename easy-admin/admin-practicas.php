@@ -181,7 +181,7 @@ session_start();
 				<?php
 					echo "<p>Para comenzar debe seleccionar una de estas categorías:</p>";
 					echo "<form method=\"POST\" action=\"admin-practica-principal.php\">"; 
-						echo "<label style=\"margin-right:55px;\">Seleccionar campaña:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
+						echo "<label style=\"margin-right:55px;\">Seleccionar Item RVE:</label> <select name=\"id_campana\" onchange=\"this.form.submit()\">";
 							echo "<option  value=\"-1\">Seleccione</option>";
 							while($regT=mysqli_fetch_array($registrosCampana)){
 								$id_campana = $regT['id_campana'];

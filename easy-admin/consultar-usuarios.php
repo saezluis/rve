@@ -39,6 +39,9 @@ session_start();
   </head>
   <body>
 	<?php
+		$cargo_post = @$_REQUEST['cargo'];
+		
+	
 		$nombre_user = $_SESSION['nombre_user'];
 		$foto_perfil = $_SESSION['foto_perfil'];
 		
@@ -47,12 +50,24 @@ session_start();
 		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
 		$acentos = $conexion->query("SET NAMES 'utf8'");
 		
-		$registrosMembers = mysqli_query($conexion,"SELECT * FROM members") or die("Problemas en el select de members: ".mysqli_error($conexion));
+		if(@$cargo_post!=''){
+			//echo "cargo: ".$cargo_post;
+			$registrosMembers = mysqli_query($conexion,"SELECT * FROM members WHERE cargo = '$cargo_post'") or die("Problemas en el select de members: ".mysqli_error($conexion));
+		}else{
+			$registrosMembers = mysqli_query($conexion,"SELECT * FROM members") or die("Problemas en el select de members: ".mysqli_error($conexion));
+		}
+		
 		
 		//-------------- INICIO Paginador ------------------
 		
 		//Limito la busqueda a 10 registros por pagina
-		$TAMANO_PAGINA = 25; 
+		if(@$cargo_post!=''){
+			//echo "cargo: ".$cargo_post;
+			$TAMANO_PAGINA = 125; 
+		}else{
+			$TAMANO_PAGINA = 25; 
+		}
+		//$TAMANO_PAGINA = 25; 
 		
 		//examino la página a mostrar y el inicio del registro a mostrar 
 		@$pagina = $_GET["pagina"]; 
@@ -69,7 +84,13 @@ session_start();
 		$total_paginas = ceil($num_total_registros / $TAMANO_PAGINA); 
 		
 		//AND orden_sap IS NOT NULL AND orden_recepcion IS NOT NULL
-		$ssql = "SELECT * FROM members LIMIT " . $inicio . "," . $TAMANO_PAGINA; 
+		if(@$cargo_post!=''){
+			//echo "cargo: ".$cargo_post;
+			$ssql = "SELECT * FROM members WHERE cargo = '$cargo_post' ORDER BY id_sala ASC"; 
+		}else{
+			$ssql = "SELECT * FROM members ORDER BY id_sala ASC LIMIT " . $inicio . "," . $TAMANO_PAGINA; 
+		}
+		
 		//echo $ssql;
 		$rss = mysqli_query($conexion,$ssql); 
 		
@@ -110,18 +131,31 @@ session_start();
 				<?php			
 					echo "<br>";					
 					echo "<h4>Consultar usuarios</h4>";
-
+					
+					echo "Filtrar búsqueda por:";
+					echo "<form method=\"POST\" action=\"consultar-usuarios.php\">";
+						echo "<select name=\"cargo\" onchange=\"this.form.submit()\">";
+							echo "<option value=\"\">- Cargo -</option>";
+							echo "<option value=\"Gerente\">Gerente Tienda</option>";
+							echo "<option value=\"Jefe de Visual\">Jefe de Visual</option>";
+							echo "<option value=\"Publicista\">Publicista</option>";
+							echo "<option value=\"Flejista\">Flejista</option>";
+						echo "</select>";
+					echo "</form>";
+					
+					echo "<br>";
+					
 					echo "<table class=\"pure-table\">";
 						echo "<thead>";
 							echo "<tr>";
-								echo "<th>Usuario</th>";
+								echo "<th>Tienda</th>";
+								echo "<th>Cargo</th>";
+								echo "<th>Usuario/Email</th>";
 								echo "<th>Password</th>";
 								echo "<th>Nombre</th>";
-								echo "<!-- <th>Tipo de usuario</th> -->";
-								echo "<th>Tienda</th>";
+								echo "<!-- <th>Tipo de usuario</th> -->";								
 								echo "<th>Teléfono</th>";
-								echo "<th>Anexo</th>";
-								echo "<th>Cargo</th>";
+								echo "<th>Anexo</th>";								
 								echo "<!-- <th>Foto perfil</th> -->";
 							echo "</tr>";
 						echo "</thead>";
@@ -144,14 +178,14 @@ session_start();
 								}
 								
 								echo "<tr>";
+									echo "<td>$nombre_sala</td>";
+									echo "<td>$cargo</td>";
 									echo "<td>$username</td>";
 									echo "<td>$password</td>";
 									echo "<td>$nombre</td>";
-									echo "<!-- <td>Administrador</td> -->";
-									echo "<td>$nombre_sala</td>";
+									echo "<!-- <td>Administrador</td> -->";									
 									echo "<td>$celular</td>";
-									echo "<td>$anexo</td>";
-									echo "<td>$cargo</td>";
+									echo "<td>$anexo</td>";									
 									echo "<!-- <td>foto-perfil</td> -->";
 								echo "</tr>";
 							}
@@ -174,6 +208,7 @@ session_start();
 							}	
 						echo "</div>";				
 					echo "</div>";
+					
 					
 				?>
 			</div>			

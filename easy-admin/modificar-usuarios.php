@@ -116,7 +116,7 @@ session_start();
 						echo "<thead>";
 							echo "<tr>";
 								echo "<th>ID Usuario</th>";
-								echo "<th>Usuario</th>";
+								echo "<th>Usuario/email</th>";
 								echo "<th>Password</th>";
 								echo "<th>Nombre</th>";
 								echo "<!-- <th>Tipo de usuario</th> -->";

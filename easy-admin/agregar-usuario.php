@@ -98,7 +98,7 @@ session_start();
 					echo "<!-- <th>Foto perfil</th> -->";
 					*/			
 					echo "<form class=\"my-hero-form\" method=\"POST\" action=\"procesar-agregar-usuario.php\">";
-					echo "<label>Usuario:</label> <input type=\"text\" name=\"username\" required>";
+					echo "<label>Usuario/email:</label> <input type=\"text\" name=\"username\" required>";
 					echo "<label>Contraseña:</label> <input type=\"password\" name=\"password\" required>";
 					echo "<label>Nombre completo:</label> <input type=\"text\" name=\"nombre_real\" required>";
 					echo "<label>Tienda:</label> <select name=\"id_tienda\">";			

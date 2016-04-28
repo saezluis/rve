@@ -19,20 +19,8 @@ session_start();
 		echo "<br/><br />" . "Su sesion a terminado, <a href='index.html'> Necesita Hacer Login</a>";
 		exit;
 	}
-?>
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-	<link rel="stylesheet" href="css/sss.css" type="text/css" media="all">
-    <title>Registro Visual Easy</title>
-	
-  </head>
-  <body>
-	<?php
+
+	//aqui antes empezaba la pagina con codigo HTML
 	
 		include_once 'config.php';
 	
@@ -54,6 +42,7 @@ session_start();
 		
 		if($regCamp=mysqli_fetch_array($registrosCampana)){
 			$practica_camp = $regCamp['practica'];
+			$archivo_pdf = $regCamp['archivo_pdf'];
 		}
 		
 		if($practica_camp=='no'){
@@ -84,6 +73,19 @@ session_start();
 		}
 		
 	?>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+	<link rel="stylesheet" href="css/sss.css" type="text/css" media="all">
+    <title>Registro Visual Easy</title>
+	
+  </head>
+  <body>
+  
     <header>
       <div class="ed-container">
         <div class="ed-item base-100">
@@ -104,7 +106,11 @@ session_start();
           <ul class="tabs">
 			<?php
 			
-			
+			if($archivo_pdf!=''){
+				echo "Descargar archivo PDF: <a href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
+			}else{
+				$blankspace = '';
+			}
 			
 			if($campana_store!=''){
 				$registrosFotos = mysqli_query($conexion,"SELECT * FROM fotos_practicas WHERE id_campana = '$campana_store' AND condicion = 'buena' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
@@ -116,53 +122,65 @@ session_start();
 				$registrosTextoM = mysqli_query($conexion,"SELECT * FROM textos WHERE id_campana = '$campana_store' AND tipo_practica = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 			}
 			
-            echo "<li class=\"Tm\">";
-              echo "<input id=\"tab1\" type=\"radio\" name=\"tabs\" checked=\"\">";
-              echo "<label for=\"tab1\">Buenas Prácticas</label>";
-			  
-              echo "<div id=\"tab-content1\" class=\"tab-content\">";
-				if($regT=mysqli_fetch_array($registrosTexto)){
-					$texto_bp = $regT['texto'];
-					echo "<p>$texto_bp</p>";
-				}                
-				echo "<div class=\"ima-B-M\">";
-                  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
-					echo "<div class=\"slider\">";
-						while($regF=mysqli_fetch_array($registrosFotos)){
-							$nombreF = $regF['nombre'];
-							echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
-						}						
-						//echo "<img src=\"img/foto2.jpg\" alt=\"\">";
-						//echo "<img src=\"img/foto3.jpg\" alt=\"\">";
-					echo "</div>";
-				  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
-                echo "</div>";                
-              echo "</div>";
-            echo "</li>";
-            
-			echo "<li>";
-              echo "<input id=\"tab2\" type=\"radio\" name=\"tabs\">";
-              echo "<label for=\"tab2\">Malas Prácticas</label>";
-              echo "<div id=\"tab-content2\" class=\"tab-content\">";
-			  if($regT=mysqli_fetch_array($registrosTextoM)){
-					$texto_bp = $regT['texto'];
-					echo "<p>$texto_bp</p>";
-				}
-			   //echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>";
-                echo "<div class=\"ima-B-M\">";
-                  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
-                  echo "<div class=\"slider\">";
-						while($regF=mysqli_fetch_array($registrosFotosM)){
-							$nombreF = $regF['nombre'];
-							echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
-						}
-						//echo "<img src=\"img/foto2-no.jpg\" alt=\"\">";
-						//echo "<img src=\"img/foto3-no.jpg\" alt=\"\">";
-					echo "</div>";
-                  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
-                echo "</div>";               
-              echo "</div>";
-            echo "</li>";			
+			$num_registros_fotosB = mysqli_num_rows($registrosFotos);
+			$num_registros_fotosM = mysqli_num_rows($registrosFotosM);
+			
+			//echo "textos buenos: ".$num_registros_fotosB;
+			//echo "<br>";
+			//echo "textos malos: ".$num_registros_fotosM;
+			
+			if($num_registros_fotosB!=0){
+				echo "<li class=\"Tm\">";
+				  echo "<input id=\"tab1\" type=\"radio\" name=\"tabs\" checked=\"\">";
+				  echo "<label for=\"tab1\">Buenas Prácticas</label>";
+				  
+				  echo "<div id=\"tab-content1\" class=\"tab-content\">";
+					if($regT=mysqli_fetch_array($registrosTexto)){
+						$texto_bp = $regT['texto'];
+						echo "<p>$texto_bp</p>";
+					}                
+					echo "<div class=\"ima-B-M\">";
+					  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
+						echo "<div class=\"slider\">";
+							while($regF=mysqli_fetch_array($registrosFotos)){
+								$nombreF = $regF['nombre'];
+								echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							}						
+							//echo "<img src=\"img/foto2.jpg\" alt=\"\">";
+							//echo "<img src=\"img/foto3.jpg\" alt=\"\">";
+						echo "</div>";
+					  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
+					echo "</div>";                
+				  echo "</div>";
+				echo "</li>";
+            }
+			
+			if($num_registros_fotosM!=0){
+				echo "<li>";
+				  echo "<input id=\"tab2\" type=\"radio\" name=\"tabs\">";
+				  echo "<label for=\"tab2\">Malas Prácticas</label>";
+				  echo "<div id=\"tab-content2\" class=\"tab-content\">";
+				  if($regT=mysqli_fetch_array($registrosTextoM)){
+						$texto_bp = $regT['texto'];
+						echo "<p>$texto_bp</p>";
+					}
+				   //echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>";
+					echo "<div class=\"ima-B-M\">";
+					  echo "<div class=\"corchete-l\"><img src=\"img/corchete_mobile_left.png\" alt=\"\"></div>";
+					  echo "<div class=\"slider\">";
+							while($regF=mysqli_fetch_array($registrosFotosM)){
+								$nombreF = $regF['nombre'];
+								echo "<img height=\"42\" width=\"42\" src=\"../easy-admin/images/$nombreF\" alt=\"\">";
+							}
+							//echo "<img src=\"img/foto2-no.jpg\" alt=\"\">";
+							//echo "<img src=\"img/foto3-no.jpg\" alt=\"\">";
+						echo "</div>";
+					  echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
+					echo "</div>";               
+				  echo "</div>";
+				echo "</li>";	
+			}
+			
 			?>
           </ul>
         </div>

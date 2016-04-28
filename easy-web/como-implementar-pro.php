@@ -19,7 +19,44 @@ session_start();
 		echo "<br/><br />" . "Su sesion a terminado, <a href='index.html'> Necesita Hacer Login</a>";
 		exit;
 	}
-?>
+
+	
+	
+		include_once 'config.php';
+	
+		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
+		$acentos = $conexion->query("SET NAMES 'utf8'");
+			
+		$nombre_user = $_SESSION['nombre_user'];
+		
+		$exhibicion_store = @$_REQUEST['exhibicion'];
+		if($exhibicion_store!=''){
+			$_SESSION['e_store'] = $exhibicion_store;
+			
+		}
+		//echo "session c_store lleva: ".$_SESSION['c_store'];
+		//echo "<br>";
+		
+		$registrosExhibicion = mysqli_query($conexion, " SELECT * FROM exhibicion WHERE id_exhibicion = '$exhibicion_store' ") or die("Problemas con la conexión de campana");
+		
+		if($regEx=mysqli_fetch_array($registrosExhibicion)){
+			$practica_ex = $regEx['practica'];
+			$archivo_pdf = $regEx['archivo_pdf'];
+		}
+		
+		$campana_store = @$_REQUEST['campana'];		
+		if($campana_store!=''){
+			$_SESSION['c_store'] = $campana_store;
+		}
+		
+		if($practica_ex=='no'){
+			//aqui llamo el redirect
+			//$desdeI = 'si';
+			header("Location: take.php?imp="."si");
+			//$ney = '';
+		}
+		
+	?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -32,41 +69,7 @@ session_start();
 	
   </head>
   <body>
-	<?php
-		include_once 'config.php';
 	
-		$conexion = mysqli_connect($host,$username,$password,$db_name) or die("Problemas con la conexión");
-		$acentos = $conexion->query("SET NAMES 'utf8'");
-			
-		$nombre_user = $_SESSION['nombre_user'];
-		
-		$campana_store = @$_REQUEST['campana'];		
-		if($campana_store!=''){
-			$_SESSION['c_store'] = $campana_store;
-		}
-		//echo "session c_store lleva: ".$_SESSION['c_store'];
-		//echo "<br>";
-		
-		$exhibicion_store = @$_REQUEST['exhibicion'];
-		if($exhibicion_store!=''){
-			$_SESSION['e_store'] = $exhibicion_store;
-		}
-		//echo "session store lleva: ".$_SESSION['e_store'];
-		//echo "<br>";
-		$registrosExhibicion = mysqli_query($conexion, " SELECT * FROM exhibicion WHERE id_exhibicion = '$exhibicion_store' ") or die("Problemas con la conexión de campana");
-		
-		if($regEx=mysqli_fetch_array($registrosExhibicion)){
-			$practica_ex = $regEx['practica'];
-		}
-		
-		if($practica_ex=='no'){
-			//aqui llamo el redirect
-			//$desdeI = 'si';
-			header("Location: take.php?imp="."si");
-			//$ney = '';
-		}
-		
-	?>
     <header>
       <div class="ed-container">
         <div class="ed-item base-100">
@@ -87,7 +90,11 @@ session_start();
           <ul class="tabs">
 			<?php
 			
-			
+			if($archivo_pdf!=''){
+				echo "Descargar archivo PDF: <a href=\"../easy-admin/archivos/$archivo_pdf\" download>Descargar</a>";
+			}else{
+				$blankspace = '';
+			}
 			
 			if($exhibicion_store!=''){
 				
@@ -100,6 +107,14 @@ session_start();
 				$registrosTextoM = mysqli_query($conexion,"SELECT * FROM textos WHERE id_proveedor = '$exhibicion_store' AND tipo_practica = 'mala' ") or die("Problemas en el select de fotos: ".mysqli_error($conexion));
 			}
 			
+			$num_registros_fotosB = mysqli_num_rows($registrosFotos);
+			$num_registros_fotosM = mysqli_num_rows($registrosFotosM);
+			
+			
+			
+			
+			
+		if($num_registros_fotosB!=0){				
             echo "<li class=\"Tm\">";
               echo "<input id=\"tab1\" type=\"radio\" name=\"tabs\" checked=\"\">";
               echo "<label for=\"tab1\">Buenas Prácticas</label>";
@@ -123,7 +138,9 @@ session_start();
                 echo "</div>";                
               echo "</div>";
             echo "</li>";
-            
+        }
+		
+		if($num_registros_fotosM!=0){
 			echo "<li>";
               echo "<input id=\"tab2\" type=\"radio\" name=\"tabs\">";
               echo "<label for=\"tab2\">Malas Prácticas</label>";
@@ -146,7 +163,9 @@ session_start();
                   echo "<div class=\"corchete-r\"><img src=\"img/corchete_mobile_right.png\" alt=\"\"></div>";
                 echo "</div>";               
               echo "</div>";
-            echo "</li>";			
+            echo "</li>";	
+		}
+		
 			?>
           </ul>
         </div>
